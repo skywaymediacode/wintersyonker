@@ -1,35 +1,1200 @@
 ---
-import Base from "../layouts/Base.astro";
-import { FIRM } from "../data/firm";
+// GENERATED FILE - do not edit.
+// Source: build/wy-comp.src.html  ->  python build/build_comp.py
+// Assets resolve to /images and /video in public/ rather than being inlined,
+// so the deployed site ships cacheable files instead of one 4 MB document.
 ---
 
-<Base
-  title={`${FIRM.name} · Tampa Personal Injury Lawyers`}
-  description="Tampa Bay personal injury lawyers. A real person answers this phone, 24 hours a day. And we don't get paid unless you do."
->
-  <section class="placeholder">
-    <div class="wrap">
-      <p class="eyebrow">Scaffold</p>
-      <h1 class="display">Shell is up.</h1>
-      <p>Topbar, nav, theme switch and footer are live. Sections port next.</p>
-    </div>
-  </section>
-</Base>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Winters &amp; Yonker, P.A. | Tampa Personal Injury Lawyers</title>
+<link rel="canonical" href="https://www.winters-yonker.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Winters &amp; Yonker, P.A. | Tampa Personal Injury Lawyers">
+<meta property="og:url" content="https://www.winters-yonker.com/">
+<meta property="og:image" content="https://www.winters-yonker.com/images/hero%20cover.webp">
+<meta name="description" content="Tampa Bay personal injury lawyers. A real person answers this phone, 24 hours a day. And we don't get paid unless you do.">
+<script is:inline>
+  /* resolve the stored theme before first paint to avoid a flash */
+  (function(){try{var t=localStorage.getItem("wy-theme");
+  if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..700;1,6..72,200..700&display=swap">
 
 <style>
-  .placeholder {
-    padding-block: clamp(56px, 6vw, 112px);
+:root{
+  --page:#FFFFFF; --panel:#F8F5F5; --surface:#FFFFFF;
+  --text:#1A1310; --muted:#5F5459; --line:#E9E2E2;
+  --accent-strong:#822227;
+  --oxblood:#822227; --oxblood-black:#1A0E10; --signal:#AF352B;
+  --gold:#F5BB2E; --gold-deep:#7C5512;
+  --on-dark:#FFFFFF; --on-dark-mut:#D7C4C6;
+  --sans:'Archivo',Helvetica,Arial,sans-serif;
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --maxw:1680px;
+  --pad:clamp(20px,4.2vw,76px);
+  --chrome:137px;
+  --ctl-h:54px;
+}
+
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --page:#1B1013; --panel:#140C0F; --surface:#22151A;
+    --text:#FFFFFF; --muted:#C6B6B8; --line:#3C2729;
+    --gold-deep:#F5BB2E; --accent-strong:#F5BB2E;
   }
-  .wrap {
-    max-width: 1680px;
-    margin: 0 auto;
-    padding-inline: clamp(20px, 4.2vw, 76px);
-  }
-  h1 {
-    font-size: clamp(34px, 6.4vw, 88px);
-    margin: 18px 0;
-  }
-  p {
-    color: var(--muted);
-  }
+  :root:not([data-theme="light"]) .tb img{filter:grayscale(1) invert(1) contrast(1.05);opacity:.7}
+  :root:not([data-theme="light"]) .tb .cell:hover img{opacity:1}
+}
+:root[data-theme="dark"]{
+  --page:#1B1013; --panel:#140C0F; --surface:#22151A;
+  --text:#FFFFFF; --muted:#C6B6B8; --line:#3C2729;
+  --gold-deep:#F5BB2E; --accent-strong:#F5BB2E;
+}
+:root[data-theme="dark"] .tb img{filter:grayscale(1) invert(1) contrast(1.05);opacity:.7}
+:root[data-theme="dark"] .tb .cell:hover img{opacity:1}
+
+/* theme switch */
+.tsw{width:var(--ctl-h);height:var(--ctl-h);flex:0 0 auto;display:grid;place-items:center;cursor:pointer;
+  background:transparent;border:1px solid var(--line);border-radius:2px;color:var(--text);
+  transition:border-color .2s ease,color .2s ease,background .2s ease}
+.tsw:hover{border-color:var(--gold);color:var(--gold);background:rgba(245,187,46,.08)}
+.tsw svg{width:18px;height:18px;fill:currentColor;display:block}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+h1,h2,h3,h4{margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+img{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.19em;text-transform:uppercase;color:var(--gold-deep)}
+.on-dark .eyebrow{color:var(--gold)}
+.h2{font-weight:800;font-stretch:70%;text-transform:uppercase;font-size:clamp(34px,6.4vw,88px);line-height:.92;letter-spacing:-.025em;margin-top:18px}
+.sub{font-size:clamp(16.5px,1.5vw,20px);line-height:1.55;color:var(--muted);margin-top:22px;max-width:62ch}
+.on-dark .sub{color:var(--on-dark-mut)}
+section{padding-block:clamp(56px,6vw,112px)}
+
+.btn{display:inline-block;padding:17px 30px;font-size:13.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;text-decoration:none;border:0;cursor:pointer;font-family:inherit;transition:transform .18s ease,filter .18s ease}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.btn-gold{background:var(--gold);color:var(--oxblood-black)}
+.btn-ox{background:var(--oxblood);color:#fff}
+.btn-out{border:2px solid rgba(255,255,255,.55);color:#fff}
+
+/* ================= TOPBAR / NAV ================= */
+.topbar{background:var(--oxblood-black);color:#E4D6D8;font-size:13px}
+.tbin{display:flex;justify-content:flex-end;align-items:stretch;padding-left:var(--pad);min-height:52px}
+.ti{display:none;align-items:center;padding-inline:clamp(16px,1.6vw,26px);
+  border-left:1px solid rgba(255,255,255,.16);letter-spacing:.02em;white-space:nowrap}
+@media(min-width:900px){.ti{display:flex}}
+.ti:first-child{border-left:0}
+a.ti{text-decoration:none;transition:color .2s ease}
+a.ti:hover{color:var(--gold)}
+.ti.tgold{color:var(--gold);font-weight:700}
+.tphone{display:flex;align-items:center;gap:10px;background:var(--gold);color:var(--oxblood-black);
+  text-decoration:none;padding-inline:clamp(18px,2vw,30px);font-weight:800;
+  font-size:clamp(16px,1.4vw,21px);letter-spacing:.01em;white-space:nowrap;
+  transition:background .2s ease}
+.tphone:hover{background:#FFD05F}
+.tphone svg{width:16px;height:16px;fill:currentColor;flex:0 0 auto}
+nav.nav{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
+nav.nav .wrap{display:flex;align-items:center;gap:30px;padding-block:15px}
+.logolink{display:flex;align-items:center;flex:0 0 auto}
+nav.nav .lg{height:clamp(32px,2.8vw,42px);width:auto;display:block}
+/* every swap rule is scoped to `nav.nav .lg-*` so it matches the specificity of
+   `nav.nav .lg` above and wins on source order — an unscoped `.lg-dark` loses
+   to it and both logos render at once. */
+nav.nav .lg-dark{display:none}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) nav.nav .lg-light{display:none}
+  :root:not([data-theme="light"]) nav.nav .lg-dark{display:block}
+}
+:root[data-theme="dark"] nav.nav .lg-light{display:none}
+:root[data-theme="dark"] nav.nav .lg-dark{display:block}
+:root[data-theme="light"] nav.nav .lg-light{display:block}
+:root[data-theme="light"] nav.nav .lg-dark{display:none}
+.navlinks{display:none;gap:clamp(16px,1.5vw,26px);margin-left:auto}
+@media(min-width:1080px){.navlinks{display:flex}}
+.navlinks span{cursor:pointer;white-space:nowrap;font-weight:800;font-stretch:80%;
+  font-size:clamp(12px,1.05vw,14px);letter-spacing:.1em;text-transform:uppercase;
+  transition:color .2s ease}
+.navlinks span:hover{color:var(--accent-strong)}
+.navcta{margin-left:auto;display:flex;gap:12px;align-items:center}
+.navcta .btn{display:inline-flex;align-items:center;padding-block:0;height:var(--ctl-h);
+  white-space:nowrap;font-stretch:82%;padding-inline:clamp(16px,1.6vw,28px);letter-spacing:.09em}
+@media(min-width:1080px){.navcta{margin-left:0}}
+.navcta .tel{display:flex;align-items:center;font-weight:800;font-size:16px;color:var(--accent-strong);text-decoration:none;white-space:nowrap}
+
+
+/* ---------- mobile menu ---------- */
+.burger{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  width:var(--ctl-h);height:var(--ctl-h);flex:0 0 auto;
+  background:transparent;border:1px solid var(--line);border-radius:2px;cursor:pointer;padding:0}
+@media(min-width:1080px){.burger{display:none}}
+.burger i{display:block;width:25px;height:3px;background:var(--text);margin:0;border-radius:1px;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),opacity .2s ease}
+.burger[aria-expanded="true"] i:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.burger[aria-expanded="true"] i:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] i:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+
+.drawer{position:fixed;inset:0;z-index:60;background:var(--oxblood-black);color:#fff;
+  display:flex;flex-direction:column;overflow-y:auto;
+  opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}
+.drawer.open{opacity:1;visibility:visible}
+.drawer-top{display:flex;align-items:center;justify-content:space-between;
+  padding:15px clamp(20px,4.2vw,76px);border-bottom:1px solid rgba(255,255,255,.14)}
+.drawer-top img{height:34px;width:auto}
+.dclose{width:var(--ctl-h);height:var(--ctl-h);display:grid;place-items:center;cursor:pointer;
+  background:transparent;border:1px solid rgba(255,255,255,.28);border-radius:2px;color:#fff;
+  font-size:22px;line-height:1;font-family:inherit}
+.dclose:hover{border-color:var(--gold);color:var(--gold)}
+.dlinks{display:flex;flex-direction:column;padding:clamp(14px,3vw,34px) clamp(20px,4.2vw,76px) 0}
+.dlinks a{display:flex;align-items:baseline;gap:16px;text-decoration:none;color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.13);padding:clamp(15px,2.4vw,22px) 0;
+  font-weight:800;font-stretch:68%;text-transform:uppercase;letter-spacing:-.015em;
+  font-size:clamp(30px,9vw,54px);line-height:.94;
+  opacity:0;transform:translateY(14px);transition:color .2s ease,opacity .45s ease,transform .45s cubic-bezier(.2,.7,.3,1)}
+.drawer.open .dlinks a{opacity:1;transform:none}
+.dlinks a em{font-style:normal;font-weight:800;font-stretch:100%;font-size:12px;letter-spacing:.16em;
+  color:var(--gold);flex:0 0 auto}
+.dlinks a:hover{color:var(--gold)}
+.dfoot{margin-top:auto;padding:clamp(20px,3vw,34px) clamp(20px,4.2vw,76px) clamp(28px,4vw,48px);
+  display:flex;flex-direction:column;gap:12px}
+/* both drawer CTAs share one treatment: narrow, bold, uppercase */
+.dfoot .dphone,.dfoot .dcta{display:flex;align-items:center;justify-content:center;gap:12px;
+  text-decoration:none;font-family:inherit;font-weight:800;font-stretch:78%;text-transform:uppercase;
+  font-size:clamp(15px,4.2vw,20px);letter-spacing:.1em;padding:20px;border-radius:2px}
+.dfoot .dphone{background:var(--gold);color:var(--oxblood-black)}
+.dfoot .dcta{border:2px solid rgba(255,255,255,.55);color:#fff}
+.dfoot .dnote{font-size:12.5px;color:#C6B6B8;text-align:center;margin-top:4px}
+.drawer.open .dlinks a:nth-child(1){transition-delay:0.10s}
+.drawer.open .dlinks a:nth-child(2){transition-delay:0.14s}
+.drawer.open .dlinks a:nth-child(3){transition-delay:0.18s}
+.drawer.open .dlinks a:nth-child(4){transition-delay:0.23s}
+.drawer.open .dlinks a:nth-child(5){transition-delay:0.27s}
+.drawer.open .dlinks a:nth-child(6){transition-delay:0.32s}
+body.menu-open{overflow:hidden}
+
+/* ---------- mobile sticky action bar ---------- */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;
+  grid-template-columns:1fr 1fr auto;gap:1px;background:rgba(255,255,255,.16);
+  border-top:2px solid var(--gold);transition:transform .35s cubic-bezier(.2,.7,.3,1)}
+@media(min-width:1080px){.mbar{display:none}}
+.mbar.dismissed{transform:translateY(115%)}
+.mbar a{display:flex;align-items:center;justify-content:center;gap:9px;padding:17px 8px;
+  text-decoration:none;font-weight:800;font-stretch:76%;text-transform:uppercase;
+  font-size:clamp(12px,3.3vw,15px);letter-spacing:.09em}
+.mbar .mcall{background:var(--gold);color:var(--oxblood-black)}
+.mbar .mcta{background:var(--oxblood);color:#fff}
+.mbar svg{width:15px;height:15px;fill:currentColor;flex:0 0 auto}
+.mbar-x{background:var(--oxblood-black);color:#C6B6B8;border:0;width:46px;cursor:pointer;
+  font-size:22px;line-height:1;font-family:inherit}
+.mbar-x:hover{color:var(--gold)}
+body.has-mbar{padding-bottom:62px}
+@media(min-width:1080px){body.has-mbar{padding-bottom:0}}
+
+/* ---------- scroll behaviour ---------- */
+.progressbar{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--gold);z-index:2}
+nav.nav .wrap{transition:padding-block .28s cubic-bezier(.2,.7,.3,1)}
+nav.nav.is-stuck{box-shadow:0 12px 34px -20px rgba(0,0,0,.6)}
+nav.nav.is-stuck .wrap{padding-block:8px}
+
+/* Elements are visible by default. The parked state only exists once JS has
+   confirmed it can run AND has already flagged anything currently on screen,
+   so the page never renders blank and no-JS readers lose nothing. */
+.js-anim .reveal{opacity:0;transform:translateY(26px)}
+.js-anim .reveal.in{opacity:1;transform:none;
+  transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1);
+  transition-delay:calc(var(--i,0) * 60ms)}
+.hero video{will-change:transform}
+
+/* ================= 01 HERO ================= */
+.herostage{display:flex;flex-direction:column;min-height:calc(100vh - var(--chrome));min-height:calc(100svh - var(--chrome))}
+.hero{position:relative;background:var(--oxblood-black);color:#fff;overflow:hidden;isolation:isolate;
+  flex:1 1 auto;display:flex;align-items:center;min-height:clamp(560px,62vh,900px)}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(100deg, rgba(26,14,16,.95) 0%, rgba(130,34,39,.88) 40%, rgba(130,34,39,.46) 70%, rgba(26,14,16,.70) 100%),
+    linear-gradient(180deg, rgba(26,14,16,.55) 0%, rgba(26,14,16,0) 26%);
+}
+.hero{flex-direction:column;align-items:stretch}
+.hero .wrap{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center;
+  padding-block:clamp(40px,5vw,84px);position:relative;width:100%}
+.hero .hcopy{max-width:min(100%,1000px)}
+.hero h1{max-width:none}
+
+/* Intake bar sits across the foot of the video so the footage stays uncovered. */
+.herobar{flex:0 0 auto;position:relative;z-index:3;border-top:3px solid var(--gold);
+  background:rgba(18,9,11,.74);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.hbin{max-width:var(--maxw);margin:0 auto;padding:clamp(24px,2.4vw,36px) var(--pad);
+  display:grid;gap:10px;grid-template-columns:1fr 1fr;align-items:center}
+/* mobile + tablet: label, name pair, contact pair, then a full-width submit */
+.hbin > .hblabel,
+.hbin > .hbsubmit,
+.hbin > .hbnote{grid-column:1/-1}
+.hbin > .hbsubmit{width:100%}
+@media(min-width:1180px){
+  .hbin{grid-template-columns:auto 1fr 1fr 1fr 1fr auto;gap:12px}
+  .hbin > .hblabel,
+  .hbin > .hbsubmit{grid-column:auto}
+  .hbin > .hbsubmit{width:auto}
+  .hbin > .hbnote{grid-column:1/-1}
+}
+.hblabel{display:flex;flex-direction:column;gap:2px;white-space:nowrap;padding-right:6px}
+.hblabel b{font-weight:800;font-stretch:76%;text-transform:uppercase;font-size:clamp(19px,1.7vw,26px);
+  letter-spacing:-.01em;color:#fff;line-height:1}
+.hblabel span{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+.hfld{border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.09);color:#E9DADC;
+  padding:16px 15px;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
+  border-radius:2px}
+.hbsubmit{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;
+  background:var(--gold);color:var(--oxblood-black);border:0;border-radius:2px;cursor:pointer;
+  font-family:inherit;font-weight:800;font-stretch:82%;font-size:13px;letter-spacing:.1em;
+  text-transform:uppercase;padding:15px clamp(18px,1.8vw,28px);text-decoration:none;
+  transition:filter .18s ease,transform .18s ease}
+.hbsubmit:hover{filter:brightness(1.06);transform:translateY(-2px)}
+.hbsubmit{padding-block:18px;font-size:14px}
+/* A tab straddling the top edge so the bar reads as the next step, not a footer. */
+/* A single solid arrowhead. No stem — it points, nothing more. */
+.hbarrow{position:absolute;left:50%;bottom:100%;z-index:4;pointer-events:none;
+  display:block;padding-bottom:clamp(14px,1.6vw,22px);
+  transform:translateX(-50%);animation:drift 2.4s ease-in-out infinite}
+.hbarrow svg{display:block;width:clamp(34px,3.4vw,52px);height:auto;fill:var(--gold);
+  filter:drop-shadow(0 6px 18px rgba(26,14,16,.55)) drop-shadow(0 0 20px rgba(245,187,46,.55))}
+@keyframes drift{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}
+.hbnote{grid-column:1/-1;font-size:11px;color:#C6B6B8;line-height:1.45}
+.hero h1{font-weight:800;font-stretch:62%;text-transform:uppercase;
+  font-size:clamp(54px,11.5vw,182px);line-height:.83;letter-spacing:-.03em;margin-top:20px}
+.hero h1 .g{color:var(--gold);display:block}
+.hero .hsub{font-size:clamp(17px,1.7vw,24px);line-height:1.45;color:#F7E7E9;margin-top:28px;max-width:46ch}
+.hero .acts{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:34px}
+
+.form{background:var(--surface);color:var(--text);padding:clamp(20px,1.7vw,28px);border-top:6px solid var(--gold);box-shadow:0 40px 90px -40px rgba(0,0,0,.75)}
+.form h3{font-weight:800;font-stretch:84%;text-transform:uppercase;font-size:clamp(22px,1.8vw,28px);letter-spacing:-.015em}
+.form .fs{font-size:14px;color:var(--muted);margin-top:8px}
+.fields{display:grid;gap:8px;margin-top:16px;grid-template-columns:1fr}
+@media(min-width:520px){.fields{grid-template-columns:1fr 1fr}}
+.fld{border:1px solid var(--line);background:var(--panel);padding:11px 14px;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.fld.full{grid-column:1/-1}
+.fld.area{min-height:66px}
+.form .consent{font-size:11.5px;color:var(--muted);line-height:1.45;margin-top:15px}
+.form .btn{width:100%;text-align:center;margin-top:15px}
+.form .after{font-size:11.5px;color:var(--muted);margin-top:12px;text-align:center}
+
+/* ================= TRUST BAND ================= */
+.trustband{background:var(--surface);border-bottom:1px solid var(--line);padding-block:clamp(16px,1.8vw,26px);
+  border-top:3px solid var(--gold)}
+.tb{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0}
+.tb .cell{display:flex;align-items:center;justify-content:center;padding-inline:clamp(18px,3vw,46px);min-height:56px}
+.tb .cell + .cell{border-left:1px solid var(--line)}
+.tb img{height:clamp(46px,3.6vw,60px);width:auto;object-fit:contain;
+  filter:grayscale(1) contrast(.92);opacity:.58;transition:filter .35s ease,opacity .35s ease}
+.tb .cell:hover img{filter:grayscale(0) contrast(1);opacity:1}
+.tb .stat{display:flex;flex-direction:column;gap:3px;text-align:left}
+.tb .stat b{font-weight:800;font-stretch:78%;font-size:clamp(24px,2vw,32px);line-height:1;color:var(--accent-strong);font-variant-numeric:tabular-nums}
+.tb .stat span{font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;font-weight:800;color:var(--muted)}
+
+/* ================= 02 RESULTS SCROLLER ================= */
+/* The one brand-dark section that does flip. On a light page a full oxblood-black
+   band next to the white trust bar is too abrupt, so in light mode this sits on
+   the neutral panel and the figures switch to oxblood — gold would measure
+   1.75:1 there. Dark mode keeps the original oxblood-black treatment. */
+.results{
+  --res-bg:var(--panel);
+  --res-text:var(--text);
+  --res-muted:var(--muted);
+  --res-fig:var(--signal);
+  --res-glow:175,53,43;
+  --res-badge-bg:var(--gold);
+  --res-badge-fg:var(--oxblood-black);
+  --res-panel:var(--surface);
+  --res-line:var(--line);
+  --res-dim:rgba(26,19,16,.38);
+  background:var(--res-bg);color:var(--res-text);overflow:hidden}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .results{
+    --res-bg:var(--oxblood-black); --res-text:#fff; --res-muted:#C6B6B8;
+    --res-fig:var(--gold); --res-glow:245,187,46;
+    --res-badge-bg:var(--signal); --res-badge-fg:#fff;
+    --res-panel:rgba(255,255,255,.04); --res-line:rgba(255,255,255,.12);
+    --res-dim:rgba(255,255,255,.42)}
+}
+:root[data-theme="dark"] .results{
+  --res-bg:var(--oxblood-black); --res-text:#fff; --res-muted:#C6B6B8;
+  --res-fig:var(--gold); --res-glow:245,187,46;
+  --res-badge-bg:var(--signal); --res-badge-fg:#fff;
+  --res-panel:rgba(255,255,255,.04); --res-line:rgba(255,255,255,.12);
+  --res-dim:rgba(255,255,255,.42)}
+@media(min-width:1040px){
+  .results{min-height:100vh;display:flex;align-items:center;padding-block:clamp(56px,5vw,88px)}
+  .results > .wrap{width:100%}
+}
+.rhead{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between}
+.rnav{display:flex;align-items:center;gap:18px}
+.rcount{font-weight:800;font-stretch:76%;font-size:clamp(20px,1.9vw,30px);letter-spacing:.02em;
+  color:var(--gold-deep);font-variant-numeric:tabular-nums;line-height:1}
+.rcount .of{color:var(--res-dim)}
+.rbtn{width:clamp(52px,4vw,66px);height:clamp(52px,4vw,66px);border-radius:50%;
+  border:1px solid var(--gold-deep);background:transparent;color:var(--gold-deep);cursor:pointer;
+  display:grid;place-items:center;transition:background .24s ease,color .24s ease,border-color .24s ease,transform .24s ease}
+.rbtn:hover{background:var(--gold-deep);color:var(--res-bg);border-color:var(--gold-deep);transform:scale(1.06)}
+.rbtn:disabled{opacity:.3;cursor:default;transform:none;background:transparent;color:var(--gold-deep)}
+.rbtn svg{width:18px;height:18px;fill:currentColor}
+
+.rtrack{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  margin-top:clamp(32px,3.4vw,56px);scrollbar-width:none;-ms-overflow-style:none;
+  overscroll-behavior-x:contain;cursor:grab}
+.rtrack::-webkit-scrollbar{display:none}
+.rtrack.dragging{cursor:grabbing;scroll-behavior:auto;scroll-snap-type:none}
+.rslide{flex:0 0 100%;scroll-snap-align:start;display:grid;grid-template-columns:1fr}
+@media(min-width:940px){.rslide{grid-template-columns:.92fr 1.08fr}}
+.rslide .pic{position:relative;overflow:hidden;min-height:clamp(240px,34vw,620px)}
+@media(min-width:1040px){.rslide .pic{min-height:clamp(360px,54vh,660px)}}
+.rslide .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transform:scale(1.06);transition:transform 8s cubic-bezier(.22,.6,.3,1)}
+.rslide .pic::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(120deg,rgba(26,14,16,.34),rgba(130,34,39,.56))}
+.rslide.is-active .pic img{transform:scale(1)}
+.rslide .body{padding:clamp(28px,3.6vw,72px);display:flex;flex-direction:column;gap:clamp(14px,1.4vw,22px);
+  justify-content:center;background:var(--res-panel);border:1px solid var(--res-line)}
+.rslide .kind{align-self:flex-start;background:var(--res-badge-bg);color:var(--res-badge-fg);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:800;padding:8px 14px;border-radius:2px}
+.rslide .amt{font-weight:800;font-stretch:62%;font-size:clamp(60px,12.5vw,212px);line-height:.78;
+  font-variant-numeric:tabular-nums;letter-spacing:-.038em;color:var(--res-fig);width:max-content;max-width:100%;
+  transition:text-shadow .5s ease,transform .5s cubic-bezier(.2,.7,.3,1)}
+.rslide:hover .amt,.rslide:focus-within .amt{
+  text-shadow:0 0 22px rgba(var(--res-glow),.42), 0 0 60px rgba(var(--res-glow),.26), 0 0 120px rgba(var(--res-glow),.14);
+  transform:translateY(-2px)}
+.rslide .who{font-size:clamp(16px,1.5vw,22px);line-height:1.45;color:var(--res-text);font-weight:600;max-width:44ch}
+.rslide .det{font-size:15px;line-height:1.6;color:var(--res-muted);max-width:52ch}
+.rslide .todo{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:var(--signal);
+  border-top:1px solid var(--res-line);padding-top:13px;margin-top:4px}
+.rdots{display:flex;gap:10px;margin-top:28px}
+.rdot{width:clamp(38px,4vw,64px);height:3px;background:var(--res-line);border:0;padding:0;cursor:pointer;
+  position:relative;overflow:hidden;transition:background .24s ease}
+.rdot::after{content:"";position:absolute;inset:0;background:var(--gold-deep);transform:scaleX(0);transform-origin:left;
+  transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.rdot[aria-current="true"]::after{transform:scaleX(1)}
+.rdot:hover{background:var(--res-dim)}
+.disc{font-size:12.5px;line-height:1.6;color:var(--res-muted);margin-top:30px;max-width:100ch}
+
+/* ================= 03 PRACTICE ================= */
+.pract{background:var(--panel)}
+.ptile{position:relative;display:flex;align-items:flex-end;overflow:hidden;text-decoration:none;isolation:isolate}
+.ptile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .6s cubic-bezier(.2,.7,.3,1)}
+.ptile::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(26,14,16,.44) 0%,rgba(130,34,39,.70) 44%,rgba(130,34,39,.93) 100%);
+  transition:opacity .55s cubic-bezier(.2,.7,.3,1)}
+.ptile:hover img{transform:scale(1.09)}
+.ptile:hover::after{opacity:.55}
+.ptile .lab{transform:translateY(0);transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.ptile:hover .lab{transform:translateY(-6px)}
+.ptile::before{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--gold);
+  transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.7,.3,1);z-index:1}
+.ptile:hover::before{transform:scaleX(1)}
+.ptile .lab{padding:clamp(20px,1.9vw,32px);color:#fff;position:relative}
+.ptile .lab b{display:block;font-weight:800;font-stretch:74%;text-transform:uppercase;line-height:.96;letter-spacing:-.022em;
+  font-size:clamp(23px,2.1vw,36px)}
+.ptile .lab span{display:block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:800;color:var(--gold);margin-bottom:9px}
+.tiles{display:grid;gap:2px;margin-top:52px;background:var(--oxblood-black);grid-template-columns:repeat(2,1fr)}
+@media(min-width:780px){.tiles{grid-template-columns:repeat(3,1fr)}}
+.tiles .ptile{min-height:clamp(190px,18.5vw,286px)}
+.split{display:grid;gap:clamp(28px,3vw,64px);margin-top:64px;grid-template-columns:1fr}
+@media(min-width:900px){.split{grid-template-columns:1fr 1fr}}
+.split h3{font-weight:800;font-stretch:82%;text-transform:uppercase;font-size:clamp(22px,2.2vw,32px);line-height:1.03;letter-spacing:-.018em}
+.split p{font-size:16.5px;line-height:1.6;color:var(--muted);margin-top:16px;max-width:60ch}
+
+/* ================= 04 DEADLINES ================= */
+.deadlines{background:var(--oxblood-black);color:#fff}
+.dl{display:grid;gap:2px;margin-top:56px;grid-template-columns:1fr}
+@media(min-width:900px){.dl{grid-template-columns:repeat(3,1fr)}}
+.dc{border:1px solid rgba(245,187,46,.32);padding:clamp(28px,2.4vw,44px);display:flex;flex-direction:column;gap:16px;
+  position:relative;overflow:hidden;isolation:isolate;
+  transition:border-color .35s ease,background .35s ease,transform .35s cubic-bezier(.2,.7,.3,1)}
+.dc::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(120% 90% at 0% 0%,rgba(245,187,46,.16),transparent 62%);
+  opacity:0;transition:opacity .4s ease}
+.dc:hover{border-color:var(--gold);transform:translateY(-6px)}
+.dc:hover::before{opacity:1}
+.dc .n{font-weight:800;font-stretch:62%;font-size:clamp(54px,7.6vw,120px);line-height:.8;color:var(--gold);letter-spacing:-.03em;text-transform:uppercase;
+  transition:text-shadow .45s ease,transform .45s cubic-bezier(.2,.7,.3,1)}
+.dc:hover .n{transform:translateY(-3px);
+  text-shadow:0 0 24px rgba(245,187,46,.42),0 0 64px rgba(245,187,46,.22)}
+.dc .t{transition:color .3s ease}
+.dc:hover .t{color:var(--gold)}
+.dc .t{font-size:12.5px;letter-spacing:.15em;text-transform:uppercase;font-weight:800;color:#fff}
+.dc .d{font-size:14.5px;line-height:1.6;color:#C6B6B8}
+.warns{display:grid;gap:0;margin-top:clamp(44px,4.4vw,80px);grid-template-columns:1fr;
+  border-top:1px solid rgba(245,187,46,.34)}
+@media(min-width:900px){.warns{grid-template-columns:1fr 1fr}}
+.wn{padding-block:clamp(30px,3vw,54px);display:grid;gap:14px 22px;grid-template-columns:auto 1fr;align-items:start}
+@media(min-width:900px){
+  .wn:first-child{padding-right:clamp(28px,3.4vw,64px)}
+  .wn:last-child{padding-left:clamp(28px,3.4vw,64px);border-left:1px solid rgba(245,187,46,.34)}
+}
+.wn .mark{width:48px;height:48px;border:2px solid var(--gold);border-radius:50%;display:grid;place-items:center;
+  color:var(--gold);font-weight:800;font-size:22px;line-height:1;grid-row:span 2;
+  transition:background .35s ease,color .35s ease,box-shadow .35s ease}
+.wn:hover .mark{background:var(--gold);color:var(--oxblood-black);
+  box-shadow:0 0 0 6px rgba(245,187,46,.14),0 0 40px rgba(245,187,46,.35)}
+.wn h4{font-weight:800;font-stretch:78%;text-transform:uppercase;font-size:clamp(21px,2.1vw,32px);
+  color:#fff;letter-spacing:-.018em;line-height:1;align-self:center}
+.wn p{grid-column:2;font-size:15.5px;line-height:1.62;color:#C6B6B8;max-width:52ch}
+.legal{font-size:12.5px;line-height:1.6;color:#A8969A;margin-top:34px;max-width:100ch}
+
+/* ================= 05 FAQ (own section) ================= */
+.faqsec{background:var(--oxblood);color:#fff}
+.faqsec .h2{color:#fff}
+.faqsec .eyebrow{color:var(--gold)}
+.faqsec details.qa{border-top-color:rgba(255,255,255,.24)}
+.faqsec details.qa:last-of-type{border-bottom-color:rgba(255,255,255,.24)}
+.faqsec details.qa summary{color:#fff}
+.faqsec details.qa summary .mk{color:var(--gold)}
+.faqsec details.qa summary:hover{color:var(--gold)}
+.faqsec details.qa .a{color:#F2DEDF}
+.faqsec .faq-art .tagline{background:linear-gradient(180deg,rgba(26,14,16,0),rgba(26,14,16,.94))}
+.faq-grid{display:grid;gap:clamp(30px,3.4vw,70px);margin-top:48px;grid-template-columns:1fr;align-items:start}
+@media(min-width:980px){.faq-grid{grid-template-columns:.82fr 1.18fr}}
+.faq-art{display:flex;flex-direction:column}
+.faq-art img{width:100%;min-height:clamp(260px,26vw,400px);max-height:clamp(260px,30vw,460px);object-fit:cover;object-position:center 22%}
+.artquote{margin:0;padding:clamp(24px,2.6vw,38px);background:rgba(0,0,0,.24);border-left:5px solid var(--gold)}
+.artquote p{font-family:var(--serif);font-optical-sizing:auto;
+  font-size:clamp(19px,1.85vw,27px);line-height:1.32;color:#fff;max-width:32ch}
+.artquote cite{display:block;margin-top:16px;font-style:normal;font-family:var(--sans);
+  font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:800;color:var(--gold)}
+details.qa{border-top:1px solid var(--line)}
+details.qa:last-of-type{border-bottom:1px solid var(--line)}
+details.qa summary{list-style:none;cursor:pointer;padding:24px 0;display:flex;gap:18px;align-items:baseline;
+  font-weight:750;font-size:clamp(16.5px,1.4vw,20px);color:var(--text)}
+details.qa summary::-webkit-details-marker{display:none}
+details.qa summary .mk{color:var(--gold-deep);font-weight:800;font-size:22px;line-height:1;flex:0 0 auto;
+  transition:transform .25s ease}
+details.qa[open] summary .mk{transform:rotate(45deg)}
+details.qa summary:hover{color:var(--gold)}
+details.qa .a{font-size:15.5px;line-height:1.65;color:var(--muted);padding:0 0 24px 36px;max-width:72ch}
+
+/* ================= 06 THE FIRM ================= */
+.firm-grid{display:grid;gap:clamp(30px,3.4vw,72px);margin-top:52px;grid-template-columns:1fr;align-items:center}
+@media(min-width:940px){.firm-grid{grid-template-columns:1.02fr .98fr}}
+.firm-copy p{font-size:17px;line-height:1.65;color:var(--muted);margin-top:18px;max-width:58ch}
+.firm-copy p:first-child{margin-top:0}
+.duo{position:relative}
+.duo img{width:100%;height:auto;max-height:clamp(400px,44vw,600px);object-fit:cover;object-position:center 22%}
+.duo .cap{position:absolute;left:0;bottom:0;background:var(--oxblood);color:#fff;padding:14px 20px;font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:800}
+.quote{margin-top:64px;padding:clamp(32px,3.4vw,60px);background:var(--panel);border-left:6px solid var(--signal)}
+.quote .q{font-family:var(--serif);font-optical-sizing:auto;font-size:clamp(23px,3.2vw,44px);line-height:1.26;color:var(--text);max-width:30ch}
+.quote .at{margin-top:22px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--muted)}
+
+/* --- auto-scrolling team marquee --- */
+.teamhead{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:baseline;margin-top:72px}
+.teamhead h3{font-weight:800;font-stretch:82%;text-transform:uppercase;font-size:clamp(21px,2vw,30px);letter-spacing:-.018em}
+.teamhead span{font-size:12px;letter-spacing:.15em;text-transform:uppercase;font-weight:800;color:var(--muted)}
+.mq{margin-top:30px;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.mq-track{display:flex;gap:2px;width:max-content;animation:mq 58s linear infinite}
+.mq:hover .mq-track{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
+.tcard{width:clamp(272px,26vw,428px);flex:0 0 auto;position:relative;overflow:hidden;background:var(--oxblood-black)}
+.tcard img{width:100%;aspect-ratio:420/527;object-fit:cover;object-position:top center;
+  filter:grayscale(1) contrast(1.05);transition:filter .4s ease,transform .6s cubic-bezier(.2,.7,.3,1)}
+.tcard:hover img{filter:grayscale(0);transform:scale(1.04)}
+.tcard .nm{position:absolute;left:0;right:0;bottom:0;padding:22px 18px 18px;color:#fff;
+  background:linear-gradient(180deg,rgba(26,14,16,0),rgba(26,14,16,.92))}
+.tcard .nm b{display:block;font-weight:800;font-stretch:84%;text-transform:uppercase;font-size:clamp(14px,1.15vw,17px);line-height:1.15;letter-spacing:-.005em}
+.tcard .nm span{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--gold);margin-top:6px}
+
+/* ================= 07 WHY ================= */
+.why{display:grid;gap:2px;margin-top:52px;grid-template-columns:1fr}
+@media(min-width:700px){.why{grid-template-columns:1fr 1fr}}
+@media(min-width:1180px){.why{grid-template-columns:repeat(5,1fr)}}
+.wc{position:relative;background:var(--surface);border:1px solid var(--line);padding:clamp(26px,2vw,36px);
+  display:flex;flex-direction:column;gap:12px;overflow:hidden;isolation:isolate;
+  transition:border-color .3s ease,transform .3s cubic-bezier(.2,.7,.3,1)}
+.wc::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--oxblood);
+  transform:translateY(101%);transition:transform .42s cubic-bezier(.2,.7,.3,1)}
+.wc .k{width:40px;height:5px;background:var(--signal);transition:width .42s cubic-bezier(.2,.7,.3,1),background .3s ease}
+.wc h4{font-weight:800;font-stretch:84%;text-transform:uppercase;font-size:clamp(17px,1.4vw,21px);line-height:1.1;letter-spacing:-.012em;margin-top:8px;transition:color .3s ease}
+.wc p{font-size:14.5px;line-height:1.55;color:var(--muted);transition:color .3s ease}
+.wc .no{margin-top:auto;padding-top:18px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--line);transition:color .3s ease}
+.wc:hover{transform:translateY(-6px);border-color:var(--oxblood)}
+.wc:hover::before{transform:translateY(0)}
+.wc:hover .k{width:100%;background:var(--gold)}
+.wc:hover h4{color:#fff}
+.wc:hover p{color:#F2DEDF}
+.wc:hover .no{color:rgba(245,187,46,.6)}
+
+/* ================= 08 REVIEWS ================= */
+.stars{color:var(--gold);font-size:24px;letter-spacing:.14em}
+.revs{display:grid;gap:2px;margin-top:48px;grid-template-columns:1fr}
+@media(min-width:900px){.revs{grid-template-columns:repeat(3,1fr)}}
+.rv{border:1px solid var(--line);padding:clamp(28px,2.4vw,40px);display:flex;flex-direction:column;gap:16px;background:var(--surface)}
+.rv .t{font-family:var(--serif);font-optical-sizing:auto;font-size:clamp(19px,1.6vw,23px);line-height:1.45;color:var(--text)}
+.rv .w{font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:var(--muted);margin-top:auto}
+.rv .todo{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:var(--signal)}
+.discL{font-size:12.5px;line-height:1.6;color:var(--muted);margin-top:30px;max-width:100ch}
+
+/* ================= 09 CONTACT ================= */
+.contact{position:relative;isolation:isolate;overflow:hidden;background:var(--oxblood);color:#fff}
+.contact .bg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
+.contact::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(130,34,39,.92) 0%,rgba(110,26,32,.95) 55%,rgba(26,14,16,.96) 100%)}
+.ct-grid{display:grid;gap:clamp(34px,3.6vw,76px);margin-top:52px;grid-template-columns:1fr;align-items:start}
+@media(min-width:1000px){.ct-grid{grid-template-columns:1.08fr .92fr}}
+.counties{display:grid;gap:2px;grid-template-columns:1fr}
+@media(min-width:600px){.counties{grid-template-columns:1fr 1fr}}
+.cty{border:1px solid rgba(255,255,255,.24);padding:22px 24px;
+  background:rgba(26,14,16,.22);transition:border-color .35s ease,background .35s ease}
+.cty:hover{border-color:rgba(245,187,46,.6);background:rgba(26,14,16,.4)}
+.cty b{display:block;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--gold)}
+.towns{display:flex;flex-wrap:wrap;gap:7px 0;margin-top:13px}
+.towns i{font-style:normal;font-weight:800;text-transform:uppercase;letter-spacing:.03em;
+  font-size:clamp(14px,1.15vw,18px);line-height:1.25;color:#fff;display:inline-flex;align-items:center;
+  cursor:default;transition:color .25s ease,text-shadow .4s ease}
+.towns i:hover{color:var(--gold);
+  text-shadow:0 0 16px rgba(245,187,46,.6),0 0 42px rgba(245,187,46,.3)}
+.towns i::after{content:"";width:4px;height:4px;border-radius:50%;background:var(--gold);
+  margin-inline:11px;flex:0 0 auto}
+.towns i:last-child::after{display:none}
+.offices{display:grid;gap:14px 30px;margin-top:30px;grid-template-columns:1fr}
+@media(min-width:600px){.offices{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.offices{grid-template-columns:repeat(3,1fr)}}
+.off{font-size:13.5px;line-height:1.5;color:#F2DEDF}
+.off b{display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:#fff;margin-bottom:3px}
+
+footer.ft2{background:var(--oxblood-black);color:#A8969A;padding-block:48px;font-size:13px}
+footer.ft2 .wrap{display:flex;flex-wrap:wrap;gap:18px 40px;align-items:center}
+footer.ft2 img{height:44px;width:auto}
+footer.ft2 b{color:#fff}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .mq{overflow-x:auto}
+  .mq-track{animation:none;width:auto}
+  .rtrack{scroll-behavior:auto}
+}
 </style>
+</head>
+<body>
+
+
+<!-- ============ TOPBAR + NAV ============ -->
+<div class="topbar">
+  <div class="tbin">
+    <span class="ti">Se Habla Espa&ntilde;ol</span>
+    <span class="ti">Speak to an actual lawyer within 24 hours</span>
+    <a class="ti tgold" href="#contact">Free Case Evaluation</a>
+    <a class="tphone" href="tel:8132236200">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.2 1.2a1.3 1.3 0 0 1 1.8.3l1.3 1.9a1.3 1.3 0 0 1-.2 1.7l-.9.8a8.6 8.6 0 0 0 3.9 3.9l.8-.9a1.3 1.3 0 0 1 1.7-.2l1.9 1.3a1.3 1.3 0 0 1 .3 1.8l-.9 1.3a2 2 0 0 1-2.3.7C8.1 12.5 3.5 7.9 2.2 3.4a2 2 0 0 1 .7-2.3z"/></svg>
+      (813) 223-6200
+    </a>
+  </div>
+</div>
+<nav class="nav">
+  <span class="progressbar" id="progressbar" aria-hidden="true"></span>
+  <div class="wrap">
+    <a class="logolink" href="#" aria-label="Winters &amp; Yonker, P.A. — home">
+      <img class="lg lg-light" src="/images/logo.webp" alt="Winters &amp; Yonker, P.A. — The Aggressive Attorneys">
+      <img class="lg lg-dark" src="/images/logo-dark-supplied.webp" alt="" aria-hidden="true">
+    </a>
+    <div class="navlinks">
+      <span>About</span><span>Personal Injury</span><span>Results</span><span>Locations</span><span>Blog</span><span>Contact</span>
+    </div>
+    <div class="navcta">
+      <a class="tel" href="tel:8132236200">(813) 223-6200</a>
+      <button class="tsw" id="tsw" type="button" aria-label="Switch to dark theme" aria-pressed="false"></button>
+      <a class="btn btn-ox" href="#contact">Free Case Review</a>
+      <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><i></i><i></i><i></i></button>
+    </div>
+  </div>
+</nav>
+
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="drawer-top">
+    <img src="/images/logo-dark-supplied.webp" alt="Winters &amp; Yonker, P.A.">
+    <button class="dclose" id="dclose" type="button" aria-label="Close menu">&times;</button>
+  </div>
+  <nav class="dlinks">
+    <a href="#about"><em>01</em>About</a>
+    <a href="#practice"><em>02</em>Personal Injury</a>
+    <a href="#results"><em>03</em>Results</a>
+    <a href="#contact"><em>04</em>Locations</a>
+    <a href="#faq"><em>05</em>FAQ</a>
+    <a href="#contact"><em>06</em>Contact</a>
+  </nav>
+  <div class="dfoot">
+    <a class="dphone" href="tel:8132236200">Call (813) 223-6200</a>
+    <a class="dcta" href="#contact">Free Case Review</a>
+    <p class="dnote">A real person answers, 24 hours a day.</p>
+  </div>
+</div>
+
+<!-- ============ 01 HERO + ACCOLADES (one full-screen stage) ============ -->
+<div class="herostage">
+<section class="hero on-dark" style="padding-block:0">
+  <video id="herovid" autoplay muted loop playsinline poster="/images/hero%20cover.webp">
+    <source src="/video/winters-yonker-hero-background.mp4" type="video/mp4">
+  </video>
+  <div class="wrap">
+    <div class="hcopy">
+      <p class="eyebrow">For Your Personal Injury Needs</p>
+      <h1>The Aggressive<span class="g">Attorneys</span></h1>
+      <p class="hsub">A real person answers this phone, 24 hours a day. And we don't get paid unless you do.</p>
+      <div class="acts">
+        <a class="btn btn-gold" href="tel:8132236200">Call (813) 223-6200</a>
+        <a class="btn btn-out" href="#contact">Free Case Review</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="herobar">
+    <span class="hbarrow" aria-hidden="true"><svg viewBox="0 0 30 20"><path d="M15 20 0 0h30z"/></svg></span>
+    <div class="hbin">
+      <span class="hblabel"><span>Free &middot; No obligation</span><b>Free Case Review</b></span>
+      <span class="hfld">First name*</span>
+      <span class="hfld">Last name*</span>
+      <span class="hfld">Phone*</span>
+      <span class="hfld">Email*</span>
+      <a class="hbsubmit" href="#contact">Start My Review</a>
+      <p class="hbnote">A (813) number will call you back, usually within minutes. Submitting does not create an attorney&ndash;client relationship. <b style="color:var(--signal)">[TCPA wording pending attorney sign-off]</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST BAND ============ -->
+<div class="trustband">
+  <div class="wrap tb">
+    <span class="cell"><img src="/images/Trust%20Badge%201.webp" alt="Free case review commitment"></span>
+    <span class="cell"><img src="/images/Trust%20Badge%202.webp" alt="Accreditation"></span>
+    <span class="cell"><img src="/images/Trust%20Badge%203.webp" alt="Accreditation"></span>
+    <span class="cell"><img src="/images/Trust%20Badge%204.webp" alt="Accreditation"></span>
+    <span class="cell"><img src="/images/Trust%20Badge%205.webp" alt="Accreditation"></span>
+    <span class="cell"><span class="stat"><b>4.9 &#9733;</b><span>1,100+ reviews</span></span></span>
+    <span class="cell"><span class="stat"><b>119+</b><span>Years combined</span></span></span>
+  </div>
+</div>
+</div><!-- /herostage -->
+
+<!-- ============ 02 RESULTS SCROLLER ============ -->
+<section class="results">
+  <div class="wrap">
+    <div class="rhead">
+      <div>
+        <p class="eyebrow">Verified recoveries</p>
+        <h2 class="h2">Real people.<br>Real results.</h2>
+      </div>
+      <div class="rnav">
+        <span class="rcount" id="rcount">01 / 03</span>
+        <button class="rbtn" id="rprev" aria-label="Previous result"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10.5 1.5 4 8l6.5 6.5 1.4-1.4L6.8 8l5.1-5.1z"/></svg></button>
+        <button class="rbtn" id="rnext" aria-label="Next result"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 1.5 12 8l-6.5 6.5L4.1 13.1 9.2 8 4.1 2.9z"/></svg></button>
+      </div>
+    </div>
+
+    <div class="rtrack" id="rtrack">
+      <div class="rslide">
+        <div class="pic"><img src="/images/gen%20highway%20rear%20end.webp" alt="Rear-end collision aftermath on a Florida interstate"></div>
+        <div class="body">
+          <span class="kind">Auto Accident</span>
+          <span class="amt">$5,000,000</span>
+          <p class="who">A Hillsborough County driver, rear-ended on I&#8209;275, left with a permanent spinal injury.</p>
+          <p class="det">The insurer's opening offer was a fraction of what the case was finally worth.</p>
+        </div>
+      </div>
+      <div class="rslide">
+        <div class="pic"><img src="/images/auto%20accident%203.webp" alt="Damaged vehicle after an auto negligence collision"></div>
+        <div class="body">
+          <span class="kind">Auto Negligence &middot; Settled</span>
+          <span class="amt">$3,050,000</span>
+          <p class="who">An auto negligence claim resolved by settlement, without the client having to go through a trial.</p>
+          <p class="det">Client circumstances and injury detail to be supplied by the firm.</p>
+          <span class="todo">Needs verifiable detail &mdash; Bar Rule 4-7.13(b)(2)</span>
+        </div>
+      </div>
+      <div class="rslide">
+        <div class="pic"><img src="/images/gen%20night%20highway.webp" alt="Night highway crash scene"></div>
+        <div class="body">
+          <span class="kind">Auto Negligence &middot; Verdict</span>
+          <span class="amt">$1,750,000</span>
+          <p class="who">An auto negligence case tried to a jury verdict after the insurer declined to settle.</p>
+          <p class="det">Client circumstances and injury detail to be supplied by the firm.</p>
+          <span class="todo">Needs verifiable detail &mdash; Bar Rule 4-7.13(b)(2)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rdots" id="rdots">
+      <button class="rdot" aria-label="Result 1" aria-current="true"></button>
+      <button class="rdot" aria-label="Result 2"></button>
+      <button class="rdot" aria-label="Result 3"></button>
+    </div>
+
+    <p class="disc">Results shown are actual past recoveries obtained by Winters &amp; Yonker, P.A. and are objectively verifiable. Prior results do not guarantee a similar outcome. The prospective client may not obtain the same or similar results. Each case turns on its own facts, injuries, liability and available insurance coverage. Amounts are gross recoveries before attorneys' fees and costs.</p>
+  </div>
+</section>
+
+<!-- ============ 03 PRACTICE ============ -->
+<section class="pract">
+  <div class="wrap">
+    <p class="eyebrow">Practice areas</p>
+    <h2 class="h2">We handle injury claims.<br>Nothing else.</h2>
+    <p class="sub">No real estate closings, no divorces, no wills. One kind of law, every day, in the same Tampa Bay courthouses.</p>
+  </div>
+
+  <div class="tiles">
+    <a class="ptile" href="#"><img src="/images/auto%20accident%202.webp" alt="Multi-vehicle rear-end collision"><span class="lab"><span>Most common claim</span><b>Car Accidents</b></span></a>
+    <a class="ptile" href="#"><img src="/images/auto%20accident.webp" alt="Commercial box truck collision"><span class="lab"><span>Commercial carriers</span><b>Truck Accidents</b></span></a>
+    <a class="ptile" href="#"><img src="/images/gen%20motorcycle%20accidents.webp" alt="Motorcycle down on a road after a collision"><span class="lab"><span>Catastrophic injury</span><b>Motorcycle Accidents</b></span></a>
+    <a class="ptile" href="#"><img src="/images/gen%20pedestrian%20accidents.webp" alt="Crosswalk at dusk"><span class="lab"><span>Crosswalks &amp; roadways</span><b>Pedestrian Accidents</b></span></a>
+    <a class="ptile" href="#"><img src="/images/gen%20uber%20lyft%20accidents.webp" alt="Rideshare vehicle at night"><span class="lab"><span>Rideshare coverage</span><b>Uber &amp; Lyft Accidents</b></span></a>
+    <a class="ptile" href="#"><img src="/images/gen%20slip%20and%20fall.webp" alt="Wet floor sign in a store aisle"><span class="lab"><span>Premises liability</span><b>Slip &amp; Fall</b></span></a>
+    <a class="ptile" href="#"><img src="/images/gen%20construction%20accidents.webp" alt="Construction site"><span class="lab"><span>Job site injury</span><b>Construction Accidents</b></span></a>
+    <a class="ptile" href="#"><img src="/images/gen%20brain%20injury.webp" alt="Man seated by a window"><span class="lab"><span>Long-term care needs</span><b>Brain Injury</b></span></a>
+    <a class="ptile" href="#"><img src="/images/gen%20nursing%20home%20neglect.webp" alt="Hands of an elderly person held gently"><span class="lab"><span>Elder abuse &amp; neglect</span><b>Nursing Home Neglect</b></span></a>
+    <a class="ptile" href="#"><img src="/images/gen%20dog%20bites.webp" alt="Dog behind a fence"><span class="lab"><span>Owner liability</span><b>Dog Bites</b></span></a>
+    <a class="ptile" href="#"><img src="/images/gen%20wrongful%20death.webp" alt="Road at dusk"><span class="lab"><span>Claims by surviving family</span><b>Wrongful Death</b></span></a>
+    <a class="ptile" href="#"><img src="/images/gen%20all%20personal%20injury.webp" alt="County courthouse"><span class="lab"><span>Everything we do</span><b>All Personal Injury</b></span></a>
+  </div>
+
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <h3>What a Florida claim actually covers</h3>
+        <p>Beyond emergency care and follow-up treatment, a claim can include future medical costs, lost wages and lost earning capacity, out-of-pocket expenses, vehicle damage, and non-economic damages for pain, disability, disfigurement and loss of enjoyment of life. A spouse may hold a separate claim for loss of consortium.</p>
+        <p>Those categories are easy to leave money in when nobody itemizes them &mdash; which is exactly why a first offer arrives so fast.</p>
+      </div>
+      <div>
+        <h3>And if you don't have a case, we'll say so</h3>
+        <p>You will talk to a lawyer about which of those apply to you, not a case manager working from a script. If the honest answer is that your case is small, or that you don't need a lawyer at all, we will tell you that on the first call.</p>
+        <p style="margin-top:24px"><a class="btn btn-ox" href="#contact">Talk to a lawyer</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 DEADLINES ============ -->
+<section class="deadlines on-dark">
+  <div class="wrap">
+    <p class="eyebrow">Florida deadlines</p>
+    <h2 class="h2">Three clocks started<br>the day you were hurt.</h2>
+    <p class="sub">Two of them started without anyone telling you. The honest answer to "when should I call a lawyer" is: before you speak to the other driver's insurance company.</p>
+    <div class="dl">
+      <div class="dc">
+        <span class="n">14 Days</span>
+        <span class="t">To protect your PIP benefits</span>
+        <span class="d">Florida's no-fault law requires you to receive initial medical care within 14 days of a crash. Miss that window and your Personal Injury Protection coverage &mdash; up to $10,000 with an emergency medical condition diagnosis, $2,500 without &mdash; can be denied outright, leaving you personally responsible for the bills.</span>
+      </div>
+      <div class="dc">
+        <span class="n">2 Years</span>
+        <span class="t">To file a negligence lawsuit</span>
+        <span class="d">House Bill 837 cut Florida's negligence deadline from four years to two, effective March 24, 2023. Claims arising on or after that date now expire in two years; wrongful death is two years from the date of death. Claims involving a government entity carry their own, shorter notice requirements.</span>
+      </div>
+      <div class="dc">
+        <span class="n">Day One</span>
+        <span class="t">Before the evidence is gone</span>
+        <span class="d">Skid marks wash away in the first Tampa thunderstorm. Vehicles get repaired or sold for salvage. Commercial trucking logs and business surveillance footage are routinely overwritten within weeks. A preservation letter sent early is often the whole difference between proving fault and arguing about it.</span>
+      </div>
+    </div>
+    <div class="warns">
+      <div class="wn">
+        <span class="mark" aria-hidden="true">!</span>
+        <h4>The call you shouldn't take</h4>
+        <p>Adjusters ask for a recorded statement early, while you are medicated and before anyone knows whether that shoulder needs surgery. Nothing in Florida law requires you to give one to the other driver's carrier. Once you are a client here, those calls come to us instead of you.</p>
+      </div>
+      <div class="wn">
+        <span class="mark" aria-hidden="true">!</span>
+        <h4>If someone told you it was your fault</h4>
+        <p>Under the modified comparative negligence standard adopted in 2023, a person found more than 50% at fault recovers nothing. That is precisely why insurers now push blame onto injured people harder than they used to. Being told the wreck was your fault is a reason to call, not a reason not to.</p>
+      </div>
+    </div>
+    <p class="legal">This section describes Florida law in general terms as of 2026 and is not legal advice. Deadlines, exceptions and how they apply depend on the facts of your case. Confirm yours with an attorney before relying on any date above.</p>
+  </div>
+</section>
+
+<!-- ============ 05 FAQ ============ -->
+<section class="faqsec">
+  <div class="wrap">
+    <p class="eyebrow">Common questions</p>
+    <h2 class="h2">It's our job<br>to provide clarity.</h2>
+    <div class="faq-grid">
+      <div class="faq-art">
+        <img src="/images/Experience.webp" alt="Winters &amp; Yonker attorneys">
+        <blockquote class="artquote">
+          <p>"If the honest answer is that your case is small, or that you don't need a lawyer at all, we will tell you that on the first call."</p>
+          <cite>Winters &amp; Yonker &middot; What happens when you ring</cite>
+        </blockquote>
+      </div>
+      <div>
+        <details class="qa" open>
+          <summary><span class="mk">+</span><span>How much does it cost to hire you?</span></summary>
+          <p class="a">Nothing up front. We work on a contingency fee, which means our fee comes out of the recovery and there is no fee at all if we don't recover money for you. Clients may still be responsible for case costs; we walk through exactly what that means, in writing, before you sign anything.</p>
+        </details>
+        <details class="qa">
+          <summary><span class="mk">+</span><span>The insurance company already called me. Should I give a statement?</span></summary>
+          <p class="a">Not before you speak to a lawyer. Nothing in Florida law requires you to give a recorded statement to the other driver's carrier, and those calls come early precisely because nobody yet knows how serious your injuries are. Once you are a client here, the adjuster calls us instead of you.</p>
+        </details>
+        <details class="qa">
+          <summary><span class="mk">+</span><span>What if I was partly at fault?</span></summary>
+          <p class="a">You may still recover. Under Florida's modified comparative negligence standard, adopted in 2023, your recovery is reduced by your share of fault, and only a person found <em>more than</em> 50% at fault recovers nothing. Insurers push blame onto injured people precisely because that threshold exists. Being told it was your fault is a reason to call, not a reason not to.</p>
+        </details>
+        <details class="qa">
+          <summary><span class="mk">+</span><span>How long will my case take?</span></summary>
+          <p class="a">It depends on your treatment more than on the courts. Most cases resolve once doctors can say what your long-term prognosis is, because that is when the claim can be valued honestly. Straightforward claims can settle in months; cases involving surgery, disputed liability or a trial take longer. We will give you a realistic range on the first call and update it as the case moves.</p>
+        </details>
+        <details class="qa">
+          <summary><span class="mk">+</span><span>Do I have to go to court?</span></summary>
+          <p class="a">Usually not. The large majority of injury claims settle without the client ever testifying. We prepare every case as though it will be tried, because that is what moves an insurer's number &mdash; but the decision to accept an offer or go to trial is always yours, made with a clear picture of both.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 THE FIRM ============ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Tampa Bay since 2001</p>
+    <h2 class="h2">Built to even out a fight<br>that starts uneven.</h2>
+    <div class="firm-grid">
+      <div class="firm-copy">
+        <p>Winters &amp; Yonker was founded by two Tampa trial lawyers, Bill Winters and Marc Yonker, who spent the early part of their careers watching insurance companies out-resource ordinary people. Within hours of a crash a carrier assigns an adjuster, an investigator and defense counsel. The injured person, meanwhile, is in an emergency room.</p>
+        <p>We represent people, never insurance companies: drivers and passengers hurt on I&#8209;275 and I&#8209;4, motorcyclists, pedestrians and cyclists, workers injured on Tampa construction sites, residents harmed in Bay-area nursing homes, and families of people killed by someone else's negligence.</p>
+        <p>If you were hurt because somebody else was careless, you are who this firm was built for.</p>
+      </div>
+      <div class="duo">
+        <img src="/images/WY%20duo.webp" alt="Bill Winters and Marc Yonker, founding partners">
+        <span class="cap">Bill Winters &amp; Marc Yonker &middot; Founding Partners</span>
+      </div>
+    </div>
+
+    <div class="quote">
+      <p class="q">"The Aggressive Attorneys" has never described how we treat clients. It describes where the pressure gets pointed &mdash; at the carrier, and at the number the carrier has put on the table.</p>
+      <p class="at">Bill Winters &amp; Marc Yonker &middot; Founding Partners</p>
+    </div>
+
+    <div class="teamhead">
+      <h3>Ten attorneys. 119+ years.</h3>
+      <span>The lawyer who signs your case is the lawyer who reads your chart</span>
+    </div>
+  </div>
+
+  <div class="mq">
+    <div class="mq-track">
+      <a class="tcard" href="#"><img src="/images/Bill%20Winters.webp" alt="Bill Winters"><span class="nm"><b>Bill Winters</b><span>Founding Partner</span></span></a>
+      <a class="tcard" href="#"><img src="/images/Marc%20Yonker.webp" alt="Marc Yonker"><span class="nm"><b>Marc Yonker</b><span>Founding Partner</span></span></a>
+      <a class="tcard" href="#"><img src="/images/Patrick%20Douglas%20Brannon.webp" alt="Patrick Douglas Brannon"><span class="nm"><b>Patrick D. Brannon</b><span>Attorney</span></span></a>
+      <a class="tcard" href="#"><img src="/images/Matthew%20Brown.webp" alt="Matthew Brown"><span class="nm"><b>Matthew Brown</b><span>Attorney</span></span></a>
+      <a class="tcard" href="#"><img src="/images/Trevor%20Wade%20Colvin.webp" alt="Trevor Wade Colvin"><span class="nm"><b>Trevor W. Colvin</b><span>Attorney</span></span></a>
+      <a class="tcard" href="#"><img src="/images/Christopher%20M%20Smith.webp" alt="Christopher M. Smith"><span class="nm"><b>Christopher M. Smith</b><span>Attorney</span></span></a>
+      <a class="tcard" href="#"><img src="/images/Anthony%20Logalbo.webp" alt="Anthony LoGalbo"><span class="nm"><b>Anthony LoGalbo</b><span>Attorney</span></span></a>
+      <a class="tcard" href="#"><img src="/images/Max%20Shevrin.webp" alt="Max Shevrin"><span class="nm"><b>Max Shevrin</b><span>Attorney</span></span></a>
+      <a class="tcard" href="#" aria-hidden="true" tabindex="-1"><img src="/images/Bill%20Winters.webp" alt=""><span class="nm"><b>Bill Winters</b><span>Founding Partner</span></span></a>
+      <a class="tcard" href="#" aria-hidden="true" tabindex="-1"><img src="/images/Marc%20Yonker.webp" alt=""><span class="nm"><b>Marc Yonker</b><span>Founding Partner</span></span></a>
+      <a class="tcard" href="#" aria-hidden="true" tabindex="-1"><img src="/images/Patrick%20Douglas%20Brannon.webp" alt=""><span class="nm"><b>Patrick D. Brannon</b><span>Attorney</span></span></a>
+      <a class="tcard" href="#" aria-hidden="true" tabindex="-1"><img src="/images/Matthew%20Brown.webp" alt=""><span class="nm"><b>Matthew Brown</b><span>Attorney</span></span></a>
+      <a class="tcard" href="#" aria-hidden="true" tabindex="-1"><img src="/images/Trevor%20Wade%20Colvin.webp" alt=""><span class="nm"><b>Trevor W. Colvin</b><span>Attorney</span></span></a>
+      <a class="tcard" href="#" aria-hidden="true" tabindex="-1"><img src="/images/Christopher%20M%20Smith.webp" alt=""><span class="nm"><b>Christopher M. Smith</b><span>Attorney</span></span></a>
+      <a class="tcard" href="#" aria-hidden="true" tabindex="-1"><img src="/images/Anthony%20Logalbo.webp" alt=""><span class="nm"><b>Anthony LoGalbo</b><span>Attorney</span></span></a>
+      <a class="tcard" href="#" aria-hidden="true" tabindex="-1"><img src="/images/Max%20Shevrin.webp" alt=""><span class="nm"><b>Max Shevrin</b><span>Attorney</span></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 WHY ============ -->
+<section style="background:var(--panel)">
+  <div class="wrap">
+    <p class="eyebrow">What's different</p>
+    <h2 class="h2">Hold any firm to this list.<br>Ours included.</h2>
+    <p class="sub">Tampa Bay has no shortage of injury firms, and most promise the same things on the same billboards. The difference shows up later, in the unglamorous parts of a case.</p>
+    <div class="why">
+      <div class="wc"><span class="k"></span><h4>Personal injury only</h4><p>Not a little of everything. One kind of law, every day, in the same courthouses.</p><span class="no">01</span></div>
+      <div class="wc"><span class="k"></span><h4>Your lawyer reads your chart</h4><p>The attorney who signs your case is the one who works it. Not a case manager with a script.</p><span class="no">02</span></div>
+      <div class="wc"><span class="k"></span><h4>Someone answers at 2 a.m.</h4><p>Our own intake team, in our own offices. Not an answering service in another state.</p><span class="no">03</span></div>
+      <div class="wc"><span class="k"></span><h4>We come to you</h4><p>Home, hospital, rehab or video. Anywhere in Tampa Bay, including on a Sunday.</p><span class="no">04</span></div>
+      <div class="wc"><span class="k"></span><h4>Se habla espa&ntilde;ol</h4><p>Bilingual staff from the first phone call through to resolution.</p><span class="no">05</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 REVIEWS ============ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Client reviews</p>
+    <h2 class="h2">What your<br>neighbors say.</h2>
+    <p class="sub"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> &nbsp;4.9 from more than 1,100 clients across Tampa, Clearwater, St. Petersburg, New Port Richey and Lakeland.</p>
+    <div class="revs">
+      <div class="rv">
+        <p class="t">"They handled the hospital, the body shop and the adjuster. I handled getting better. That was the whole arrangement and they kept it."</p>
+        <span class="w">Marcus T. &middot; Tampa</span>
+        <span class="todo">Placeholder &mdash; replace with verified review</span>
+      </div>
+      <div class="rv">
+        <p class="t">"I called at 11 at night after my wreck, half expecting a machine. Someone answered and stayed on with me for twenty minutes. That was the moment I stopped panicking."</p>
+        <span class="w">Denise M. &middot; Tampa</span>
+        <span class="todo">Placeholder &mdash; replace with verified review</span>
+      </div>
+      <div class="rv">
+        <p class="t">"The adjuster offered me $4,000 and said that was the policy limit. It wasn't. Winters &amp; Yonker found two more policies I didn't know existed."</p>
+        <span class="w">Ray C. &middot; Clearwater</span>
+        <span class="todo">Placeholder &mdash; replace with verified review</span>
+      </div>
+    </div>
+    <p class="discL">Reviews are unpaid. The prospective client may not obtain the same or similar results.</p>
+  </div>
+</section>
+
+<!-- ============ 09 CONTACT ============ -->
+<section class="contact on-dark" id="contact">
+  <img class="bg" src="/images/gen%20tampa%20bay.webp" alt="" aria-hidden="true">
+  <div class="wrap">
+    <p class="eyebrow">Five offices, four counties</p>
+    <h2 class="h2">If getting to us<br>is the problem, don't.</h2>
+    <p class="sub" style="color:#F2DEDF">After a serious crash it usually is. We meet clients at home, in the hospital, in rehab, or by video &mdash; anywhere in the Tampa Bay area.</p>
+    <div class="ct-grid">
+      <div>
+        <div class="counties">
+          <div class="cty"><b>Hillsborough County</b><span class="towns"><i>Tampa</i><i>Brandon</i><i>Riverview</i><i>Plant City</i><i>Temple Terrace</i><i>Valrico</i><i>Ruskin</i><i>Apollo Beach</i></span></div>
+          <div class="cty"><b>Pinellas County</b><span class="towns"><i>St. Petersburg</i><i>Clearwater</i><i>Largo</i><i>Pinellas Park</i><i>Palm Harbor</i><i>Dunedin</i><i>Seminole</i></span></div>
+          <div class="cty"><b>Pasco County</b><span class="towns"><i>New Port Richey</i><i>Port Richey</i><i>Wesley Chapel</i><i>Land O' Lakes</i><i>Hudson</i><i>Zephyrhills</i></span></div>
+          <div class="cty"><b>Polk County</b><span class="towns"><i>Lakeland</i><i>Winter Haven</i><i>Bartow</i><i>Auburndale</i><i>Haines City</i><i>Davenport</i></span></div>
+        </div>
+        <div class="offices">
+          <span class="off"><b>Tampa</b>601 W Swann Ave, 33606</span>
+          <span class="off"><b>Clearwater</b>1006 Drew St, 33755</span>
+          <span class="off"><b>St. Petersburg</b>111 2nd Ave NE, Ste 350, 33701</span>
+          <span class="off"><b>New Port Richey</b>5006 Trouble Creek Rd #200, 34652</span>
+          <span class="off"><b>Lakeland</b>1543 Lakeland Hills Blvd, Ste 18, 33805</span>
+        </div>
+      </div>
+      <div class="form">
+        <h3>Free Case Review</h3>
+        <p class="fs">If we're not the right firm for your case, we'll say so and point you somewhere useful.</p>
+        <div class="fields">
+          <div class="fld">First name*</div>
+          <div class="fld">Last name*</div>
+          <div class="fld">Phone*</div>
+          <div class="fld">Email*</div>
+          <div class="fld full">Best time to contact</div>
+          <div class="fld area full">Brief injury description*</div>
+        </div>
+        <p class="consent">I agree that Winters &amp; Yonker may contact me by phone, text or email about my case. Message rates may apply.</p>
+        <a class="btn btn-ox" href="#">Submit My Free Case Review</a>
+        <p class="after">Or call now &mdash; (813) 223-6200</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="mbar" id="mbar">
+  <a class="mcall" href="tel:8132236200"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.2 1.2a1.3 1.3 0 0 1 1.8.3l1.3 1.9a1.3 1.3 0 0 1-.2 1.7l-.9.8a8.6 8.6 0 0 0 3.9 3.9l.8-.9a1.3 1.3 0 0 1 1.7-.2l1.9 1.3a1.3 1.3 0 0 1 .3 1.8l-.9 1.3a2 2 0 0 1-2.3.7C8.1 12.5 3.5 7.9 2.2 3.4a2 2 0 0 1 .7-2.3z"/></svg>Call Now</a>
+  <a class="mcta" href="#contact">Free Case Review</a>
+  <button class="mbar-x" id="mbarx" type="button" aria-label="Dismiss quick actions">&times;</button>
+</div>
+
+<footer class="ft2">
+  <div class="wrap">
+    <img src="/images/WY%20logo%202.webp" alt="Winters &amp; Yonker, P.A.">
+    <span><b>601 W Swann Ave</b>Tampa, FL 33606 &middot; (813) 223-6200</span>
+    <span style="margin-left:auto;max-width:46ch">Attorney advertising. Prior results do not guarantee a similar outcome. This website is for general information and does not create an attorney&ndash;client relationship.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* theme switch */
+  var root=document.documentElement, tsw=document.getElementById('tsw');
+  var MOON='<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M17.2 12.4A7.6 7.6 0 0 1 7.6 2.8a7.7 7.7 0 1 0 9.6 9.6z"/></svg>';
+  var SUN='<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 5.6A4.4 4.4 0 1 0 10 14.4 4.4 4.4 0 0 0 10 5.6zm0-5.1a.9.9 0 0 1 .9.9v1.7a.9.9 0 1 1-1.8 0V1.4a.9.9 0 0 1 .9-.9zm0 16.5a.9.9 0 0 1 .9.9v1.7a.9.9 0 1 1-1.8 0v-1.7a.9.9 0 0 1 .9-.9zM19.5 10a.9.9 0 0 1-.9.9h-1.7a.9.9 0 1 1 0-1.8h1.7a.9.9 0 0 1 .9.9zm-16.5 0a.9.9 0 0 1-.9.9H.4a.9.9 0 0 1 0-1.8h1.7a.9.9 0 0 1 .9.9zm13.1-6.7a.9.9 0 0 1 0 1.3l-1.2 1.2a.9.9 0 1 1-1.3-1.3l1.2-1.2a.9.9 0 0 1 1.3 0zM5.9 14.1a.9.9 0 0 1 0 1.3l-1.2 1.2a.9.9 0 0 1-1.3-1.3l1.2-1.2a.9.9 0 0 1 1.3 0zm10.8 2.5a.9.9 0 0 1-1.3 0l-1.2-1.2a.9.9 0 1 1 1.3-1.3l1.2 1.2a.9.9 0 0 1 0 1.3zM5.9 5.9a.9.9 0 0 1-1.3 0L3.4 4.6a.9.9 0 0 1 1.3-1.3l1.2 1.2a.9.9 0 0 1 0 1.4z"/></svg>';
+  if(tsw){
+    function stored(){ try{ return localStorage.getItem('wy-theme'); }catch(e){ return null; } }
+    function save(v){ try{ localStorage.setItem('wy-theme', v); }catch(e){} }
+    function current(){
+      if(root.getAttribute('data-theme')) return root.getAttribute('data-theme');
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    function paint(v){
+      tsw.innerHTML = v==='dark' ? SUN : MOON;
+      tsw.setAttribute('aria-label', v==='dark' ? 'Switch to light theme' : 'Switch to dark theme');
+      tsw.setAttribute('aria-pressed', v==='dark' ? 'true' : 'false');
+    }
+    var pref=stored();
+    if(pref==='dark'||pref==='light') root.setAttribute('data-theme',pref);
+    paint(current());
+    tsw.addEventListener('click',function(){
+      var next = current()==='dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme',next); save(next); paint(next);
+    });
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){
+      if(!stored()) paint(current());
+    });
+  }
+
+  /* mobile sticky action bar */
+  var mbar=document.getElementById('mbar'), mbarx=document.getElementById('mbarx');
+  if(mbar){
+    document.body.classList.add('has-mbar');
+    if(mbarx) mbarx.addEventListener('click', function(){
+      mbar.classList.add('dismissed');
+      document.body.classList.remove('has-mbar');
+    });
+  }
+
+  /* mobile drawer */
+  var burger=document.getElementById('burger'), drawer=document.getElementById('drawer'),
+      dclose=document.getElementById('dclose');
+  if(burger && drawer){
+    function setMenu(open){
+      drawer.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.classList.toggle('menu-open', open);
+      /* the drawer transitions from visibility:hidden, and a hidden element
+         cannot take focus — wait a frame before moving it in. */
+      if(open){ window.setTimeout(function(){ var f = drawer.querySelector('.dlinks a'); if(f) f.focus(); }, 60); }
+      else { burger.focus(); }
+    }
+    burger.addEventListener('click', function(){ setMenu(!drawer.classList.contains('open')); });
+    if(dclose) dclose.addEventListener('click', function(){ setMenu(false); });
+    Array.prototype.forEach.call(drawer.querySelectorAll('a'), function(a){
+      a.addEventListener('click', function(){ setMenu(false); });
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && drawer.classList.contains('open')) setMenu(false);
+    });
+    /* a resize past the breakpoint must not leave the page scroll-locked */
+    window.addEventListener('resize', function(){
+      if(window.innerWidth >= 1080 && drawer.classList.contains('open')) setMenu(false);
+    });
+  }
+
+  /* hero video: no visible control by request. Reduced-motion visitors get a
+     still poster instead, which is the only automatic pause left. */
+  var v=document.getElementById('herovid');
+  if(v && window.matchMedia('(prefers-reduced-motion: reduce)').matches){ v.removeAttribute('autoplay'); v.pause(); }
+
+  /* results scroller */
+  var t=document.getElementById('rtrack');
+  if(t){
+    var slides=Array.prototype.slice.call(t.children), n=slides.length,
+        cnt=document.getElementById('rcount'),
+        prev=document.getElementById('rprev'), next=document.getElementById('rnext'),
+        dots=Array.prototype.slice.call(document.querySelectorAll('#rdots .rdot'));
+    function idx(){ var w=t.clientWidth||1, i=Math.round(t.scrollLeft/w); return isFinite(i)?i:0; }
+    function pad(x){ return (x<10?'0':'')+x; }
+    function sync(){
+      var i=Math.min(Math.max(idx(),0),n-1);
+      cnt.innerHTML = pad(i+1)+' <span class="of">/ '+pad(n)+'</span>';
+      dots.forEach(function(d,k){ d.setAttribute('aria-current', k===i ? 'true':'false'); });
+      slides.forEach(function(sl,k){ sl.classList.toggle('is-active', k===i); });
+      prev.disabled = i<=0; next.disabled = i>=n-1;
+    }
+    function go(i){ t.scrollTo({left: Math.min(Math.max(i,0),n-1)*t.clientWidth, behavior:'smooth'}); }
+    prev.addEventListener('click',function(){ go(idx()-1); });
+    next.addEventListener('click',function(){ go(idx()+1); });
+    dots.forEach(function(d,k){ d.addEventListener('click',function(){ go(k); }); });
+    t.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight'){ e.preventDefault(); go(idx()+1); }
+      if(e.key==='ArrowLeft'){ e.preventDefault(); go(idx()-1); }
+    });
+    t.setAttribute('tabindex','0');
+    t.setAttribute('aria-label','Case results, use arrow keys to browse');
+
+    /* drag to scroll on pointer devices */
+    var down=false, sx=0, sl=0, moved=0;
+    t.addEventListener('pointerdown',function(e){
+      if(e.pointerType==='touch') return;
+      down=true; moved=0; sx=e.clientX; sl=t.scrollLeft; t.classList.add('dragging');
+    });
+    window.addEventListener('pointermove',function(e){
+      if(!down) return;
+      var d=e.clientX-sx; moved=Math.abs(d); t.scrollLeft=sl-d;
+    });
+    window.addEventListener('pointerup',function(){
+      if(!down) return;
+      down=false; t.classList.remove('dragging');
+      if(moved>4) go(idx()); else sync();
+    });
+    t.addEventListener('click',function(e){ if(moved>4) e.preventDefault(); },true);
+
+    t.addEventListener('scroll',function(){ window.clearTimeout(t._t); t._t=window.setTimeout(sync,90); });
+    window.addEventListener('resize',sync);
+    window.addEventListener('load',sync);
+    sync();
+  }
+
+  /* ---------- scroll: progress, sticky nav, parallax, reveal ---------- */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nav = document.querySelector('nav.nav');
+  var bar = document.getElementById('progressbar');
+  var heroEl = document.querySelector('.hero');
+  var heroVid = document.getElementById('herovid');
+  var pending = [];
+
+  if(!reduce){
+    var sels = ['section .eyebrow','section .h2','section .sub','.tiles .ptile','.dc','.wn',
+                '.wc','.rv','.cty','.quote','.duo','.firm-copy','details.qa','.split > div',
+                '.teamhead','.offices','.disc','.discL','.legal'];
+    sels.forEach(function(sel){
+      Array.prototype.forEach.call(document.querySelectorAll(sel), function(el){
+        if(el.closest('.hero') || pending.indexOf(el) > -1) return;
+        pending.push(el);
+      });
+    });
+    ['.tiles','.why','.revs','.counties','.dl','.warns'].forEach(function(g){
+      var box = document.querySelector(g);
+      if(!box) return;
+      Array.prototype.forEach.call(box.children, function(c, k){ c.style.setProperty('--i', k % 6); });
+    });
+    /* Flag everything already on screen BEFORE parking the rest, so the first
+       painted frame is never blank and nothing depends on an observer firing. */
+    pending.forEach(function(el){ el.classList.add('reveal'); });
+    document.documentElement.classList.add('js-anim');
+  }
+
+  /* A plain sweep beats IntersectionObserver here: the list shrinks as elements
+     reveal, and it keeps working when rAF/observer callbacks are throttled. */
+  function sweep(){
+    if(!pending.length) return;
+    var vh = window.innerHeight, keep = [];
+    for(var i = 0; i < pending.length; i++){
+      var el = pending[i];
+      if(el.getBoundingClientRect().top < vh * 0.92) el.classList.add('in');
+      else keep.push(el);
+    }
+    pending = keep;
+  }
+
+  function onScroll(){
+    var sc = window.pageYOffset || document.documentElement.scrollTop || 0;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    if(bar) bar.style.width = (max > 0 ? Math.min(100, (sc / max) * 100) : 0) + '%';
+    if(nav) nav.classList.toggle('is-stuck', sc > 8);
+    if(!reduce && heroEl && heroVid){
+      var top = heroEl.getBoundingClientRect().top;
+      if(top > -heroEl.offsetHeight && top < window.innerHeight){
+        var y = Math.max(0, Math.min(80, -top * 0.15));
+        heroVid.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0) scale(1.12)';
+      }
+    }
+    sweep();
+  }
+
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
+  window.addEventListener('load', onScroll);
+  document.addEventListener('visibilitychange', onScroll);
+  onScroll();
+})();
+</script>
+
+</body>
+</html>

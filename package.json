@@ -11,10 +11,11 @@
     "comp": "python build/build_comp.py"
   },
   "dependencies": {
-    "astro": "^7.3.1"
-  },
-  "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.1",
     "tailwindcss": "^4.3.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }

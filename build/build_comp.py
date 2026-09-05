@@ -19,6 +19,7 @@ emulation falls back to 980px. Always test against wy-preview.html.
 """
 import base64
 import pathlib
+import urllib.parse
 import re
 import sys
 
@@ -26,6 +27,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "build" / "wy-comp.src.html"
 OUT = ROOT / "build" / "wy-comp.html"
 PREVIEW = ROOT / "build" / "wy-preview.html"
+PAGE = ROOT / "src" / "pages" / "index.astro"
 
 IMAGES = {
     "logo":        "logo.webp",
@@ -85,6 +87,47 @@ PREVIEW_TAIL = """
 """
 
 
+PAGE_HEAD = """---
+// GENERATED FILE - do not edit.
+// Source: build/wy-comp.src.html  ->  python build/build_comp.py
+// Assets resolve to /images and /video in public/ rather than being inlined,
+// so the deployed site ships cacheable files instead of one 4 MB document.
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Winters &amp; Yonker, P.A. | Tampa Personal Injury Lawyers</title>
+<link rel="canonical" href="https://www.winters-yonker.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Winters &amp; Yonker, P.A. | Tampa Personal Injury Lawyers">
+<meta property="og:url" content="https://www.winters-yonker.com/">
+<meta property="og:image" content="https://www.winters-yonker.com/images/hero%20cover.webp">
+<meta name="description" content="Tampa Bay personal injury lawyers. A real person answers this phone, 24 hours a day. And we don't get paid unless you do.">
+<script is:inline>
+  /* resolve the stored theme before first paint to avoid a flash */
+  (function(){try{var t=localStorage.getItem("wy-theme");
+  if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
+</script>
+"""
+
+PAGE_MID = """</style>
+</head>
+<body>
+"""
+
+PAGE_TAIL = """
+</body>
+</html>
+"""
+
+
+def public_url(folder: str, name: str) -> str:
+    return "/" + folder + "/" + urllib.parse.quote(name)
+
+
 def data_uri(path: pathlib.Path, mime: str) -> str:
     return f"data:{mime};base64," + base64.b64encode(path.read_bytes()).decode("ascii")
 
@@ -119,9 +162,22 @@ def main() -> int:
     OUT.write_text(html, encoding="utf-8")
     PREVIEW.write_text(PREVIEW_HEAD + html + PREVIEW_TAIL, encoding="utf-8")
 
+    # Astro page: same markup, public asset URLs.
+    page = SRC.read_text(encoding="utf-8")
+    for key, name in IMAGES.items():
+        page = page.replace("{{IMG:%s}}" % key, public_url("images", name))
+    for key, name in VIDEOS.items():
+        page = page.replace("{{VID:%s}}" % key, public_url("video", name))
+    # the comp working title must not survive into the deployed page
+    page = re.sub(r"<title>.*?</title>" + chr(92) + "s*", "", page, count=1, flags=re.S)
+    head, _, body = page.partition("</style>")
+    PAGE.parent.mkdir(parents=True, exist_ok=True)
+    PAGE.write_text(PAGE_HEAD + head + PAGE_MID + body + PAGE_TAIL, encoding="utf-8")
+
     kb = OUT.stat().st_size / 1024
     print(f"built {OUT.name}  {kb:,.0f} KB  ({kb / 1024:.1f} MB)")
     print(f"local test copy -> {PREVIEW.name}  (doctype-wrapped, standards mode)")
+    print(f"astro page      -> src/pages/{PAGE.name}  ({PAGE.stat().st_size / 1024:,.0f} KB, assets by URL)")
     return 0
 
 
