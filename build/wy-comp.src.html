@@ -281,7 +281,32 @@ nav.nav.is-stuck .wrap{padding-block:8px}
 .tb .stat span{font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;font-weight:800;color:var(--muted)}
 
 /* ================= 02 RESULTS SCROLLER ================= */
-.results{background:var(--oxblood-black);color:#fff;overflow:hidden}
+/* The one brand-dark section that does flip. On a light page a full oxblood-black
+   band next to the white trust bar is too abrupt, so in light mode this sits on
+   the neutral panel and the figures switch to oxblood — gold would measure
+   1.75:1 there. Dark mode keeps the original oxblood-black treatment. */
+.results{
+  --res-bg:var(--panel);
+  --res-text:var(--text);
+  --res-muted:var(--muted);
+  --res-fig:var(--oxblood);
+  --res-glow:130,34,39;
+  --res-panel:var(--surface);
+  --res-line:var(--line);
+  --res-dim:rgba(26,19,16,.38);
+  background:var(--res-bg);color:var(--res-text);overflow:hidden}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .results{
+    --res-bg:var(--oxblood-black); --res-text:#fff; --res-muted:#C6B6B8;
+    --res-fig:var(--gold); --res-glow:245,187,46;
+    --res-panel:rgba(255,255,255,.04); --res-line:rgba(255,255,255,.12);
+    --res-dim:rgba(255,255,255,.42)}
+}
+:root[data-theme="dark"] .results{
+  --res-bg:var(--oxblood-black); --res-text:#fff; --res-muted:#C6B6B8;
+  --res-fig:var(--gold); --res-glow:245,187,46;
+  --res-panel:rgba(255,255,255,.04); --res-line:rgba(255,255,255,.12);
+  --res-dim:rgba(255,255,255,.42)}
 @media(min-width:1040px){
   .results{min-height:100vh;display:flex;align-items:center;padding-block:clamp(56px,5vw,88px)}
   .results > .wrap{width:100%}
@@ -289,13 +314,13 @@ nav.nav.is-stuck .wrap{padding-block:8px}
 .rhead{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between}
 .rnav{display:flex;align-items:center;gap:18px}
 .rcount{font-weight:800;font-stretch:76%;font-size:clamp(20px,1.9vw,30px);letter-spacing:.02em;
-  color:var(--gold);font-variant-numeric:tabular-nums;line-height:1}
-.rcount .of{color:rgba(255,255,255,.42)}
+  color:var(--gold-deep);font-variant-numeric:tabular-nums;line-height:1}
+.rcount .of{color:var(--res-dim)}
 .rbtn{width:clamp(52px,4vw,66px);height:clamp(52px,4vw,66px);border-radius:50%;
-  border:1px solid rgba(245,187,46,.5);background:transparent;color:var(--gold);cursor:pointer;
+  border:1px solid var(--gold-deep);background:transparent;color:var(--gold-deep);cursor:pointer;
   display:grid;place-items:center;transition:background .24s ease,color .24s ease,border-color .24s ease,transform .24s ease}
-.rbtn:hover{background:var(--gold);color:var(--oxblood-black);border-color:var(--gold);transform:scale(1.06)}
-.rbtn:disabled{opacity:.3;cursor:default;transform:none;background:transparent;color:var(--gold)}
+.rbtn:hover{background:var(--gold-deep);color:var(--res-bg);border-color:var(--gold-deep);transform:scale(1.06)}
+.rbtn:disabled{opacity:.3;cursor:default;transform:none;background:transparent;color:var(--gold-deep)}
 .rbtn svg{width:18px;height:18px;fill:currentColor}
 
 .rtrack{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
@@ -313,37 +338,37 @@ nav.nav.is-stuck .wrap{padding-block:8px}
   background:linear-gradient(120deg,rgba(26,14,16,.34),rgba(130,34,39,.56))}
 .rslide.is-active .pic img{transform:scale(1)}
 .rslide .body{padding:clamp(28px,3.6vw,72px);display:flex;flex-direction:column;gap:clamp(14px,1.4vw,22px);
-  justify-content:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}
+  justify-content:center;background:var(--res-panel);border:1px solid var(--res-line)}
 .rslide .kind{align-self:flex-start;background:var(--signal);color:#fff;font-size:11px;letter-spacing:.14em;
   text-transform:uppercase;font-weight:800;padding:8px 14px;border-radius:2px}
 .rslide .amt{font-weight:800;font-stretch:62%;font-size:clamp(60px,12.5vw,212px);line-height:.78;
-  font-variant-numeric:tabular-nums;letter-spacing:-.038em;color:var(--gold);width:max-content;max-width:100%;
+  font-variant-numeric:tabular-nums;letter-spacing:-.038em;color:var(--res-fig);width:max-content;max-width:100%;
   transition:text-shadow .5s ease,transform .5s cubic-bezier(.2,.7,.3,1)}
 .rslide:hover .amt,.rslide:focus-within .amt{
-  text-shadow:0 0 22px rgba(245,187,46,.42), 0 0 60px rgba(245,187,46,.26), 0 0 120px rgba(245,187,46,.14);
+  text-shadow:0 0 22px rgba(var(--res-glow),.42), 0 0 60px rgba(var(--res-glow),.26), 0 0 120px rgba(var(--res-glow),.14);
   transform:translateY(-2px)}
-.rslide .who{font-size:clamp(16px,1.5vw,22px);line-height:1.45;color:#fff;font-weight:600;max-width:44ch}
-.rslide .det{font-size:15px;line-height:1.6;color:#C6B6B8;max-width:52ch}
-.rslide .todo{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:var(--gold);
-  border-top:1px solid rgba(255,255,255,.16);padding-top:13px;margin-top:4px}
+.rslide .who{font-size:clamp(16px,1.5vw,22px);line-height:1.45;color:var(--res-text);font-weight:600;max-width:44ch}
+.rslide .det{font-size:15px;line-height:1.6;color:var(--res-muted);max-width:52ch}
+.rslide .todo{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:var(--signal);
+  border-top:1px solid var(--res-line);padding-top:13px;margin-top:4px}
 .rdots{display:flex;gap:10px;margin-top:28px}
-.rdot{width:clamp(38px,4vw,64px);height:3px;background:rgba(255,255,255,.22);border:0;padding:0;cursor:pointer;
+.rdot{width:clamp(38px,4vw,64px);height:3px;background:var(--res-line);border:0;padding:0;cursor:pointer;
   position:relative;overflow:hidden;transition:background .24s ease}
-.rdot::after{content:"";position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:left;
+.rdot::after{content:"";position:absolute;inset:0;background:var(--gold-deep);transform:scaleX(0);transform-origin:left;
   transition:transform .5s cubic-bezier(.2,.7,.3,1)}
 .rdot[aria-current="true"]::after{transform:scaleX(1)}
-.rdot:hover{background:rgba(255,255,255,.4)}
-.disc{font-size:12.5px;line-height:1.6;color:#A8969A;margin-top:30px;max-width:100ch}
+.rdot:hover{background:var(--res-dim)}
+.disc{font-size:12.5px;line-height:1.6;color:var(--res-muted);margin-top:30px;max-width:100ch}
 
 /* ================= 03 PRACTICE ================= */
 .pract{background:var(--panel)}
 .ptile{position:relative;display:flex;align-items:flex-end;overflow:hidden;text-decoration:none;isolation:isolate}
 .ptile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .6s cubic-bezier(.2,.7,.3,1)}
 .ptile::after{content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(180deg,rgba(26,14,16,.62) 0%,rgba(130,34,39,.86) 42%,rgba(130,34,39,.97) 100%);
+  background:linear-gradient(180deg,rgba(26,14,16,.44) 0%,rgba(130,34,39,.70) 44%,rgba(130,34,39,.93) 100%);
   transition:opacity .55s cubic-bezier(.2,.7,.3,1)}
 .ptile:hover img{transform:scale(1.09)}
-.ptile:hover::after{opacity:.42}
+.ptile:hover::after{opacity:.55}
 .ptile .lab{transform:translateY(0);transition:transform .5s cubic-bezier(.2,.7,.3,1)}
 .ptile:hover .lab{transform:translateY(-6px)}
 .ptile::before{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--gold);
@@ -630,7 +655,7 @@ footer.ft2 b{color:#fff}
 </div><!-- /herostage -->
 
 <!-- ============ 02 RESULTS SCROLLER ============ -->
-<section class="results on-dark">
+<section class="results">
   <div class="wrap">
     <div class="rhead">
       <div>
