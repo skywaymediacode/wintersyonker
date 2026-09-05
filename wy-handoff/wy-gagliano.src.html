@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Winters &amp; Yonker · Tampa Personal Injury Lawyers</title>
+<meta name="description" content="Tampa Bay personal injury lawyers. A real person answers 24/7. Free consultation. No fees until we win.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,75..100,300..800;1,100,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════════════════════════════
+   WINTERS & YONKER — HOMEPAGE
+   Layout & structure modeled on the supplied reference design.
+   Brand values per W&Y Brand Style Guide, Edition 01.1:
+   brick red #A0312C · gold #F5BB2E · Libre Baskerville + Archivo.
+   Dark grounds use Ink #211A15 (never navy) per guide §06.
+   Skyway Media · September 2026
+   ══════════════════════════════════════════════════════════════════ */
+
+:root{
+  /* Core brand (measured from logo artwork) */
+  --wy-red:#A0312C;
+  --wy-gold:#F5BB2E;
+
+  /* Digital extension */
+  --signal:#C42E24;
+  --deep-red:#8E1E17;
+  --gold-aa:#9C6106;        /* gold as text on white/linen (5.1:1 / 4.8:1) */
+  --gold-aa-deep:#8F5805;   /* gold as text on the sand ground (5.1:1) */
+  --gold-mid:#C9922A;
+  --ink:#211A15;            /* the dark ground — replaces the reference's navy */
+  --ink-2:#2E241D;
+  --ink-deep:#16110D;
+  --linen:#FCF8F3;
+  --sand:#F5EDE3;
+  --peach:#F7DCC7;
+  --live:#17795C;
+  --teal:#0F5257;           /* proposed accent, used sparingly */
+  --muted:#6B6259;
+  --line:#E4DCD2;
+  --white:#fff;
+
+  --serif:'Libre Baskerville',Georgia,'Times New Roman',serif;
+  --sans:'Archivo',Helvetica,Arial,sans-serif;
+
+  --maxw:1240px;
+  --pad:clamp(18px,4vw,48px);
+  --stickyH:0px;
+  --sh:0 2px 6px rgba(33,26,21,.06),0 20px 44px -24px rgba(33,26,21,.30);
+  --sh-lg:0 4px 12px rgba(33,26,21,.08),0 44px 84px -34px rgba(33,26,21,.45);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
+
+body{font-family:var(--sans);background:var(--white);color:var(--ink);font-size:17.5px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:var(--stickyH)}
+img{max-width:100%;display:block;height:auto}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+::selection{background:var(--wy-gold);color:var(--ink)}
+:focus-visible{outline:3px solid var(--wy-gold);outline-offset:3px;border-radius:3px}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+/* Content column spans 80% of the viewport on desktop; full-bleed bands stay edge to edge */
+@media(min-width:901px){
+  :root{--maxw:calc(80vw + (var(--pad) * 2))}
+}
+
+/* ── Type ───────────────────────────────────────────────────── */
+h1,h2,h3,h4{font-family:var(--sans);font-weight:800;color:var(--ink);line-height:1.06;letter-spacing:.01em}
+h1,h2{text-transform:uppercase}
+h2{font-size:clamp(27px,3.5vw,42px)}
+h3{font-size:clamp(19px,1.9vw,24px)}
+p{max-width:66ch}
+.caps{font-family:var(--sans);font-weight:700;text-transform:uppercase;letter-spacing:.14em}
+.eyebrow{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-aa);display:inline-block;margin-bottom:14px}
+.on-dark .eyebrow{color:var(--wy-gold)}
+.lede{font-size:17.5px;color:var(--muted);max-width:66ch}
+.on-dark{background:var(--ink);color:rgba(252,248,243,.80)}
+.on-dark h1,.on-dark h2,.on-dark h3{color:var(--white)}
+.on-dark p{color:rgba(252,248,243,.80)}
+.on-dark .lede{color:rgba(252,248,243,.74)}
+.sec{padding-block:clamp(46px,5vw,78px)}
+.sec--linen{background:var(--linen)}
+.sec--sand{background:var(--sand)}
+.gold{color:var(--wy-gold)}
+.center{text-align:center}
+.center p{margin-inline:auto}
+
+/* ── LOGO (rebuilt from the style-guide description) ────────── */
+.logo{display:inline-flex;align-items:center;gap:11px;flex:0 0 auto}
+.logo .tiles{display:flex;gap:3px;flex:0 0 auto}
+.logo .tiles i{width:30px;height:30px;display:grid;place-items:center;font-family:var(--serif);
+  font-weight:700;font-size:17px;color:#fff;font-style:normal;line-height:1}
+.logo .tiles .w{background:var(--wy-red)}
+.logo .tiles .y{background:var(--wy-gold)}
+.logo .lk{display:flex;flex-direction:column;line-height:1.1}
+.logo .nm{font-family:var(--serif);font-size:17px;font-weight:400;color:var(--ink);white-space:nowrap;letter-spacing:-.01em}
+.logo .nm b{font-weight:400}
+.logo .nm span{font-size:10px;letter-spacing:.02em;color:var(--muted)}
+.logo .tg{font-family:var(--sans);font-size:8px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);margin-top:3px;white-space:nowrap}
+.logo .tg em{font-style:normal;color:var(--gold-aa)}
+/* reversed variant — fills the gap the style guide flags */
+.logo--rev .nm{color:#fff}
+.logo--rev .nm span{color:rgba(255,255,255,.62)}
+.logo--rev .tg{color:rgba(255,255,255,.62)}
+.logo--rev .tg em{color:var(--wy-gold)}
+.logo--lg .tiles i{width:38px;height:38px;font-size:21px}
+.logo--lg .nm{font-size:21px}
+.logo--lg .tg{font-size:9px}
+.logo--nav .tiles i{width:clamp(31px,2.6vw,37px);height:clamp(31px,2.6vw,37px);font-size:clamp(17px,1.5vw,21px)}
+.logo--nav .nm{font-size:clamp(17px,1.5vw,21px)}
+.logo--nav .tg{font-size:clamp(8px,.66vw,9px)}
+
+/* ── Buttons ────────────────────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--sans);
+  font-weight:700;font-size:13.5px;letter-spacing:.1em;text-transform:uppercase;padding:15px 26px;
+  border:2px solid transparent;cursor:pointer;line-height:1.2;text-align:center;
+  transition:background .16s,color .16s,border-color .16s}
+.btn .arw{transition:transform .18s}
+.btn:hover .arw{transform:translateX(4px)}
+/* red = action, on light grounds (7.07:1 with white text) */
+.btn-red{background:var(--wy-red);color:#fff;border-color:var(--wy-red)}
+.btn-red:hover{background:var(--signal);border-color:var(--signal)}
+/* gold = action, on dark grounds (9.83:1 with ink text) — red fails on ink at 2.43:1 */
+.btn-gold{background:var(--wy-gold);color:var(--ink);border-color:var(--wy-gold)}
+.btn-gold:hover{background:#FFD05F;border-color:#FFD05F}
+.btn-ink{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn-ink:hover{background:var(--ink-2);border-color:var(--ink-2)}
+.btn-out{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn-out:hover{background:var(--ink);color:#fff}
+.btn-out-w{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+.btn-out-w:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.btn-lg{padding:18px 34px;font-size:14.5px}
+.btn-full{width:100%}
+.num{font-variant-numeric:tabular-nums;letter-spacing:.02em}
+
+/* ── Utility bar ────────────────────────────────────────────── */
+.util{background:var(--ink-deep);color:rgba(252,248,243,.78);font-size:16.25px}
+.util-inner{display:flex;align-items:stretch;justify-content:flex-end;gap:clamp(14px,2vw,26px);
+  padding-left:var(--pad);min-height:46px}
+.util-l{display:flex;align-items:center;justify-content:flex-end;gap:clamp(11px,1.5vw,20px);flex-wrap:wrap}
+.util a:hover{color:var(--wy-gold)}
+.util .sep{width:1px;height:13px;background:rgba(252,248,243,.28);flex:0 0 auto}
+.util .fce{font-weight:700;color:var(--wy-gold);white-space:nowrap}
+.util .fce:hover{color:#fff}
+.util .ph{display:inline-flex;align-items:center;gap:9px;background:var(--wy-gold);color:var(--ink);
+  font-family:var(--sans);font-weight:800;font-size:clamp(15px,1.3vw,19px);letter-spacing:.01em;
+  padding-inline:clamp(18px,2.2vw,34px);white-space:nowrap;flex:0 0 auto;transition:background .18s}
+.util .ph:hover{background:#FFD15C;color:var(--ink)}
+.util .ph svg{width:17px;height:17px;fill:currentColor;stroke:none;flex:0 0 auto}
+
+/* ── Nav ────────────────────────────────────────────────────── */
+.nav{background:var(--white);position:sticky;top:0;z-index:900;border-bottom:1px solid var(--line);
+  transition:box-shadow .25s}
+.nav.stuck{box-shadow:0 14px 34px -26px rgba(33,26,21,.55)}
+.navlogo{display:block;flex:0 0 auto}
+.navlogo img{display:block;height:clamp(36px,3.3vw,54px);width:auto}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;
+  min-height:clamp(64px,5.6vw,86px);padding-block:10px}
+.nav ul{display:flex;list-style:none;gap:clamp(1px,.5vw,8px);margin-left:auto}
+.nav ul a{font-family:var(--sans);font-size:clamp(9.75px,.99vw,20.25px);font-weight:800;letter-spacing:.03em;
+  text-transform:uppercase;color:var(--ink);padding:11px clamp(5px,.55vw,11px);white-space:nowrap;
+  transition:.16s;position:relative}
+.nav ul a:hover{color:var(--wy-red)}
+.nav ul a::after{content:'';position:absolute;left:clamp(5px,.55vw,11px);right:clamp(5px,.55vw,11px);bottom:3px;
+  height:3px;background:var(--wy-gold);transform:scaleX(0);transition:transform .2s;transform-origin:left}
+.nav ul a:hover::after{transform:scaleX(1)}
+.burger{display:none;width:44px;height:44px;border:1.5px solid var(--line);background:transparent;
+  align-items:center;justify-content:center;cursor:pointer;margin-left:auto}
+.burger span{display:block;width:18px;height:2px;background:var(--ink);position:relative}
+.burger span::before,.burger span::after{content:'';position:absolute;left:0;width:18px;height:2px;background:var(--ink)}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+
+/* ══ HERO ═══════════════════════════════════════════════════ */
+.hero{position:relative;background:var(--ink-deep);overflow:hidden;text-align:center;min-height:clamp(520px,64vh,700px);display:flex;flex-direction:column;justify-content:flex-end}
+.hero-bg{position:absolute;inset:0}
+.hero-bg video,.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 32%;
+  filter:saturate(.72) contrast(1.04)}
+.hero-bg::after{content:'';position:absolute;inset:0;
+  background:
+    linear-gradient(to bottom,rgba(22,17,13,.60) 0%,rgba(22,17,13,.30) 26%,rgba(22,17,13,.72) 62%,rgba(22,17,13,.95) 88%,rgba(22,17,13,.97) 100%),
+    radial-gradient(130% 96% at 50% 24%,rgba(22,17,13,0) 0%,rgba(22,17,13,.34) 52%,rgba(22,17,13,.70) 100%)}
+.hero .wrap{position:relative;z-index:2;width:100%;padding-block:clamp(46px,6vw,88px) clamp(34px,3.6vw,52px);margin-top:auto}
+.hero .wrap::before{content:'';position:absolute;z-index:-1;left:-6%;right:-6%;top:2%;bottom:-4%;
+  background:radial-gradient(66% 68% at 50% 50%,rgba(22,17,13,.92) 0%,rgba(22,17,13,.86) 42%,rgba(22,17,13,.58) 72%,rgba(22,17,13,0) 100%)}
+.hero .eyebrow{font-size:13px;letter-spacing:.24em;color:rgba(255,255,255,.86)}
+.hero .eyebrow em{font-style:normal;color:var(--wy-gold)}
+.hero h1{font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:.02em;color:#fff;
+  font-size:clamp(30px,5.6vw,66px);line-height:1.02;margin-top:6px}
+.hero .sub{margin:20px auto 0;font-size:17.5px;color:rgba(255,255,255,.86);max-width:56ch}
+.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+
+/* ── Hero lead form ─────────────────────────────────────────── */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.hero-form{max-width:740px;margin:clamp(26px,3vw,40px) auto 0;background:var(--white);
+  border-top:4px solid var(--wy-red);text-align:left;
+  padding:clamp(22px,2.6vw,34px) clamp(20px,2.6vw,34px) clamp(20px,2.2vw,28px);
+  box-shadow:0 34px 80px -46px rgba(0,0,0,.9)}
+.hero-form .hf-h{font-family:var(--sans);font-weight:400;text-transform:uppercase;color:var(--ink);
+  font-size:clamp(23px,3.1vw,40px);line-height:1.02;letter-spacing:-.005em;text-align:center;
+  margin:0 0 clamp(16px,2vw,24px)}
+.hero-form .hf-h b{font-weight:800}
+.hero-form .hf-h::after{content:'';display:block;height:clamp(6px,.62vw,9px);background:var(--wy-gold);
+  width:min(94%,480px);margin:5px auto 0}
+.hf-row{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+.hero-form .fld{margin-bottom:11px}
+.hero-form input[type=text],.hero-form input[type=tel],.hero-form input[type=email],.hero-form textarea{
+  width:100%;padding:14px 15px;border:1.5px solid var(--line);background:var(--linen);color:var(--ink);
+  font-family:var(--sans);font-size:15px;transition:border-color .16s,background .16s,box-shadow .16s}
+.hero-form ::placeholder{color:var(--muted);opacity:1}
+.hero-form input:focus,.hero-form textarea:focus{outline:0;border-color:var(--wy-red);background:#fff;
+  box-shadow:0 0 0 3px rgba(160,49,44,.15)}
+.hero-form textarea{min-height:104px;resize:vertical;display:block}
+.hf-chk{display:flex;align-items:flex-start;gap:10px;margin-top:9px;cursor:pointer}
+.hf-chk input{appearance:none;-webkit-appearance:none;width:18px;height:18px;flex:0 0 auto;margin:1px 0 0;
+  border:1.5px solid var(--muted);background:#fff;cursor:pointer;display:grid;place-items:center}
+.hf-chk input:checked{background:var(--wy-red);border-color:var(--wy-red)}
+.hf-chk input:checked::after{content:'';width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;
+  transform:rotate(45deg) translateY(-1px)}
+.hero-form .hf-chk span{font-family:var(--sans);font-size:17.5px;line-height:1.45;color:var(--ink-2);font-weight:600}
+.hero-form .hf-chk a{color:var(--wy-red);text-decoration:underline;text-underline-offset:2px}
+.hero-form .hf-chk a:hover{color:var(--signal)}
+.hf-submit{display:flex;justify-content:center;margin-top:17px}
+.hf-submit .btn{min-width:min(100%,280px)}
+.hero-form .hf-note{font-family:var(--sans);font-size:11.5px;line-height:1.5;color:var(--muted);
+  text-align:center;margin:12px auto 0;max-width:56ch}
+
+.hero-pp{position:absolute;right:clamp(14px,2.4vw,34px);top:clamp(14px,2.4vw,30px);z-index:5;
+  width:clamp(84px,10.5vw,152px);height:clamp(84px,10.5vw,152px);border-radius:50%;
+  background:rgba(22,17,13,.52);border:2px solid rgba(255,255,255,.42);
+  color:var(--wy-gold);cursor:pointer;display:grid;place-items:center;backdrop-filter:blur(4px);
+  transition:background .18s,border-color .18s,transform .18s}
+.hero-pp:hover{background:var(--wy-red);border-color:var(--wy-gold)}
+.hero-pp svg{width:clamp(29px,3.6vw,52px);height:clamp(29px,3.6vw,52px);fill:var(--wy-gold)}
+@media (prefers-reduced-motion:reduce){
+  .hero-bg video{display:none}
+  .hero-bg{background-image:var(--hero-poster);background-size:cover;background-position:50% 32%}
+}
+
+/* trust strip */
+.trust{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.14);background:rgba(22,17,13,.55);
+  backdrop-filter:blur(4px)}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,2vw,30px);padding-block:22px}
+.tr{display:flex;align-items:center;gap:12px;justify-content:center;text-align:left}
+.tr .ic{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--wy-gold);display:grid;place-items:center;flex:0 0 auto}
+.tr .ic svg{width:17px;height:17px;stroke:var(--wy-gold);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.tr b{display:block;font-family:var(--sans);font-size:12.5px;font-weight:700;color:#fff;letter-spacing:.03em;line-height:1.25}
+.tr span{display:block;font-size:11px;color:rgba(255,255,255,.6);margin-top:2px}
+.tr .stars{color:var(--wy-gold);font-size:10px;letter-spacing:1px}
+
+/* ══ INTRO (2-col + message card) ═══════════════════════════ */
+.intro{position:relative}
+.intro .wrap{position:relative;z-index:2}
+.intro-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(28px,4vw,64px);align-items:start}
+.intro h2{font-size:clamp(26px,3.4vw,40px)}
+.intro h2 em{font-style:normal;display:block;color:var(--wy-red)}
+.intro p{margin-top:16px;color:var(--muted);font-size:17.5px}
+.intro-img{position:relative}
+.intro-img img{width:100%;aspect-ratio:2/3;object-fit:cover;object-position:50% 42%}
+.intro-img::after{content:'';position:absolute;left:-14px;top:-14px;right:14px;bottom:14px;border:2px solid var(--wy-gold);
+  z-index:-1}
+.msg{background:var(--ink);color:rgba(252,248,243,.82);padding:clamp(26px,3vw,40px);margin-top:clamp(28px,3.4vw,48px);
+  position:relative;overflow:hidden;max-width:720px}
+.msg .lbl{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--wy-gold);margin-bottom:14px}
+.msg p{font-family:var(--serif);font-size:17.5px;line-height:1.62;color:rgba(252,248,243,.9);position:relative;z-index:2}
+.msg .sig{margin-top:18px;font-family:var(--serif);font-style:italic;color:var(--wy-gold);font-size:17.5px}
+
+/* ══ BADGES ═════════════════════════════════════════════════ */
+.badges{background:var(--white);border-bottom:1px solid var(--line)}
+.badges .wrap{display:grid;grid-template-columns:repeat(5,1fr);align-items:center;justify-items:center;
+  gap:clamp(14px,2.2vw,30px);padding-block:clamp(20px,2.6vw,34px)}
+.badge{display:grid;place-items:center;flex:0 0 auto}
+.badge img{height:clamp(44px,4.8vw,68px);width:auto;object-fit:contain;
+  filter:saturate(.94);transition:filter .2s,transform .2s}
+.badge:hover img{filter:saturate(1.06)}
+
+.krule{display:block;width:64px;height:5px;background:var(--wy-gold);margin-bottom:20px}
+.statline{margin-top:18px;font-family:var(--sans);font-size:15px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--muted);display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.statline b{font-size:30px;font-weight:800;color:var(--wy-red);letter-spacing:-.02em}
+.statline span{color:var(--line)}
+
+/* ── Column balance: the short side sticks instead of centring in a void ── */
+.sticky-col.sticky-col{position:sticky;top:calc(clamp(64px,5.6vw,86px) + 28px);align-self:start}
+.mid-col{align-self:center}
+@media(max-width:900px){.sticky-col.sticky-col{position:static}}
+
+/* ══ WHERE (local coverage) ═════════════════════════════════ */
+.where{background:var(--sand)}
+.where .eyebrow,.sec--sand .eyebrow{color:var(--gold-aa-deep)}
+.where-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4.4vw,70px);align-items:start}
+.where p+p{margin-top:16px}
+.geo{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.geo a{font-family:var(--sans);font-size:12.5px;font-weight:600;letter-spacing:.03em;color:var(--ink-2);
+  background:#fff;border:1px solid var(--line);padding:8px 14px;transition:.16s;white-space:nowrap}
+.geo a:hover{background:var(--wy-red);border-color:var(--wy-red);color:#fff}
+.where-cty{display:grid;gap:13px}
+.cty{background:#fff;border-left:3px solid var(--wy-gold);padding:17px 20px}
+.cty b{display:block;font-family:var(--sans);font-size:12.5px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink)}
+.cty span{display:block;margin-top:6px;font-size:17.5px;color:var(--muted);line-height:1.55}
+
+/* ══ WHEN (the three clocks) ════════════════════════════════ */
+.when{position:relative}
+.when .wrap{position:relative;z-index:2}
+.clock{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2.2vw,26px);
+  margin-top:clamp(26px,3.2vw,42px)}
+.clk{background:var(--ink-2);border-top:3px solid var(--wy-gold);padding:clamp(20px,2.4vw,30px)}
+.clk .big{font-family:var(--sans);font-weight:800;font-size:clamp(30px,4.2vw,52px);color:var(--wy-gold);
+  line-height:1;letter-spacing:-.02em}
+.clk .u{font-family:var(--sans);font-size:11.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  color:#fff;margin-top:10px}
+.clk p{margin-top:12px;font-size:17.5px;line-height:1.6;color:rgba(252,248,243,.78)}
+.when-after{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3.4vw,54px);
+  margin-top:clamp(26px,3.2vw,42px)}
+
+/* ══ RESULTS (dark, ghost type) ═════════════════════════════ */
+.results{position:relative;background:var(--ink)}
+.results .wrap{position:relative;z-index:2}
+.res-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,4vw,64px);align-items:start}
+.res-left h2{font-family:var(--sans);font-weight:800;text-transform:uppercase;font-size:clamp(26px,3.4vw,42px);
+  line-height:1.02;color:#fff;letter-spacing:.01em}
+.res-left h2 em{font-style:normal;color:var(--wy-gold);display:block}
+.res-amt-view{overflow:hidden}
+.res-amt-track{display:flex;transition:transform .5s cubic-bezier(.22,.75,.3,1)}
+.res-amt{flex:0 0 100%;min-width:0;white-space:nowrap;
+  font-family:var(--sans);font-weight:800;color:var(--wy-gold);line-height:.86;
+  letter-spacing:-.035em;font-size:9.56vw;
+  margin-bottom:clamp(14px,1.8vw,30px);font-variant-numeric:tabular-nums}
+.res-view{overflow:hidden}
+.res-track{display:flex;transition:transform .5s cubic-bezier(.22,.75,.3,1)}
+.res-slide{flex:0 0 100%;min-width:0}
+.res-count{font-family:var(--sans);font-size:17.5px;font-weight:700;letter-spacing:.14em;
+  color:rgba(252,248,243,.7);font-variant-numeric:tabular-nums;margin-left:4px}
+.res-img{position:relative}
+.res-img img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.res-card{background:var(--ink-2);padding:clamp(22px,2.6vw,34px);border-left:4px solid var(--wy-gold)}
+.res-card .amt{font-family:var(--sans);font-weight:800;font-size:clamp(34px,5vw,64px);color:var(--wy-gold);
+  line-height:1;letter-spacing:-.02em}
+.res-card .kind{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:#fff;margin-top:10px}
+.res-card p{margin-top:12px;font-size:17.5px;color:rgba(252,248,243,.72)}
+.res-nav{display:flex;align-items:center;gap:10px;margin-top:22px}
+.res-nav button{width:40px;height:40px;border:1.5px solid rgba(255,255,255,.3);background:transparent;color:#fff;
+  cursor:pointer;display:grid;place-items:center;transition:.18s}
+.res-nav button:hover{border-color:var(--wy-gold);color:var(--wy-gold)}
+.disclaim{margin-top:22px;font-size:12.5px;line-height:1.6;color:rgba(252,248,243,.6);border-left:2px solid var(--wy-gold);
+  padding-left:14px;max-width:82ch}
+.disclaim strong{color:rgba(255,255,255,.9)}
+.disclaim.light{color:var(--muted);border-left-color:var(--wy-gold)}
+.disclaim.light strong{color:var(--ink)}
+
+/* ══ 6 REASONS ══════════════════════════════════════════════ */
+.reasons{position:relative}
+.rs-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:clamp(28px,4vw,66px);align-items:start}
+.mono-art{position:relative;display:grid;place-items:center;max-width:340px;margin-inline:auto;width:100%}
+.wymark{display:block;width:100%;height:auto}
+.mono-art .wymark{max-width:clamp(190px,26vw,330px)}
+.rs-list{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px) clamp(14px,2vw,26px)}
+.rs{display:flex;flex-direction:column;gap:9px}
+.rs .ic{width:44px;height:44px;border-radius:50%;background:var(--sand);display:grid;place-items:center}
+.rs .ic svg{width:20px;height:20px;stroke:var(--wy-red);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.rs b{font-family:var(--sans);font-size:17.5px;font-weight:700;color:var(--ink);letter-spacing:.01em;line-height:1.3}
+.rs span{font-size:17.5px;color:var(--muted);line-height:1.5}
+
+/* ══ TESTIMONIALS ═══════════════════════════════════════════ */
+.quotes-head{text-align:center;margin-bottom:clamp(26px,3vw,44px)}
+.quotes-head p,.quotes-head .lede{margin-inline:auto}
+.quotes-head .sub{font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);margin-top:10px}
+.qrow{display:flex;gap:16px;overflow-x:auto;padding:6px 0 22px;scroll-snap-type:x mandatory;
+  margin-inline:calc(var(--pad)*-1);padding-inline:var(--pad);scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.qrow::-webkit-scrollbar{height:6px}
+.qrow::-webkit-scrollbar-thumb{background:var(--line)}
+.q{flex:0 0 clamp(250px,30vw,340px);scroll-snap-align:center;background:var(--white);border:1px solid var(--line);
+  padding:28px 26px 24px;display:flex;flex-direction:column;gap:14px}
+.q blockquote{font-family:var(--serif);font-size:17.5px;line-height:1.6;color:var(--ink)}
+.q .who{margin-top:auto;padding-top:8px;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted)}
+.q .note{font-size:10.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px;line-height:1.5}
+.q.dim{opacity:.42}
+
+/* ══ FAQ ════════════════════════════════════════════════════ */
+.faq-grid{display:block}
+.faq h2{font-family:var(--sans);font-weight:800;text-transform:uppercase;font-size:clamp(24px,3.1vw,38px);
+  letter-spacing:.01em;line-height:1.06}
+.faq .sub{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-aa);margin-top:10px}
+.fq{background:var(--white);border:2px solid var(--line);margin-bottom:10px;
+  box-shadow:0 3px 8px -6px rgba(33,26,21,.4);transition:border-color .18s}
+.fq[open]{border-color:var(--ink)}
+.fq summary{list-style:none;cursor:pointer;padding:22px 78px 22px 24px;position:relative;
+  font-family:var(--sans);font-weight:700;font-size:30px;color:var(--ink);line-height:1.3}
+.fq summary::-webkit-details-marker{display:none}
+.fq summary::before{content:'+';position:absolute;right:22px;top:50%;transform:translateY(-50%);width:44px;height:44px;
+  background:var(--wy-gold);color:var(--ink);display:grid;place-items:center;font-size:28px;font-weight:700;
+  transition:transform .2s}
+.fq[open] summary::before{content:'–'}
+.fq[open] summary{border-bottom:3px solid var(--wy-gold)}
+.fq p{padding:18px 24px 0;color:var(--muted);font-size:28px;line-height:1.5;max-width:70ch}
+.fq-more{display:inline-block;margin:20px 24px 24px;background:var(--wy-red);color:#fff;
+  font-family:var(--sans);font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  padding:11px 20px;transition:background .16s}
+.fq-more:hover{background:var(--signal)}
+.faq-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+
+/* ══ MEASURE UP ═════════════════════════════════════════════ */
+.measure-grid{display:grid;grid-template-columns:.96fr 1.04fr;gap:clamp(28px,4vw,60px);align-items:start}
+.measure-img{position:relative}
+.measure-img img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.callout{position:absolute;left:-16px;bottom:26px;background:var(--wy-gold);color:var(--ink);padding:18px 22px;
+  max-width:250px;font-family:var(--sans);font-size:17.5px;font-weight:600;line-height:1.4}
+.check{list-style:none;display:flex;flex-direction:column;gap:2px;margin-top:20px}
+.check li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;padding:13px 0;
+  border-bottom:1px solid var(--line);font-size:17.5px}
+.check li:last-child{border:0}
+.check .ck{width:24px;height:24px;border-radius:50%;background:var(--wy-gold);display:grid;place-items:center;flex:0 0 auto}
+.check .ck svg{width:13px;height:13px;stroke:var(--ink);fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.check b{font-weight:700;color:var(--ink)}
+
+/* ══ CONTACT ════════════════════════════════════════════════ */
+.contact{background:var(--sand)}
+.c-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(28px,4vw,60px);align-items:start}
+.cform{background:var(--white);padding:clamp(24px,2.8vw,38px);border-top:4px solid var(--wy-red)}
+.cform h2{font-size:clamp(23px,2.7vw,32px)}
+.cform h2 em{font-style:normal;display:block;color:var(--wy-red);font-size:.72em;margin-top:4px}
+.crow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fld{margin-bottom:12px}
+.fld label{display:block;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.fld input,.fld textarea,.fld select{width:100%;padding:13px 14px;border:1.5px solid var(--line);background:var(--linen);
+  font-size:15.5px;transition:border-color .16s,box-shadow .16s,background .16s}
+.fld input:focus,.fld textarea:focus,.fld select:focus{outline:0;border-color:var(--wy-red);background:#fff;
+  box-shadow:0 0 0 3px rgba(160,49,44,.12)}
+.fld textarea{min-height:96px;resize:vertical}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--muted);line-height:1.5;margin:6px 0 16px}
+.consent input{width:17px;height:17px;flex:0 0 auto;margin-top:2px;accent-color:var(--wy-red)}
+.steps h3{font-family:var(--sans);font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:.18em;
+  color:var(--gold-aa-deep);margin-bottom:22px}
+.step{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+.step:last-child{border:0}
+.step .ic{width:46px;height:46px;border-radius:50%;background:var(--wy-gold);display:grid;place-items:center;flex:0 0 auto}
+.step .ic svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.step b{display:block;font-family:var(--sans);font-size:15px;font-weight:700;color:var(--ink)}
+.step span{display:block;font-size:17.5px;color:var(--muted);margin-top:4px}
+
+/* ══ FOOTER ═════════════════════════════════════════════════ */
+footer{background:var(--ink);color:rgba(252,248,243,.66);position:relative}
+footer .wrap{position:relative;z-index:2}
+.f-top{padding-block:clamp(44px,5vw,72px) clamp(28px,3vw,44px)}
+.f-top h2{font-family:var(--sans);font-weight:800;text-transform:uppercase;color:#fff;
+  font-size:clamp(20px,2.5vw,30px);line-height:1.2;max-width:22ch}
+.f-top h2 em{font-style:normal;color:var(--wy-gold)}
+.offices{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:clamp(24px,3vw,40px)}
+.off{border-top:2px solid var(--wy-gold);padding-top:14px}
+.off b{display:block;font-family:var(--sans);font-size:12.5px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:#fff}
+.off span{display:block;font-size:17.5px;color:rgba(252,248,243,.68);margin-top:7px;line-height:1.5}
+.off a{display:inline-block;margin-top:9px;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--wy-gold)}
+.off a:hover{text-decoration:underline}
+.f-mid{border-top:1px solid rgba(255,255,255,.12);padding-block:26px;display:flex;align-items:center;
+  justify-content:space-between;gap:22px;flex-wrap:wrap}
+.f-links{display:flex;gap:22px;flex-wrap:wrap;font-size:13px}
+.f-links a:hover{color:var(--wy-gold)}
+.f-soc{display:flex;gap:9px}
+.f-soc a{width:34px;height:34px;border:1px solid rgba(255,255,255,.24);display:grid;place-items:center;transition:.18s}
+.f-soc a:hover{background:var(--wy-gold);border-color:var(--wy-gold);color:var(--ink)}
+.f-soc svg{width:15px;height:15px;fill:currentColor}
+.legal{border-top:1px solid rgba(255,255,255,.12);padding-block:22px 30px;font-size:11.5px;
+  color:rgba(252,248,243,.46);line-height:1.65;display:flex;flex-direction:column;gap:9px}
+.legal p{max-width:none}
+.legal strong{color:rgba(255,255,255,.72)}
+
+/* ══ STICKY MOBILE BAR ══════════════════════════════════════ */
+/* ── Desktop sticky "no fees" bar ─────────────────────────── */
+.winbar{position:fixed;left:0;right:0;bottom:0;z-index:940;display:none;
+  background:var(--ink);border-top:3px solid var(--wy-gold);
+  box-shadow:0 -14px 34px -26px rgba(0,0,0,.9);
+  transform:translateY(115%);transition:transform .38s cubic-bezier(.2,.8,.3,1)}
+.winbar.on{transform:none}
+.winbar .in{position:relative;max-width:var(--maxw);margin-inline:auto;
+  padding:14px calc(var(--pad) + 34px);display:flex;align-items:center;justify-content:center;
+  gap:clamp(14px,2.4vw,36px);flex-wrap:wrap}
+.winbar b{font-family:var(--sans);font-weight:800;text-transform:uppercase;
+  font-size:clamp(15px,1.45vw,21px);letter-spacing:.04em;color:var(--wy-gold);line-height:1.15}
+.winbar .btn{padding:13px 26px;font-size:13px}
+.winbar .x{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:36px;height:36px;
+  border:0;background:transparent;color:rgba(252,248,243,.6);cursor:pointer;font-size:22px;line-height:1;
+  display:grid;place-items:center;transition:color .16s}
+.winbar .x:hover{color:#fff}
+@media(min-width:901px){.winbar{display:block} body{--stickyH:80px}}
+
+.stickybar{position:fixed;left:0;right:0;bottom:0;z-index:950;display:none;background:var(--ink);
+  border-top:3px solid var(--wy-gold);padding:9px 12px calc(9px + env(safe-area-inset-bottom))}
+.stickybar .in{display:flex;gap:9px}
+.stickybar .btn{flex:1;padding:14px 8px;font-size:12.5px}
+
+/* ══ PRACTICE AREAS (grid + copy) ═══════════════════════════ */
+.pa{background:var(--white);display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);
+  align-items:start;gap:clamp(26px,4vw,64px);
+  max-width:none;margin-inline:0;padding-left:0;padding-right:var(--pad)}
+@media(min-width:901px){.pa{padding-right:10vw}}
+.pa-grid{display:grid;grid-template-columns:repeat(3,1fr);
+  --pa-photo:url("{{IMG:blocks}}")}
+.pt{position:relative;display:block;aspect-ratio:1/.74;perspective:1000px}
+.pt .pt-in{position:absolute;inset:0;transform-style:preserve-3d;
+  transition:transform .55s cubic-bezier(.3,.85,.35,1)}
+.pt:hover .pt-in,.pt:focus-visible .pt-in{transform:rotateY(180deg)}
+.pt .pt-face{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:16px 12px;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
+.pt .pt-front{background-image:var(--pa-photo);background-size:300% auto;background-position:var(--pos)}
+.pt .pt-front::after{content:'';position:absolute;inset:0;background:var(--tint);opacity:.93}
+.pt .pt-back{background:var(--wy-gold);transform:rotateY(180deg)}
+.pt-face>span{position:relative;z-index:2;font-family:var(--sans);font-stretch:82%;font-weight:600;
+  font-size:clamp(14px,1.45vw,21px);line-height:1.16;letter-spacing:.004em}
+.pt-front>span{color:#fff}
+.pt-back>span{color:var(--ink);font-weight:700}
+
+.pt:focus-visible{outline-offset:-4px}
+/* tints — every one carries white text at 4.9:1 or better */
+.pt.t1{--tint:#4A1310;--pos:0% 12%}
+.pt.t2{--tint:#A0312C;--pos:50% 4%}
+.pt.t3{--tint:#B33A2F;--pos:100% 18%}
+.pt.t4{--tint:#AF352B;--pos:8% 46%}
+.pt.t5{--tint:#7A2420;--pos:56% 38%}
+.pt.t6{--tint:#5C1815;--pos:96% 52%}
+.pt.t7{--tint:#661B18;--pos:14% 74%}
+.pt.t8{--tint:#96261F;--pos:44% 88%}
+.pt.t9{--tint:#A0312C;--pos:88% 70%}
+.pt.t10{--tint:#8E1E17;--pos:2% 96%}
+.pt.t11{--tint:#B8382C;--pos:62% 60%}
+.pt.t12{--tint:#6E1F1B;--pos:100% 92%}
+
+.pa-copy{padding-block:clamp(30px,3.4vw,52px)}
+.pa-copy h2{font-family:var(--sans);text-transform:uppercase;line-height:.94;letter-spacing:-.005em;
+  font-stretch:80%;margin-bottom:24px}
+.pa-copy h2 .l1{display:block;font-weight:400;font-size:clamp(34px,4.6vw,64px);color:var(--wy-red)}
+.pa-copy h2 .l2{display:block;font-weight:800;font-size:clamp(40px,5.8vw,80px);color:var(--wy-red)}
+.pa-copy p{font-size:17.5px;color:var(--muted);margin-bottom:15px}
+.pa-copy p b,.pa-copy p a{color:var(--wy-red);font-weight:700}
+.pa-copy p a:hover{text-decoration:underline}
+.pa-copy .btn{margin-top:12px}
+
+/* ══ EXPERIENCED ATTORNEYS (slider) ═════════════════════════ */
+.att{background:var(--white)}
+.att-grid{display:grid;grid-template-columns:minmax(0,.66fr) minmax(0,1.34fr);
+  gap:clamp(24px,3.4vw,54px);align-items:center}
+.att-copy h2{font-family:var(--sans);font-weight:800;font-stretch:82%;text-transform:uppercase;
+  font-size:clamp(32px,4.5vw,58px);line-height:.98;letter-spacing:-.005em;color:var(--ink)}
+.att-copy h3{font-weight:800;font-size:clamp(17px,1.7vw,22px);
+  color:var(--ink);margin:clamp(20px,2.4vw,32px) 0 14px}
+.att-copy p{font-size:17.5px;color:var(--muted);margin-bottom:14px}
+.att-btn{display:inline-flex;align-items:center;background:var(--sand);color:var(--ink);
+  border-left:5px solid var(--wy-red);padding:15px 26px;margin-top:12px;
+  font-family:var(--sans);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  transition:background .18s,transform .18s}
+.att-btn:hover{background:var(--peach)}
+
+/* progress rail between the columns */
+.att-rail{width:5px;align-self:stretch;background:var(--line);position:relative;
+  display:flex;flex-direction:column;align-items:center;min-height:clamp(200px,26vw,340px)}
+.att-rail .fill{position:absolute;left:0;right:0;top:0;background:var(--wy-gold);
+  height:50%;transition:height .5s cubic-bezier(.2,.8,.3,1)}
+
+/* slider shell + decoration */
+.att-slider{position:relative}
+.att-pp{position:absolute;top:-16px;right:14px;z-index:4;width:38px;height:38px;background:var(--ink);
+  color:#fff;border:0;cursor:pointer;display:grid;place-items:center;transition:background .18s}
+.att-pp:hover{background:var(--wy-red)}
+.att-pp svg{width:14px;height:14px;fill:currentColor}
+
+.att-view{position:relative;z-index:1;overflow:hidden}
+.att-track{display:flex;transition:transform .6s cubic-bezier(.22,.85,.3,1)}
+.att-slide{flex:0 0 100%;display:grid;grid-template-columns:repeat(4,1fr);
+  gap:clamp(14px,1.8vw,26px) clamp(12px,1.4vw,20px)}
+.ac{display:block;background:var(--white)}
+.ac figure{overflow:hidden;background:#EDEAE6;aspect-ratio:420/527}
+.ac img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.8,.3,1)}
+.ac:hover img{transform:scale(1.04)}
+.ac b{display:block;text-align:center;font-family:var(--sans);font-weight:700;font-size:clamp(11.5px,1.05vw,13.5px);
+  letter-spacing:.13em;text-transform:uppercase;color:var(--ink);padding:16px 4px 12px;line-height:1.3}
+.ac .rule{display:block;height:4px;background:var(--wy-gold);transition:background .18s}
+.ac:hover .rule{background:var(--wy-red)}
+
+.att-nav{display:flex;align-items:center;gap:14px;margin-top:clamp(18px,2.2vw,28px)}
+.att-nav button.arrow{width:42px;height:42px;border:1.5px solid var(--line);background:transparent;
+  color:var(--ink);cursor:pointer;display:grid;place-items:center;font-size:15px;transition:.18s}
+.att-nav button.arrow:hover{border-color:var(--wy-red);color:var(--wy-red)}
+.att-dots{display:flex;gap:8px;margin-left:auto}
+.att-dots button{width:26px;height:4px;border:0;background:var(--line);cursor:pointer;padding:0;transition:background .2s}
+.att-dots button[aria-current="true"]{background:var(--wy-red)}
+.att-count{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--muted);
+  font-variant-numeric:tabular-nums}
+
+/* ══ RESPONSIVE ═════════════════════════════════════════════ */
+@media(max-width:1080px){
+  .intro-grid,.res-grid,.rs-grid,.measure-grid,.c-grid{grid-template-columns:1fr}
+  .pa{grid-template-columns:1fr;padding-inline:0}
+  .att-grid{grid-template-columns:1fr}
+  .att-rail{display:none}
+    .pa-copy{padding-inline:var(--pad);padding-block:clamp(30px,5vw,52px)}
+  .rs-list{grid-template-columns:repeat(2,1fr)}
+  .offices{grid-template-columns:repeat(3,1fr)}
+  .mono-art{max-width:300px}
+  .intro-img,.measure-img{max-width:520px}
+  .res-img{order:-1}
+}
+@media(max-width:900px){
+  .nav ul{display:none}
+  .burger{display:flex}
+  .stickybar{display:block}
+  body{--stickyH:74px}
+  .trust .wrap{grid-template-columns:repeat(2,1fr);gap:18px}
+  .where-grid{grid-template-columns:1fr}
+  .when-after{grid-template-columns:1fr}
+}
+@media(max-width:1120px){
+  .nav ul a{font-size:clamp(9px,.9vw,12.75px);letter-spacing:.02em;padding-inline:6px}
+  .navlogo img{height:clamp(32px,3vw,42px)}
+}
+@media(max-width:620px){
+  body{font-size:17.5px}
+  .pa-grid{grid-template-columns:repeat(2,1fr)}
+    .att-pp{top:-14px;right:0;width:34px;height:34px}
+  .pt{aspect-ratio:1/.86}
+  .rs-list{grid-template-columns:1fr}
+  .offices{grid-template-columns:1fr}
+  .crow{grid-template-columns:1fr}
+  .res-amt{font-size:10.8vw}
+  .badges .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:18px 22px}
+  .badge img{height:56px}
+  .clock{grid-template-columns:1fr}
+  .util-inner{flex-direction:column;align-items:stretch;padding-left:0}
+  .util-l{justify-content:center;padding:9px var(--pad)}
+  .util .ph{justify-content:center;padding-block:12px}
+  .hero-cta .btn{flex:1 1 100%}
+  .hf-row{grid-template-columns:1fr}
+  .hf-submit .btn{width:100%}
+  .util-l .hide-s{display:none}
+  .logo .tg{font-size:7.5px;letter-spacing:.18em}
+  .f-mid{justify-content:center;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ UTILITY BAR ══ -->
+<div class="util">
+  <div class="util-inner">
+    <div class="util-l">
+      <span>Se Habla Español</span>
+      <span class="sep hide-s"></span>
+      <span class="hide-s">Speak to an actual lawyer within 24 hours</span>
+      <span class="sep"></span>
+      <a href="#contact" class="fce">Free Case Evaluation</a>
+    </div>
+    <a href="tel:+18132236200" class="ph"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.3 2.2z"/></svg><span class="num">(813) 223-6200</span></a>
+  </div>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#" class="navlogo" aria-label="Winters &amp; Yonker, P.A. — The Aggressive Attorneys, Tampa">
+      <img src="{{IMG:wylockup}}" alt="Winters &amp; Yonker, P.A. — The Aggressive Attorneys, Tampa" width="1200" height="166">
+    </a>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#practice">Personal Injury</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#areas">Locations</a></li>
+      <li><a href="#faq">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="burger" aria-label="Menu"><span></span></button>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero on-dark" style="--hero-poster:url({{IMG:heroposter}})">
+  <div class="hero-bg">
+    <video id="heroVid" poster="{{IMG:heroposter}}" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+      <source src="{{VID:herovideo}}" type="video/mp4">
+    </video>
+  </div>
+  <button type="button" class="hero-pp" id="heroPP" aria-label="Pause the background video">
+    <svg viewBox="0 0 24 24" id="heroPPIcon"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+  </button>
+  <div class="wrap">
+    <span class="eyebrow">For Your <em>Personal Injury</em> Needs</span>
+    <h1>The Aggressive<br>Attorneys</h1>
+    <p class="sub">A real person answers this phone, 24 hours a day. And we don't get paid unless you do.</p>
+    <div class="hero-cta">
+      <a href="tel:+18132236200" class="btn btn-gold btn-lg">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="num">Call (813) 223-6200</span></a>
+      <a href="#contact" class="btn btn-out-w btn-lg">Free Case Review <span class="arw">→</span></a>
+    </div>
+
+    <form class="hero-form" onsubmit="return false">
+      <h2 class="hf-h"><b>Free</b> Case Review</h2>
+      <div class="hf-row">
+        <div class="fld"><label class="sr-only" for="h-name">Your name (required)</label>
+          <input id="h-name" type="text" placeholder="Name*" autocomplete="name" required></div>
+        <div class="fld"><label class="sr-only" for="h-phone">Phone number (required)</label>
+          <input id="h-phone" type="tel" inputmode="tel" placeholder="Phone*" autocomplete="tel" required></div>
+        <div class="fld"><label class="sr-only" for="h-email">Email address</label>
+          <input id="h-email" type="email" placeholder="Email" autocomplete="email"></div>
+      </div>
+      <div class="fld"><label class="sr-only" for="h-case">Tell us about your case</label>
+        <textarea id="h-case" placeholder="Tell us about your case"></textarea></div>
+      <label class="hf-chk"><input type="checkbox" id="h-news"><span>Sign up for our newsletter</span></label>
+      <label class="hf-chk"><input type="checkbox" id="h-terms" required><span>I agree that Winters &amp; Yonker may contact me by phone, text or email about my case, and I accept the <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.</span></label>
+      <div class="hf-submit"><button type="button" class="btn btn-red btn-lg" id="heroSendBtn">Submit Form Now</button></div>
+      <p class="hf-note">Free and confidential. Submitting this form does not create an attorney&ndash;client relationship.</p>
+    </form>
+  </div>
+
+  <div class="trust">
+    <div class="wrap">
+      <div class="tr"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.8.8-5 4.7 1.3 6.7L12 17.3 6 20.5l1.3-6.7-5-4.7 6.8-.8z"/></svg></span>
+        <span><b>4.9 Star Google Reviews</b><span class="stars">★★★★★</span></span></div>
+      <div class="tr"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 6.5 12 12 16 14"/></svg></span>
+        <span><b>Available 24/7/365</b><span>Nights, weekends, holidays</span></span></div>
+      <div class="tr"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M6 7h12"/><path d="M4 11l3-6 3 6a3 3 0 0 1-6 0z"/><path d="M14 11l3-6 3 6a3 3 0 0 1-6 0z"/></svg></span>
+        <span><b>Maximum Compensation</b><span>119+ years combined</span></span></div>
+      <div class="tr"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+        <span><b>We Fight For You</b><span>No fees until we win</span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CREDIBILITY BADGES (directly below hero) ══ -->
+<section class="badges" aria-label="Accreditations and awards">
+  <div class="wrap">
+    <div class="badge"><img src="{{IMG:bdg-seal}}" alt="Winters &amp; Yonker seal: Commitment to Excellence — no recovery, no fees or costs to you — free case review" width="186" height="140"></div>
+    <div class="badge"><img src="{{IMG:bdg-bbb}}" alt="BBB Accredited Business, BBB Rating A+" width="211" height="107"></div>
+    <div class="badge"><img src="{{IMG:bdg-exp}}" alt="Expertise.com Best Car Accident Lawyers in Lakeland 2021" width="176" height="150"></div>
+    <div class="badge"><img src="{{IMG:bdg-s25}}" alt="Bay Area Legal Services Sustaining Law Firm 2025" width="176" height="146"></div>
+    <div class="badge"><img src="{{IMG:bdg-s21}}" alt="Bay Area Legal Services Sustaining Law Firm 2021" width="193" height="137"></div>
+  </div>
+</section>
+
+<!-- ══ INTRO ══ -->
+<section class="sec intro" id="about">
+  <div class="wrap">
+    <div class="intro-grid">
+      <div>
+        <span class="eyebrow">Who we are · Tampa Bay since 2001</span>
+        <h2>A Tampa Bay Personal<br>Injury Law Firm<em>You Can Trust.</em></h2>
+        <p>Winters &amp; Yonker, P.A. is a personal injury law firm founded by two Tampa trial lawyers, Bill Winters and Marc Yonker, who spent the early part of their careers watching insurance companies out-resource ordinary people. Within hours of a crash, a carrier assigns an adjuster, an investigator and defense counsel. The injured person, meanwhile, is in an emergency room. This firm exists to even that out.</p>
+        <p>We represent people, never insurance companies: drivers and passengers hurt on I-275 and I-4, motorcyclists, pedestrians and cyclists, workers injured on Tampa construction sites, residents harmed in Bay-area nursing homes, and families of people killed by someone else's negligence. If you were hurt because somebody else was careless, you are who this firm was built for.</p>
+        <p>"The Aggressive Attorneys" has never described how we treat clients. It describes where the pressure gets pointed: at the carrier, and at the number the carrier has put on the table. With you, the job is simpler: answer the phone, explain what is happening, and tell you the truth about what your case is worth.</p>
+        <a href="#reasons" class="btn btn-red" style="margin-top:26px">Why Winters &amp; Yonker Is Different <span class="arw">→</span></a>
+      </div>
+      <div class="intro-img sticky-col"><img src="{{IMG:introphoto}}" alt="Marc Yonker and Bill Winters outside the Hillsborough County courthouse in Tampa" width="1100" height="1650"></div>
+    </div>
+
+    <div class="msg">
+      <div class="lbl">A message from the firm</div>
+      <p>Clients tell us the same thing over and over: nobody explained anything. The other driver's insurer called within a day, offered a number that sounded like a lot, and hoped they'd take it. We built this firm so that phone call comes to us instead, and so the number on the table is the one the case is actually worth.</p>
+      <div class="sig">— Bill Winters &amp; Marc Yonker, Founding Partners</div>
+      <a href="tel:+18132236200" class="btn btn-gold" style="margin-top:24px">Talk To Us Today <span class="arw">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RESULTS ══ -->
+<section class="sec results on-dark" id="results">
+  <div class="wrap">
+    <div class="res-amt-view" id="resAmtView">
+      <div class="res-amt-track" id="resAmtTrack">
+        <div class="res-amt num">$5,000,000</div>
+        <div class="res-amt num">$3,050,000</div>
+        <div class="res-amt num">$1,750,000</div>
+      </div>
+    </div>
+
+    <div class="res-grid">
+      <div class="res-left mid-col">
+        <h2>Real People. Real Results.</h2>
+        <p class="lede" style="margin-top:16px">Every figure below is an actual recovery for an actual Tampa Bay client, objectively verifiable as Florida requires.</p>
+        <div class="res-nav">
+          <button type="button" id="resPrev" aria-label="Previous result">←</button>
+          <button type="button" id="resNext" aria-label="Next result">→</button>
+          <span class="res-count"><span id="resNow">1</span> / 3</span>
+          <a href="#" class="btn btn-gold" style="margin-left:8px">View More Client Stories <span class="arw">→</span></a>
+        </div>
+      </div>
+      <div class="res-view" id="resView" aria-roledescription="carousel" aria-label="Case results">
+        <div class="res-track" id="resTrack">
+
+          <div class="res-slide" role="group" aria-roledescription="slide" aria-label="Result 1 of 3">
+            <div class="res-img"><img src="{{IMG:res1}}" alt="A box truck and a passenger car after a head-on collision" width="1200" height="800"></div>
+            <div class="res-card">
+              <div class="kind">Recovered · Auto Accident</div>
+              <p>For a Hillsborough County client struck in a rear-end collision who suffered a permanent spinal injury. The insurer's opening offer was a fraction of the final recovery.</p>
+            </div>
+          </div>
+
+          <div class="res-slide" role="group" aria-roledescription="slide" aria-label="Result 2 of 3">
+            <div class="res-img"><img src="{{IMG:res2}}" alt="A multi-vehicle rear-end collision on a Florida road" width="1200" height="800"></div>
+            <div class="res-card">
+              <div class="kind">Recovered · Auto Negligence Settlement</div>
+              <p>An auto negligence claim resolved by settlement, without the client having to go through a trial.</p>
+            </div>
+          </div>
+
+          <div class="res-slide" role="group" aria-roledescription="slide" aria-label="Result 3 of 3">
+            <div class="res-img"><img src="{{IMG:res3}}" alt="An SUV with heavy side damage after a Tampa collision" width="1197" height="798"></div>
+            <div class="res-card">
+              <div class="kind">Recovered · Auto Negligence Verdict</div>
+              <p>An auto negligence case tried to a jury verdict after the insurer declined to settle for a reasonable figure.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <p class="disclaim">Results shown are actual past recoveries obtained by Winters &amp; Yonker, P.A. and are objectively verifiable. <strong>Prior results do not guarantee a similar outcome. The prospective client may not obtain the same or similar results.</strong> Each case turns on its own facts, injuries, liability and available insurance coverage. Amounts are gross recoveries before attorneys' fees and costs.</p>
+  </div>
+</section>
+
+<!-- ══ 6 REASONS ══ -->
+<section class="sec reasons" id="reasons">
+  <div class="wrap">
+    <div class="rs-grid">
+      <div class="mono-art mid-col" aria-hidden="true">
+        <img class="wymark" src="{{IMG:wylogo}}" alt="" width="900" height="433">
+      </div>
+      <div>
+        <span class="krule" aria-hidden="true"></span>
+        <h2>Why Tampa Bay Chooses<br>Winters &amp; Yonker</h2>
+        <p class="lede" style="margin-top:16px">Tampa Bay has no shortage of injury firms, and most of them promise the same things on the same billboards. The difference shows up later, in the unglamorous parts of a case: whether anyone picks up at 2 a.m., and whether the lawyer who signed you is the one who has actually read your chart. Hold any firm to that before you sign a fee agreement, ours included.</p>
+        <div class="rs-list" style="margin-top:clamp(24px,3vw,38px)">
+          <div class="rs"><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+            <b>Same-Day Communication</b><span>You hear back the day you call, not next week.</span></div>
+          <div class="rs"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></span>
+            <b>Bilingual Staff</b><span>Se habla español, from first call to resolution.</span></div>
+          <div class="rs"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 6.5 12 12 16 14"/></svg></span>
+            <b>Available 24/7/365</b><span>Our own intake team, in our own offices.</span></div>
+          <div class="rs"><span class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="M16 10l6-3v10l-6-3z"/></svg></span>
+            <b>Virtual Meetings</b><span>We'll come to you, or meet you from your couch.</span></div>
+          <div class="rs"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M17 6.5c0-1.9-2.2-3-5-3s-5 1.1-5 3 2.2 2.6 5 3.2 5 1.4 5 3.3-2.2 3-5 3-5-1.1-5-3"/></svg></span>
+            <b>No Fees Unless You Win</b><span>No retainer, no hourly bill, no invoice.</span></div>
+          <div class="rs"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 11.5 11.2 13.7 15 10"/></svg></span>
+            <b>Risk-Free Representation</b><span>If there's no recovery, there's no fee.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRACTICE AREAS ══ -->
+<section class="pa" id="practice">
+  <div class="pa-grid sticky-col">
+      <a href="#" class="pt t1"><span class="pt-in"><span class="pt-face pt-front"><span>Personal Injury</span></span><span class="pt-face pt-back"><span>Personal Injury</span></span></span></a>
+      <a href="#" class="pt t2"><span class="pt-in"><span class="pt-face pt-front"><span>Car Accidents</span></span><span class="pt-face pt-back"><span>Car Accidents</span></span></span></a>
+      <a href="#" class="pt t3"><span class="pt-in"><span class="pt-face pt-front"><span>Pedestrian Accidents</span></span><span class="pt-face pt-back"><span>Pedestrian Accidents</span></span></span></a>
+      <a href="#" class="pt t4"><span class="pt-in"><span class="pt-face pt-front"><span>Motorcycle Accidents</span></span><span class="pt-face pt-back"><span>Motorcycle Accidents</span></span></span></a>
+      <a href="#" class="pt t5"><span class="pt-in"><span class="pt-face pt-front"><span>Truck Accidents</span></span><span class="pt-face pt-back"><span>Truck Accidents</span></span></span></a>
+      <a href="#" class="pt t6"><span class="pt-in"><span class="pt-face pt-front"><span>Slip &amp; Fall Accidents</span></span><span class="pt-face pt-back"><span>Slip &amp; Fall Accidents</span></span></span></a>
+      <a href="#" class="pt t7"><span class="pt-in"><span class="pt-face pt-front"><span>Uber &amp; Lyft Accidents</span></span><span class="pt-face pt-back"><span>Uber &amp; Lyft Accidents</span></span></span></a>
+      <a href="#" class="pt t8"><span class="pt-in"><span class="pt-face pt-front"><span>Construction Accidents</span></span><span class="pt-face pt-back"><span>Construction Accidents</span></span></span></a>
+      <a href="#" class="pt t9"><span class="pt-in"><span class="pt-face pt-front"><span>Wrongful Death</span></span><span class="pt-face pt-back"><span>Wrongful Death</span></span></span></a>
+      <a href="#" class="pt t10"><span class="pt-in"><span class="pt-face pt-front"><span>Nursing Home Neglect and Abuse</span></span><span class="pt-face pt-back"><span>Nursing Home Neglect and Abuse</span></span></span></a>
+      <a href="#" class="pt t11"><span class="pt-in"><span class="pt-face pt-front"><span>Dog Bites</span></span><span class="pt-face pt-back"><span>Dog Bites</span></span></span></a>
+      <a href="#" class="pt t12"><span class="pt-in"><span class="pt-face pt-front"><span>Brain Injury</span></span><span class="pt-face pt-back"><span>Brain Injury</span></span></span></a>
+  </div>
+  <div class="pa-copy">
+    <h2><span class="l1">What We</span><span class="l2">Handle</span></h2>
+    <p>Winters &amp; Yonker handles <a href="#">personal injury</a> claims and nothing else. No real estate closings, no divorces, no wills. That focus covers <a href="#">car accidents</a>, motorcycle and commercial truck collisions, Uber and Lyft crashes, pedestrian and bicycle injuries, slip and fall and other premises cases, construction site injuries, dog bites, traumatic brain injuries, nursing home neglect and abuse, and wrongful death claims brought by surviving families.</p>
+    <p>What a Florida claim actually covers surprises most people. Beyond emergency care and follow-up treatment, it can include future medical costs, lost wages and lost earning capacity, out-of-pocket expenses, vehicle damage, and non-economic damages for pain, disability, disfigurement and loss of enjoyment of life. A spouse may hold a separate claim for loss of consortium. Those categories are easy to leave money in when nobody itemizes them, which is exactly why a first offer arrives so fast.</p>
+    <p>You will talk to <b>a lawyer</b> about which of them apply to you, not a case manager working from a script. And if the honest answer is that your case is small, or that you don't need a lawyer at all, we will tell you that on the first call.</p>
+    <a href="tel:+18132236200" class="btn btn-gold btn-lg">Talk To A Lawyer</a>
+  </div>
+</section>
+
+<!-- ══ EXPERIENCED ATTORNEYS ══ -->
+<section class="sec att" id="team">
+  <div class="wrap">
+    <div class="att-grid">
+
+      <div class="att-copy sticky-col">
+        <h2>Experienced<br>Attorneys</h2>
+        <h3>Handling a Broad Range of Injury Claims</h3>
+        <p>Ten attorneys and 119+ years of combined experience, all of it earned in Tampa Bay courtrooms, from a straightforward rear-end collision to a catastrophic truck crash or a wrongful death case. The lawyer who signs your case is the lawyer who reads your chart.</p>
+        <a href="#" class="att-btn">Meet Our Team</a>
+      </div>
+
+
+      <div class="att-slider">
+
+        <div class="att-view" aria-label="Winters &amp; Yonker attorneys">
+          <div class="att-track">
+        <div class="att-slide" role="group" aria-label="All eight Winters &amp; Yonker attorneys">
+          <a href="#" class="ac"><figure><img src="{{IMG:atty01}}" alt="Bill Winters, attorney at Winters &amp; Yonker" width="420" height="527"></figure><b>Bill Winters</b><span class="rule"></span></a>
+          <a href="#" class="ac"><figure><img src="{{IMG:atty02}}" alt="Marc Yonker, attorney at Winters &amp; Yonker" width="420" height="527"></figure><b>Marc Yonker</b><span class="rule"></span></a>
+          <a href="#" class="ac"><figure><img src="{{IMG:atty03}}" alt="Patrick Douglas Brannon, attorney at Winters &amp; Yonker" width="420" height="527"></figure><b>Patrick Douglas Brannon</b><span class="rule"></span></a>
+          <a href="#" class="ac"><figure><img src="{{IMG:atty04}}" alt="Matthew Brown, attorney at Winters &amp; Yonker" width="420" height="527"></figure><b>Matthew Brown</b><span class="rule"></span></a>
+          <a href="#" class="ac"><figure><img src="{{IMG:atty05}}" alt="Trevor Wade Colvin, attorney at Winters &amp; Yonker" width="420" height="527"></figure><b>Trevor Wade Colvin</b><span class="rule"></span></a>
+          <a href="#" class="ac"><figure><img src="{{IMG:atty06}}" alt="Christopher M. Smith, attorney at Winters &amp; Yonker" width="420" height="527"></figure><b>Christopher M. Smith</b><span class="rule"></span></a>
+          <a href="#" class="ac"><figure><img src="{{IMG:atty07}}" alt="Anthony LoGalbo, attorney at Winters &amp; Yonker" width="420" height="527"></figure><b>Anthony LoGalbo</b><span class="rule"></span></a>
+          <a href="#" class="ac"><figure><img src="{{IMG:atty08}}" alt="Max Shevrin, attorney at Winters &amp; Yonker" width="420" height="527"></figure><b>Max Shevrin</b><span class="rule"></span></a>
+        </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHERE (local coverage) ══ -->
+<section class="sec where" id="areas">
+  <div class="wrap">
+    <div class="where-grid">
+      <div>
+        <h2>Where We Serve<br>Across Tampa Bay</h2>
+        <div class="statline"><b>4</b> counties <span>·</span> <b>5</b> offices <span>·</span> <b>20+</b> cities</div>
+        <p class="lede" style="margin-top:16px">Winters &amp; Yonker is a Tampa Bay firm in the literal sense: five offices across four counties, staffed by attorneys who try cases in the courthouses those offices sit next to. Our principal office is on West Swann Avenue in Hyde Park, Tampa, with additional locations in St. Petersburg, Clearwater, New Port Richey and Lakeland.</p>
+        <p>That footprint matters more than it sounds like it should. A Hillsborough County jury and a Pasco County jury value the same injury differently. Local adjusters carry local reputations. Knowing which judge will actually hold a hearing inside ninety days is the kind of knowledge that only comes from working the same courthouses for two decades.</p>
+        <p>If getting to us is the problem, and after a serious crash it usually is, then don't. We meet clients at home, in the hospital, in rehab, or by video. Someone from this firm will come to you anywhere in the Tampa Bay area.</p>
+        <div class="geo">
+        <a href="#">Tampa</a>
+        <a href="#">St. Petersburg</a>
+        <a href="#">Clearwater</a>
+        <a href="#">Lakeland</a>
+        <a href="#">New Port Richey</a>
+        <a href="#">Brandon</a>
+        <a href="#">Riverview</a>
+        <a href="#">Wesley Chapel</a>
+        <a href="#">Largo</a>
+        <a href="#">Plant City</a>
+        <a href="#">Pinellas Park</a>
+        <a href="#">Palm Harbor</a>
+        <a href="#">Temple Terrace</a>
+        <a href="#">Land O&rsquo; Lakes</a>
+        <a href="#">Winter Haven</a>
+        <a href="#">Dunedin</a>
+        <a href="#">Zephyrhills</a>
+        <a href="#">Valrico</a>
+        <a href="#">Bartow</a>
+        <a href="#">Ruskin</a>
+        </div>
+        <a href="#offices" class="btn btn-red" style="margin-top:28px">See All Five Offices <span class="arw">→</span></a>
+      </div>
+      <div class="where-cty sticky-col">
+        <div class="cty"><b>Hillsborough County</b><span>Tampa, Brandon, Riverview, Plant City, Temple Terrace, Valrico, Ruskin &amp; Apollo Beach</span></div>
+        <div class="cty"><b>Pinellas County</b><span>St. Petersburg, Clearwater, Largo, Pinellas Park, Palm Harbor, Dunedin &amp; Seminole</span></div>
+        <div class="cty"><b>Pasco County</b><span>New Port Richey, Port Richey, Wesley Chapel, Land O&rsquo; Lakes, Hudson &amp; Zephyrhills</span></div>
+        <div class="cty"><b>Polk County</b><span>Lakeland, Winter Haven, Bartow, Auburndale, Haines City &amp; Davenport</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHEN (the three clocks) ══ -->
+<section class="sec when on-dark" id="deadlines">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">When to call</span>
+      <h2>When To Call A Tampa<br>Personal Injury Lawyer</h2>
+      <p class="lede" style="margin-top:16px">The honest answer is before you speak to the other driver's insurance company. Florida injury claims run on three separate clocks, and two of them start the moment you are hurt.</p>
+    </div>
+
+    <div class="clock">
+      <div class="clk">
+        <div class="big">14 Days</div>
+        <div class="u">To protect your PIP benefits</div>
+        <p>Florida's no-fault law requires you to receive initial medical services and care within 14 days of a crash. Miss that window and your Personal Injury Protection coverage (up to $10,000 with an emergency medical condition diagnosis, $2,500 without one) can be denied outright, leaving you personally responsible for the bills.</p>
+      </div>
+      <div class="clk">
+        <div class="big">2 Years</div>
+        <div class="u">To file a negligence lawsuit</div>
+        <p>House Bill 837 cut Florida's negligence deadline from four years to two, effective March 24, 2023. Claims arising on or after that date now expire in two years; wrongful death is two years from the date of death. Claims involving a government entity carry their own, shorter notice requirements.</p>
+      </div>
+      <div class="clk">
+        <div class="big">Day One</div>
+        <div class="u">Before the evidence is gone</div>
+        <p>Skid marks wash away in the first Tampa thunderstorm. Vehicles get repaired or sold for salvage. Commercial trucking logs and business surveillance footage are routinely overwritten within weeks. A preservation letter sent early is often the whole difference between proving fault and arguing about it.</p>
+      </div>
+    </div>
+
+    <div class="when-after">
+      <div>
+        <h3 style="margin-bottom:12px">The call you should not take</h3>
+        <p>Adjusters ask for a recorded statement early, while you are medicated and before anyone knows whether that shoulder needs surgery. Nothing in Florida law requires you to give one to the other driver's carrier. Once you are a client here, those calls come to us instead of you.</p>
+      </div>
+      <div>
+        <h3 style="margin-bottom:12px">If someone told you it was your fault</h3>
+        <p>Florida also changed how fault is shared. Under the modified comparative negligence standard adopted in 2023, a person found more than 50% at fault recovers nothing. That is precisely why insurers now push blame onto injured people harder than they used to. Being told the wreck was your fault is a reason to call, not a reason not to.</p>
+      </div>
+    </div>
+
+    <p class="disclaim" style="margin-top:clamp(24px,3vw,38px)"><strong>Please note:</strong> this page describes Florida law in general terms as of 2026 and is not legal advice. Deadlines, exceptions and how they apply depend on the facts of your case. Confirm yours with an attorney before relying on any date above.</p>
+
+    <div style="margin-top:clamp(22px,2.6vw,32px)">
+      <a href="tel:+18132236200" class="btn btn-gold btn-lg">Call (813) 223-6200 &mdash; Free Case Review</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section class="sec sec--linen" id="reviews">
+  <div class="wrap">
+    <div class="quotes-head">
+      <h2>What Your Neighbors Say</h2>
+      <div class="sub">About Working With Winters &amp; Yonker</div>
+      <p class="lede" style="margin-top:14px">4.9 stars from more than 1,100 clients across Tampa, Clearwater, St. Petersburg, New Port Richey and Lakeland.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="qrow">
+      <div class="q dim"><blockquote>They handled the hospital, the body shop and the adjuster. I handled getting better. That was the whole arrangement and they kept it.</blockquote><div class="who">— Marcus T.</div></div>
+      <div class="q"><blockquote>I called at 11 at night after my wreck, half expecting a machine. A woman named Ashley answered and stayed on with me for twenty minutes. That was the moment I stopped panicking.</blockquote><div class="who">— Denise M. · Tampa</div><p class="note">This client was not compensated for this review. The prospective client may not obtain the same or similar results.</p></div>
+      <div class="q"><blockquote>The adjuster offered me $4,000 and said that was the policy limit. It wasn't. Winters &amp; Yonker found two more policies I didn't know existed.</blockquote><div class="who">— Ray C. · Clearwater</div><p class="note">This client was not compensated for this review. The prospective client may not obtain the same or similar results.</p></div>
+      <div class="q"><blockquote>What I remember most is that they came to me. I was still in the hospital in St. Pete and a lawyer drove out on a Sunday.</blockquote><div class="who">— Anita J. · St. Petersburg</div><p class="note">This client was not compensated for this review. The prospective client may not obtain the same or similar results.</p></div>
+      <div class="q dim"><blockquote>Straight answers every single time I asked. Nobody ever made me feel like my case was small.</blockquote><div class="who">— Priya N.</div></div>
+    </div>
+    <div class="center"><a href="#" class="btn btn-red">Read Our Reviews <span class="arw">→</span></a></div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="sec faq" id="faq">
+  <div class="wrap">
+    <div class="faq-grid">
+      <div>
+        <h2>Your Questions,<br>Answered:</h2>
+        <div class="sub">It's Our Job To Provide Clarity</div>
+        <div style="margin-top:clamp(22px,2.6vw,34px)">
+          <details class="fq" open><summary>How much does it cost to hire you?</summary><p>Nothing up front. We work on a contingency fee, which means our attorney's fee comes out of the recovery and there is no fee at all if we don't recover money for you. Clients may still be responsible for case costs; we walk through exactly what that means before you sign anything.</p><a href="#" class="fq-more">Learn More</a></details>
+          <details class="fq"><summary>How long do I have to file a claim in Florida?</summary><p>Florida's deadline for most negligence claims is two years from the date of the injury, and some claims, such as those against a government entity, carry much shorter notice requirements. Call as soon as you can so nothing expires while you're deciding.</p><a href="#" class="fq-more">Learn More</a></details>
+          <details class="fq"><summary>The insurance company already called me. Should I give a statement?</summary><p>Call us first. A recorded statement given early, without advice, is one of the most common ways a good claim gets damaged. Once you're a client, those calls come to us instead of you.</p><a href="#" class="fq-more">Learn More</a></details>
+          <details class="fq"><summary>What if I was partly at fault?</summary><p>You may still be able to recover. Florida uses a modified comparative negligence rule, and fault is often assigned very differently once the evidence is actually examined. Don't assume you have no case because someone told you it was yours.</p><a href="#" class="fq-more">Learn More</a></details>
+          <details class="fq"><summary>Do I have to go to court?</summary><p>Most cases settle without a trial. We prepare every file as though it will be tried, because that is what moves an adjuster's number. You'd only see a courtroom if the insurer refuses to be reasonable, and we'd talk that through with you first.</p><a href="#" class="fq-more">Learn More</a></details>
+        </div>
+        <div class="faq-btns">
+          <a href="#" class="btn btn-red">View All FAQs</a>
+          <a href="#" class="btn btn-out">View Blog</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MEASURE UP ══ -->
+<section class="sec sec--linen">
+  <div class="wrap">
+    <div class="measure-grid">
+      <div class="measure-img sticky-col">
+        <img src="{{IMG:measurephoto}}" alt="Bill Winters and Marc Yonker reviewing a client file at the Winters &amp; Yonker office" width="1212" height="909">
+        <div class="callout">Experience the difference of working with a firm that actually answers.</div>
+      </div>
+      <div>
+        <h2>Do We Measure Up<br>To Your Needs?</h2>
+        <p class="lede" style="margin-top:14px">We'd rather you hold us to a checklist than take our word for it. Here's the one we hold ourselves to.</p>
+        <ul class="check">
+          <li><span class="ck"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>Treat our clients with <b>respect and empathy</b></span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>Keep a <b>direct line of communication</b> to your attorney</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>Practice <b>personal injury law only</b>, not a little of everything</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>Stay <b>solution-oriented</b> at every stage of the claim</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>Bring <b>119+ years of combined</b> courtroom experience</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span>Handle your case <b>personally</b>, in your own neighborhood</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section class="sec contact" id="contact">
+  <div class="wrap">
+    <div class="c-grid">
+      <div class="cform">
+        <h2>Free Consultation:<em>Clear Answers, No Obligation.</em></h2>
+        <p class="lede" style="margin:14px 0 22px">Tell us what happened. If we're not the right firm for your case, we'll say so and point you somewhere useful.</p>
+        <form onsubmit="return false">
+          <div class="crow">
+            <div class="fld"><label for="fn">First name*</label><input id="fn" type="text" autocomplete="given-name"></div>
+            <div class="fld"><label for="ln">Last name*</label><input id="ln" type="text" autocomplete="family-name"></div>
+          </div>
+          <div class="crow">
+            <div class="fld"><label for="ph">Phone number*</label><input id="ph" type="tel" inputmode="tel" autocomplete="tel"></div>
+            <div class="fld"><label for="em">Email*</label><input id="em" type="email" autocomplete="email"></div>
+          </div>
+          <div class="fld"><label for="bt">Best time to contact</label>
+            <select id="bt"><option>Anytime (we answer 24/7)</option><option>Morning</option><option>Afternoon</option><option>Evening</option></select></div>
+          <div class="fld"><label for="ds">Brief injury description*</label><textarea id="ds" placeholder="A sentence or two is plenty."></textarea></div>
+          <label class="consent"><input type="checkbox" id="cs"><span>I agree that Winters &amp; Yonker may contact me by phone, text or email about my case. Message rates may apply. Submitting this form does not create an attorney–client relationship.</span></label>
+          <button type="button" class="btn btn-red btn-full" id="sendBtn">Submit My Free Case Review</button>
+        </form>
+      </div>
+
+      <div class="steps">
+        <h3>What happens after I submit the form?</h3>
+        <div class="step"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg></span>
+          <span><b>Immediate review</b><span>Your details go straight to our intake team, not a queue and not a chatbot.</span></span></div>
+        <div class="step"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 6.5 12 12 16 14"/></svg></span>
+          <span><b>Contact within 24 hours</b><span>Usually within minutes. Expect a call from a (813) number.</span></span></div>
+        <div class="step"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M7 19V9l5-5 5 5v10"/><path d="M10 19v-5h4v5"/></svg></span>
+          <span><b>Clear next steps</b><span>You'll know whether you have a case, roughly what it's worth, and exactly what we'd do first.</span></span></div>
+        <div class="step"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          <span><b>Zero obligation</b><span>No fee to talk, and no fee at all unless we win. Costs are explained in writing before you sign.</span></span></div>
+        <a href="tel:+18132236200" class="btn btn-ink btn-full" style="margin-top:20px">Or Call Now: (813) 223-6200</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer id="offices">
+  <div class="wrap">
+    <div class="f-top">
+      <h2>Serving clients across Tampa Bay from <em>five local offices</em></h2>
+      <div class="offices">
+        <div class="off"><b>Tampa</b><span>601 W Swann Ave<br>Tampa, FL 33606</span><a href="#">Get Directions →</a></div>
+        <div class="off"><b>Clearwater</b><span>1006 Drew St<br>Clearwater, FL 33755</span><a href="#">Get Directions →</a></div>
+        <div class="off"><b>St. Petersburg</b><span>111 2nd Ave NE, Ste 350<br>St. Petersburg, FL 33701</span><a href="#">Get Directions →</a></div>
+        <div class="off"><b>New Port Richey</b><span>5006 Trouble Creek Rd, #200<br>Port Richey, FL 34652</span><a href="#">Get Directions →</a></div>
+        <div class="off"><b>Lakeland</b><span>1543 Lakeland Hills Blvd, Ste 18<br>Lakeland, FL 33805</span><a href="#">Get Directions →</a></div>
+      </div>
+    </div>
+
+    <div class="f-mid">
+      <a href="#" class="logo logo--rev logo--lg">
+        <span class="tiles"><i class="w">W</i><i class="y">Y</i></span>
+        <span class="lk"><span class="nm">Winters &amp; Yonker <span>P.A.</span></span>
+        <span class="tg">The <em>Aggressive</em> Attorneys</span></span>
+      </a>
+      <div class="f-links">
+        <a href="#about">About</a><a href="#reasons">Practice Areas</a><a href="#results">Results</a>
+        <a href="#reviews">Reviews</a><a href="#offices">Locations</a><a href="#contact">Contact</a><a href="#">Español</a>
+      </div>
+      <div class="f-soc">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13 22v-9h3l.5-4H13V6.7c0-1.1.3-1.8 1.9-1.8H17V1.4A26 26 0 0 0 14.2 1C11.4 1 9.5 2.7 9.5 5.9V9H6.5v4h3v9z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9s.7.8.9 1.4c.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4s-.8.7-1.4.9c-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9s-.7-.8-.9-1.4c-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4s.8-.7 1.4-.9c.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.3A6.5 6.5 0 1 0 18.5 12 6.5 6.5 0 0 0 12 5.5zm0 10.7A4.2 4.2 0 1 1 16.2 12 4.2 4.2 0 0 1 12 16.2zm6.8-10.9a1.5 1.5 0 1 1-1.5-1.5 1.5 1.5 0 0 1 1.5 1.5z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05a4.2 4.2 0 0 1 3.8-2.1c4 0 4.75 2.6 4.75 6V21h-4v-5.6c0-1.35 0-3.1-1.9-3.1s-2.2 1.5-2.2 3v5.7H9z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 12s0-3.5-.45-5.2a2.8 2.8 0 0 0-2-2C18.85 4.4 12 4.4 12 4.4s-6.85 0-8.55.4a2.8 2.8 0 0 0-2 2C1 8.5 1 12 1 12s0 3.5.45 5.2a2.8 2.8 0 0 0 2 2c1.7.4 8.55.4 8.55.4s6.85 0 8.55-.4a2.8 2.8 0 0 0 2-2C23 15.5 23 12 23 12zM9.75 15.3V8.7L15.5 12z"/></svg></a>
+      </div>
+    </div>
+
+    <div class="legal">
+      <p><strong>Winters &amp; Yonker, P.A.</strong> · Principal office: 601 W Swann Ave, Tampa, Florida. Responsible attorney: Marc Yonker.</p>
+      <p>The information on this website is for general information purposes only and is not legal advice. Contacting us through this site does not create an attorney–client relationship; please do not send confidential information until such a relationship has been established in writing.</p>
+      <p><strong>Prior results do not guarantee a similar outcome.</strong> Case results depend on the facts of each individual case; the prospective client may not obtain the same or similar results. Testimonials appearing on this site are from actual clients, were not drafted by the firm, and those clients were not compensated. Winters &amp; Yonker handles personal injury matters on a contingency fee basis: no attorney's fee is charged unless a recovery is obtained. Clients may be responsible for costs; the fee agreement sets out cost responsibility in full.</p>
+      <p style="opacity:.75">© 2026 Winters &amp; Yonker, P.A. · <a href="#">Privacy Policy</a> · <a href="#">Terms</a> · <a href="#">Disclaimer</a> · <a href="#">Accessibility</a> &nbsp;|&nbsp; Design comp by Skyway Media</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ STICKY "NO FEES" BAR (desktop) ══ -->
+<div class="winbar" id="winBar">
+  <div class="in">
+    <b>No Fees Until We Win Your Case!</b>
+    <a href="tel:+18132236200" class="btn btn-gold">
+      <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.3 2.2z"/></svg>
+      <span class="num">Call (813) 223-6200</span></a>
+    <a href="#contact" class="btn btn-out-w">Free Case Review</a>
+    <button type="button" class="x" id="winBarX" aria-label="Dismiss this banner">&times;</button>
+  </div>
+</div>
+
+<!-- ══ STICKY MOBILE BAR ══ -->
+<div class="stickybar">
+  <div class="in">
+    <a href="tel:+18132236200" class="btn btn-gold">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Call Now</a>
+    <a href="#contact" class="btn btn-out-w">Free Review</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  function onScroll(){ nav.classList.toggle('stuck', window.scrollY>8) }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+
+  // ── Hero background video ──
+  (function(){
+    var v=document.getElementById('heroVid'), pp=document.getElementById('heroPP'),
+        icon=document.getElementById('heroPPIcon');
+    if(!v||!pp) return;
+    var PAUSE='<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>',
+        PLAY='<path d="M7 4l12 8-12 8z"></path>',
+        reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+        wants=!reduce;
+
+    function paint(){
+      icon.innerHTML = wants ? PAUSE : PLAY;
+      pp.setAttribute('aria-label', wants ? 'Pause the background video' : 'Play the background video');
+    }
+    if(reduce){ v.pause(); v.removeAttribute('autoplay'); }
+    paint();
+
+    pp.addEventListener('click',function(){
+      wants=!wants;
+      if(wants){ v.play().catch(function(){}); } else { v.pause(); }
+      paint();
+    });
+
+    // don't burn cycles decoding video the visitor has scrolled past
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){
+        es.forEach(function(en){
+          if(!wants) return;
+          if(en.isIntersecting){ v.play().catch(function(){}); } else { v.pause(); }
+        });
+      },{threshold:0.05}).observe(v);
+    }
+  })();
+
+  // ── Experienced Attorneys slider ──
+
+  // sticky "no fees" bar — appears once the hero is behind you
+  (function(){
+    var bar=document.getElementById('winBar'), x=document.getElementById('winBarX');
+    if(!bar) return;
+    var off=false;
+    if(x) x.addEventListener('click',function(){off=true;bar.classList.remove('on')});
+    function tick(){
+      if(off) return;
+      var hero=document.querySelector('.hero');
+      var past=hero?window.scrollY>hero.offsetHeight*0.75:window.scrollY>600;
+      bar.classList.toggle('on',past);
+    }
+    window.addEventListener('scroll',tick,{passive:true}); tick();
+  })();
+
+  // results slider
+  (function(){
+    var track=document.getElementById('resTrack');
+    if(!track) return;
+    var slides=track.querySelectorAll('.res-slide'), n=slides.length, i=0;
+    var now=document.getElementById('resNow');
+    var atrack=document.getElementById('resAmtTrack');
+    var amts=atrack?atrack.querySelectorAll('.res-amt'):[];
+    function go(k){ i=(k%n+n)%n;
+      track.style.transform='translateX('+(-i*100)+'%)';
+      if(atrack) atrack.style.transform='translateX('+(-i*100)+'%)';
+      if(now) now.textContent=i+1;
+      slides.forEach(function(s,x){ s.setAttribute('aria-hidden', x===i?'false':'true'); });
+      Array.prototype.forEach.call(amts,function(a,x){ a.setAttribute('aria-hidden', x===i?'false':'true'); }); }
+    var pv=document.getElementById('resPrev'), nx=document.getElementById('resNext');
+    if(pv) pv.addEventListener('click',function(){go(i-1)});
+    if(nx) nx.addEventListener('click',function(){go(i+1)});
+    go(0);
+  })();
+
+  [['sendBtn','Received, we’ll call you shortly'],
+   ['heroSendBtn','Received, we’ll call you shortly']].forEach(function(pair){
+    var b=document.getElementById(pair[0]);
+    if(b) b.addEventListener('click',function(){
+      b.textContent=pair[1];
+      b.style.pointerEvents='none';
+    });
+  });
+})();
+</script>
+</body>
+</html>

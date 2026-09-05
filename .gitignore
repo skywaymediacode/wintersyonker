@@ -1,0 +1,25 @@
+# Built deliverables. Every image and the hero video are inlined as base64 data
+# URIs, so these are multi-megabyte files that change wholesale whenever any
+# asset changes — useless to diff and noisy in history.
+#
+#   regenerate:  python build/build_comp.py
+build/wy-comp.html
+build/wy-preview.html
+
+# Jeremy's generated comp, same reasoning.
+#   regenerate:  python wy-handoff/build.py
+wy-handoff/Winters-Yonker-Homepage.html
+
+# Local scratch
+build/_*.png
+build/_*.html
+
+# OS / editor noise
+Thumbs.db
+ehthumbs.db
+.DS_Store
+*.swp
+.vscode/
+.idea/
+__pycache__/
+*.pyc
