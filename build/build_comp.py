@@ -66,6 +66,9 @@ IMAGES = {
     "highway":       "gen highway rear end.webp",
     "nighthighway":  "gen night highway.webp",
     "tampabay":      "gen tampa bay.webp",
+    "resInterstate": "gen result interstate.webp",
+    "resNight":      "gen result night intersection.webp",
+    "resCourthouse": "gen result courthouse.webp",
 }
 
 VIDEOS = {

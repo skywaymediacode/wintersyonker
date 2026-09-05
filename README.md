@@ -82,8 +82,7 @@ and footer stay oxblood in both; only the neutrals switch.
    real, attributable reviews.
 3. **TCPA consent wording** in both forms needs an attorney's sign-off.
 4. **"119+ years"** conflicts with "115+" on the firm's live About page.
-5. `Images/auto accident 3.webp` shows **readable third-party signage**
-   ("LIVEATVIV.COM"). It currently appears beside a recovery figure; confirm
-   clearance or swap it.
+5. ~~`auto accident 3.webp` shows readable third-party signage.~~ **Resolved** —
+   it no longer appears on the page; the results slider uses generated imagery.
 6. Attorney photo mapping is **resolved** — the supplied files are individually
    named, closing Jeremy's original open item.
