@@ -11,6 +11,7 @@ December design comp. Skyway Media.
 | `build/build_comp.py` | `python build/build_comp.py` — inlines every asset as a data URI. |
 | `build/wy-comp.html` | **generated. Never edit by hand.** ~4 MB. Not in git. |
 | `build/wy-preview.html` | **generated.** The same markup wrapped in a doctype — this is what you open locally. Not in git. |
+| `src/pages/index.astro` | **generated, but committed.** Same markup with assets by URL. The host has no Python, so re-run the build and commit this file whenever the source changes. |
 | `Images/` | photography, logos, trust badges, generated practice-area imagery |
 | `Video/` | hero background video |
 | `wy-handoff/` | Jeremy's original comp, kept for reference |
