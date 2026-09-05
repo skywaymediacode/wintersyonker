@@ -17,16 +17,25 @@
 <meta property="og:url" content="https://www.winters-yonker.com/">
 <meta property="og:image" content="https://www.winters-yonker.com/images/hero%20cover.webp">
 <meta name="description" content="Tampa Bay personal injury lawyers. A real person answers this phone, 24 hours a day. And we don't get paid unless you do.">
+<!-- Self-hosted fonts: the Google CSS request alone cost 780ms on throttled 4G
+     before it even began fetching the woff2 files. Archivo is preloaded because
+     the hero headline needs it; Newsreader is only used for pull quotes below
+     the fold, so it loads without competing for the critical path. -->
+<link rel="preload" href="/fonts/archivo-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
+<!-- The LCP element is the hero poster. -->
+<link rel="preload" as="image" href="/images/hero%20cover.webp" fetchpriority="high">
 <script is:inline>
   /* resolve the stored theme before first paint to avoid a flash */
   (function(){try{var t=localStorage.getItem("wy-theme");
   if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..700;1,6..72,200..700&display=swap">
-
 <style is:global>
+@font-face{font-family:'Archivo';font-style:normal;font-display:swap;
+  font-weight:100 900;font-stretch:62% 125%;
+  src:url('/fonts/archivo-latin-standard-normal.woff2') format('woff2')}
+@font-face{font-family:'Newsreader';font-style:normal;font-display:swap;font-weight:400;
+  src:url('/fonts/newsreader-latin-opsz-normal.woff2') format('woff2')}
+
 :root{
   --page:#FFFFFF; --panel:#F8F5F5; --surface:#FFFFFF;
   --text:#1A1310; --muted:#5F5459; --line:#E9E2E2;
@@ -671,9 +680,7 @@ footer.ft2 b{color:#fff}
 <!-- ============ 01 HERO + ACCOLADES (one full-screen stage) ============ -->
 <div class="herostage">
 <section class="hero on-dark" style="padding-block:0">
-  <video id="herovid" autoplay muted loop playsinline poster="/images/hero%20cover.webp">
-    <source src="/video/winters-yonker-hero-background.mp4" type="video/mp4">
-  </video>
+  <video id="herovid" autoplay muted loop playsinline preload="none" poster="/images/hero%20cover.webp" data-src="/video/winters-yonker-hero-background.mp4"></video>
   <div class="wrap">
     <div class="hcopy">
       <p class="eyebrow">For Your Personal Injury Needs</p>
@@ -732,7 +739,7 @@ footer.ft2 b{color:#fff}
 
     <div class="rtrack" id="rtrack">
       <div class="rslide">
-        <div class="pic"><img src="/images/gen%20result%20interstate.webp" alt="Aftermath of a highway collision at dusk"></div>
+        <div class="pic"><img src="/images/gen%20result%20interstate.webp" srcset="/images/gen%20result%20interstate-400.webp 400w, /images/gen%20result%20interstate-500.webp 500w, /images/gen%20result%20interstate-700.webp 700w, /images/gen%20result%20interstate-1000.webp 1000w, /images/gen%20result%20interstate.webp 1400w" sizes="(min-width: 940px) 46vw, 100vw" alt="Aftermath of a highway collision at dusk"></div>
         <div class="body">
           <span class="kind">Auto Accident</span>
           <span class="amt">$5,000,000</span>
@@ -741,7 +748,7 @@ footer.ft2 b{color:#fff}
         </div>
       </div>
       <div class="rslide">
-        <div class="pic"><img src="/images/gen%20result%20night%20intersection.webp" alt="Damaged vehicle at a rain-slicked intersection at night"></div>
+        <div class="pic"><img src="/images/gen%20result%20night%20intersection.webp" srcset="/images/gen%20result%20night%20intersection-400.webp 400w, /images/gen%20result%20night%20intersection-500.webp 500w, /images/gen%20result%20night%20intersection-700.webp 700w, /images/gen%20result%20night%20intersection-1000.webp 1000w, /images/gen%20result%20night%20intersection.webp 1400w" sizes="(min-width: 940px) 46vw, 100vw" alt="Damaged vehicle at a rain-slicked intersection at night"></div>
         <div class="body">
           <span class="kind">Auto Negligence &middot; Settled</span>
           <span class="amt">$3,050,000</span>
@@ -751,7 +758,7 @@ footer.ft2 b{color:#fff}
         </div>
       </div>
       <div class="rslide">
-        <div class="pic"><img src="/images/gen%20result%20courthouse.webp" alt="County courthouse at dusk"></div>
+        <div class="pic"><img src="/images/gen%20result%20courthouse.webp" srcset="/images/gen%20result%20courthouse-400.webp 400w, /images/gen%20result%20courthouse-500.webp 500w, /images/gen%20result%20courthouse-700.webp 700w, /images/gen%20result%20courthouse-1000.webp 1000w, /images/gen%20result%20courthouse.webp 1400w" sizes="(min-width: 940px) 46vw, 100vw" alt="County courthouse at dusk"></div>
         <div class="body">
           <span class="kind">Auto Negligence &middot; Verdict</span>
           <span class="amt">$1,750,000</span>
@@ -781,18 +788,18 @@ footer.ft2 b{color:#fff}
   </div>
 
   <div class="tiles">
-    <a class="ptile" href="#"><img src="/images/auto%20accident%202.webp" alt="Multi-vehicle rear-end collision"><span class="lab"><span>Most common claim</span><b>Car Accidents</b></span></a>
-    <a class="ptile" href="#"><img src="/images/auto%20accident.webp" alt="Commercial box truck collision"><span class="lab"><span>Commercial carriers</span><b>Truck Accidents</b></span></a>
-    <a class="ptile" href="#"><img src="/images/gen%20motorcycle%20accidents.webp" alt="Motorcycle down on a road after a collision"><span class="lab"><span>Catastrophic injury</span><b>Motorcycle Accidents</b></span></a>
-    <a class="ptile" href="#"><img src="/images/gen%20pedestrian%20accidents.webp" alt="Crosswalk at dusk"><span class="lab"><span>Crosswalks &amp; roadways</span><b>Pedestrian Accidents</b></span></a>
-    <a class="ptile" href="#"><img src="/images/gen%20uber%20lyft%20accidents.webp" alt="Rideshare vehicle at night"><span class="lab"><span>Rideshare coverage</span><b>Uber &amp; Lyft Accidents</b></span></a>
-    <a class="ptile" href="#"><img src="/images/gen%20slip%20and%20fall.webp" alt="Wet floor sign in a store aisle"><span class="lab"><span>Premises liability</span><b>Slip &amp; Fall</b></span></a>
-    <a class="ptile" href="#"><img src="/images/gen%20construction%20accidents.webp" alt="Construction site"><span class="lab"><span>Job site injury</span><b>Construction Accidents</b></span></a>
-    <a class="ptile" href="#"><img src="/images/gen%20brain%20injury.webp" alt="Man seated by a window"><span class="lab"><span>Long-term care needs</span><b>Brain Injury</b></span></a>
-    <a class="ptile" href="#"><img src="/images/gen%20nursing%20home%20neglect.webp" alt="Hands of an elderly person held gently"><span class="lab"><span>Elder abuse &amp; neglect</span><b>Nursing Home Neglect</b></span></a>
-    <a class="ptile" href="#"><img src="/images/gen%20dog%20bites.webp" alt="Dog behind a fence"><span class="lab"><span>Owner liability</span><b>Dog Bites</b></span></a>
-    <a class="ptile" href="#"><img src="/images/gen%20wrongful%20death.webp" alt="Road at dusk"><span class="lab"><span>Claims by surviving family</span><b>Wrongful Death</b></span></a>
-    <a class="ptile" href="#"><img src="/images/gen%20all%20personal%20injury.webp" alt="County courthouse"><span class="lab"><span>Everything we do</span><b>All Personal Injury</b></span></a>
+    <a class="ptile" href="#"><img src="/images/auto%20accident%202.webp" srcset="/images/auto%20accident%202-400.webp 400w, /images/auto%20accident%202-500.webp 500w, /images/auto%20accident%202-700.webp 700w, /images/auto%20accident%202-1000.webp 1000w, /images/auto%20accident%202.webp 1200w" sizes="(min-width: 780px) 34vw, 50vw" alt="Multi-vehicle rear-end collision"><span class="lab"><span>Most common claim</span><b>Car Accidents</b></span></a>
+    <a class="ptile" href="#"><img src="/images/auto%20accident.webp" srcset="/images/auto%20accident-400.webp 400w, /images/auto%20accident-500.webp 500w, /images/auto%20accident-700.webp 700w, /images/auto%20accident-1000.webp 1000w, /images/auto%20accident.webp 1200w" sizes="(min-width: 780px) 34vw, 50vw" alt="Commercial box truck collision"><span class="lab"><span>Commercial carriers</span><b>Truck Accidents</b></span></a>
+    <a class="ptile" href="#"><img src="/images/gen%20motorcycle%20accidents.webp" srcset="/images/gen%20motorcycle%20accidents-400.webp 400w, /images/gen%20motorcycle%20accidents-500.webp 500w, /images/gen%20motorcycle%20accidents-700.webp 700w, /images/gen%20motorcycle%20accidents-1000.webp 1000w, /images/gen%20motorcycle%20accidents.webp 1200w" sizes="(min-width: 780px) 34vw, 50vw" alt="Motorcycle down on a road after a collision"><span class="lab"><span>Catastrophic injury</span><b>Motorcycle Accidents</b></span></a>
+    <a class="ptile" href="#"><img src="/images/gen%20pedestrian%20accidents.webp" srcset="/images/gen%20pedestrian%20accidents-400.webp 400w, /images/gen%20pedestrian%20accidents-500.webp 500w, /images/gen%20pedestrian%20accidents-700.webp 700w, /images/gen%20pedestrian%20accidents-1000.webp 1000w, /images/gen%20pedestrian%20accidents.webp 1200w" sizes="(min-width: 780px) 34vw, 50vw" alt="Crosswalk at dusk"><span class="lab"><span>Crosswalks &amp; roadways</span><b>Pedestrian Accidents</b></span></a>
+    <a class="ptile" href="#"><img src="/images/gen%20uber%20lyft%20accidents.webp" srcset="/images/gen%20uber%20lyft%20accidents-400.webp 400w, /images/gen%20uber%20lyft%20accidents-500.webp 500w, /images/gen%20uber%20lyft%20accidents-700.webp 700w, /images/gen%20uber%20lyft%20accidents-1000.webp 1000w, /images/gen%20uber%20lyft%20accidents.webp 1200w" sizes="(min-width: 780px) 34vw, 50vw" alt="Rideshare vehicle at night"><span class="lab"><span>Rideshare coverage</span><b>Uber &amp; Lyft Accidents</b></span></a>
+    <a class="ptile" href="#"><img src="/images/gen%20slip%20and%20fall.webp" srcset="/images/gen%20slip%20and%20fall-400.webp 400w, /images/gen%20slip%20and%20fall-500.webp 500w, /images/gen%20slip%20and%20fall-700.webp 700w, /images/gen%20slip%20and%20fall-1000.webp 1000w, /images/gen%20slip%20and%20fall.webp 1200w" sizes="(min-width: 780px) 34vw, 50vw" alt="Wet floor sign in a store aisle"><span class="lab"><span>Premises liability</span><b>Slip &amp; Fall</b></span></a>
+    <a class="ptile" href="#"><img src="/images/gen%20construction%20accidents.webp" srcset="/images/gen%20construction%20accidents-400.webp 400w, /images/gen%20construction%20accidents-500.webp 500w, /images/gen%20construction%20accidents-700.webp 700w, /images/gen%20construction%20accidents-1000.webp 1000w, /images/gen%20construction%20accidents.webp 1200w" sizes="(min-width: 780px) 34vw, 50vw" alt="Construction site"><span class="lab"><span>Job site injury</span><b>Construction Accidents</b></span></a>
+    <a class="ptile" href="#"><img src="/images/gen%20brain%20injury.webp" srcset="/images/gen%20brain%20injury-400.webp 400w, /images/gen%20brain%20injury-500.webp 500w, /images/gen%20brain%20injury-700.webp 700w, /images/gen%20brain%20injury-1000.webp 1000w, /images/gen%20brain%20injury.webp 1200w" sizes="(min-width: 780px) 34vw, 50vw" alt="Man seated by a window"><span class="lab"><span>Long-term care needs</span><b>Brain Injury</b></span></a>
+    <a class="ptile" href="#"><img src="/images/gen%20nursing%20home%20neglect.webp" srcset="/images/gen%20nursing%20home%20neglect-400.webp 400w, /images/gen%20nursing%20home%20neglect-500.webp 500w, /images/gen%20nursing%20home%20neglect-700.webp 700w, /images/gen%20nursing%20home%20neglect-1000.webp 1000w, /images/gen%20nursing%20home%20neglect.webp 1200w" sizes="(min-width: 780px) 34vw, 50vw" alt="Hands of an elderly person held gently"><span class="lab"><span>Elder abuse &amp; neglect</span><b>Nursing Home Neglect</b></span></a>
+    <a class="ptile" href="#"><img src="/images/gen%20dog%20bites.webp" srcset="/images/gen%20dog%20bites-400.webp 400w, /images/gen%20dog%20bites-500.webp 500w, /images/gen%20dog%20bites-700.webp 700w, /images/gen%20dog%20bites-1000.webp 1000w, /images/gen%20dog%20bites.webp 1200w" sizes="(min-width: 780px) 34vw, 50vw" alt="Dog behind a fence"><span class="lab"><span>Owner liability</span><b>Dog Bites</b></span></a>
+    <a class="ptile" href="#"><img src="/images/gen%20wrongful%20death.webp" srcset="/images/gen%20wrongful%20death-400.webp 400w, /images/gen%20wrongful%20death-500.webp 500w, /images/gen%20wrongful%20death-700.webp 700w, /images/gen%20wrongful%20death-1000.webp 1000w, /images/gen%20wrongful%20death.webp 1200w" sizes="(min-width: 780px) 34vw, 50vw" alt="Road at dusk"><span class="lab"><span>Claims by surviving family</span><b>Wrongful Death</b></span></a>
+    <a class="ptile" href="#"><img src="/images/gen%20all%20personal%20injury.webp" srcset="/images/gen%20all%20personal%20injury-400.webp 400w, /images/gen%20all%20personal%20injury-500.webp 500w, /images/gen%20all%20personal%20injury-700.webp 700w, /images/gen%20all%20personal%20injury-1000.webp 1000w, /images/gen%20all%20personal%20injury.webp 1200w" sizes="(min-width: 780px) 34vw, 50vw" alt="County courthouse"><span class="lab"><span>Everything we do</span><b>All Personal Injury</b></span></a>
   </div>
 
   <div class="wrap">
@@ -857,7 +864,7 @@ footer.ft2 b{color:#fff}
     <h2 class="h2">It's our job<br>to provide clarity.</h2>
     <div class="faq-grid">
       <div class="faq-art">
-        <img src="/images/Experience.webp" alt="Winters &amp; Yonker attorneys">
+        <img src="/images/Experience.webp" srcset="/images/Experience-400.webp 400w, /images/Experience-500.webp 500w, /images/Experience-700.webp 700w, /images/Experience-1000.webp 1000w, /images/Experience.webp 1212w" sizes="(min-width: 940px) 50vw, 100vw" alt="Winters &amp; Yonker attorneys">
         <blockquote class="artquote">
           <p>"If the honest answer is that your case is small, or that you don't need a lawyer at all, we will tell you that on the first call."</p>
           <cite>Winters &amp; Yonker &middot; What happens when you ring</cite>
@@ -901,7 +908,7 @@ footer.ft2 b{color:#fff}
         <p>If you were hurt because somebody else was careless, you are who this firm was built for.</p>
       </div>
       <div class="duo">
-        <img src="/images/WY%20duo.webp" alt="Bill Winters and Marc Yonker, founding partners">
+        <img src="/images/WY%20duo.webp" srcset="/images/WY%20duo-400.webp 400w, /images/WY%20duo-500.webp 500w, /images/WY%20duo-700.webp 700w, /images/WY%20duo-1000.webp 1000w, /images/WY%20duo.webp 1100w" sizes="(min-width: 940px) 50vw, 100vw" alt="Bill Winters and Marc Yonker, founding partners">
         <span class="cap">Bill Winters &amp; Marc Yonker &middot; Founding Partners</span>
       </div>
     </div>
@@ -984,7 +991,7 @@ footer.ft2 b{color:#fff}
 
 <!-- ============ 09 CONTACT ============ -->
 <section class="contact on-dark" id="contact">
-  <img class="bg" src="/images/gen%20tampa%20bay.webp" alt="" aria-hidden="true">
+  <img class="bg" src="/images/gen%20tampa%20bay.webp" srcset="/images/gen%20tampa%20bay-400.webp 400w, /images/gen%20tampa%20bay-500.webp 500w, /images/gen%20tampa%20bay-700.webp 700w, /images/gen%20tampa%20bay-1000.webp 1000w, /images/gen%20tampa%20bay.webp 1600w" sizes="100vw" alt="" aria-hidden="true">
   <div class="wrap">
     <p class="eyebrow">Five offices, four counties</p>
     <h2 class="h2">If getting to us<br>is the problem, don't.</h2>
@@ -1114,10 +1121,28 @@ footer.ft2 b{color:#fff}
     });
   }
 
-  /* hero video: no visible control by request. Reduced-motion visitors get a
-     still poster instead, which is the only automatic pause left. */
+  /* Hero video is attached only after first paint, and only on wider screens.
+     The poster is the LCP element; downloading ~950 KB of video before it has
+     painted delays exactly the thing being measured. Phones keep the poster,
+     and reduced-motion visitors keep it everywhere. */
   var v=document.getElementById('herovid');
-  if(v && window.matchMedia('(prefers-reduced-motion: reduce)').matches){ v.removeAttribute('autoplay'); v.pause(); }
+  if(v){
+    var noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!noMotion && window.innerWidth >= 900){
+      var attach = function(){
+        var src = v.getAttribute('data-src');
+        if(!src) return;
+        var el = document.createElement('source');
+        el.src = src; el.type = 'video/mp4';
+        v.appendChild(el);
+        v.load();
+        var play = v.play();
+        if(play && play.catch) play.catch(function(){});
+      };
+      if(document.readyState === 'complete') window.setTimeout(attach, 0);
+      else window.addEventListener('load', attach);
+    }
+  }
 
   /* results scroller */
   var t=document.getElementById('rtrack');

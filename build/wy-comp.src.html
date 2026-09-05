@@ -645,9 +645,7 @@ footer.ft2 b{color:#fff}
 <!-- ============ 01 HERO + ACCOLADES (one full-screen stage) ============ -->
 <div class="herostage">
 <section class="hero on-dark" style="padding-block:0">
-  <video id="herovid" autoplay muted loop playsinline poster="{{IMG:herocover}}">
-    <source src="{{VID:hero}}" type="video/mp4">
-  </video>
+  <video id="herovid" autoplay muted loop playsinline preload="none" poster="{{IMG:herocover}}" data-src="{{VID:hero}}"></video>
   <div class="wrap">
     <div class="hcopy">
       <p class="eyebrow">For Your Personal Injury Needs</p>
@@ -1088,10 +1086,28 @@ footer.ft2 b{color:#fff}
     });
   }
 
-  /* hero video: no visible control by request. Reduced-motion visitors get a
-     still poster instead, which is the only automatic pause left. */
+  /* Hero video is attached only after first paint, and only on wider screens.
+     The poster is the LCP element; downloading ~950 KB of video before it has
+     painted delays exactly the thing being measured. Phones keep the poster,
+     and reduced-motion visitors keep it everywhere. */
   var v=document.getElementById('herovid');
-  if(v && window.matchMedia('(prefers-reduced-motion: reduce)').matches){ v.removeAttribute('autoplay'); v.pause(); }
+  if(v){
+    var noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!noMotion && window.innerWidth >= 900){
+      var attach = function(){
+        var src = v.getAttribute('data-src');
+        if(!src) return;
+        var el = document.createElement('source');
+        el.src = src; el.type = 'video/mp4';
+        v.appendChild(el);
+        v.load();
+        var play = v.play();
+        if(play && play.catch) play.catch(function(){});
+      };
+      if(document.readyState === 'complete') window.setTimeout(attach, 0);
+      else window.addEventListener('load', attach);
+    }
+  }
 
   /* results scroller */
   var t=document.getElementById('rtrack');

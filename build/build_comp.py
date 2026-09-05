@@ -109,11 +109,26 @@ PAGE_HEAD = """---
 <meta property="og:url" content="https://www.winters-yonker.com/">
 <meta property="og:image" content="https://www.winters-yonker.com/images/hero%20cover.webp">
 <meta name="description" content="Tampa Bay personal injury lawyers. A real person answers this phone, 24 hours a day. And we don't get paid unless you do.">
+<!-- Self-hosted fonts: the Google CSS request alone cost 780ms on throttled 4G
+     before it even began fetching the woff2 files. Archivo is preloaded because
+     the hero headline needs it; Newsreader is only used for pull quotes below
+     the fold, so it loads without competing for the critical path. -->
+<link rel="preload" href="/fonts/archivo-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
+<!-- The LCP element is the hero poster. -->
+<link rel="preload" as="image" href="/images/hero%20cover.webp" fetchpriority="high">
 <script is:inline>
   /* resolve the stored theme before first paint to avoid a flash */
   (function(){try{var t=localStorage.getItem("wy-theme");
   if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
 </script>
+"""
+
+FONT_FACE = """
+@font-face{font-family:'Archivo';font-style:normal;font-display:swap;
+  font-weight:100 900;font-stretch:62% 125%;
+  src:url('/fonts/archivo-latin-standard-normal.woff2') format('woff2')}
+@font-face{font-family:'Newsreader';font-style:normal;font-display:swap;font-weight:400;
+  src:url('/fonts/newsreader-latin-opsz-normal.woff2') format('woff2')}
 """
 
 PAGE_MID = """</style>
@@ -125,6 +140,76 @@ PAGE_TAIL = """
 </body>
 </html>
 """
+
+
+# --- responsive variants -------------------------------------------------
+# The practice cards were shipping 1200px WebPs into ~285px slots. Variants are
+# generated once at build time and committed, because the deploy host runs npm,
+# not Python. Keys are filenames; values are the CSS `sizes` for that slot.
+TILE = "(min-width: 780px) 34vw, 50vw"
+SLIDE = "(min-width: 940px) 46vw, 100vw"
+HALF = "(min-width: 940px) 50vw, 100vw"
+
+RESPONSIVE = {
+    "gen pedestrian accidents.webp": TILE,
+    "gen uber lyft accidents.webp": TILE,
+    "gen slip and fall.webp": TILE,
+    "gen construction accidents.webp": TILE,
+    "gen brain injury.webp": TILE,
+    "gen nursing home neglect.webp": TILE,
+    "gen dog bites.webp": TILE,
+    "gen wrongful death.webp": TILE,
+    "gen all personal injury.webp": TILE,
+    "gen motorcycle accidents.webp": TILE,
+    "auto accident.webp": TILE,
+    "auto accident 2.webp": TILE,
+    "gen result interstate.webp": SLIDE,
+    "gen result night intersection.webp": SLIDE,
+    "gen result courthouse.webp": SLIDE,
+    "WY duo.webp": HALF,
+    "Experience.webp": HALF,
+    "gen tampa bay.webp": "100vw",
+}
+
+# 500 exists so a DPR-2 phone at ~420px CSS width lands there rather than
+# skipping past 400 to 700.
+VARIANT_WIDTHS = (400, 500, 700, 1000)
+
+
+def build_variants() -> dict:
+    """Emit downscaled webp variants next to each source; return srcset strings."""
+    from PIL import Image
+
+    out = {}
+    for name, sizes in RESPONSIVE.items():
+        src = ROOT / "public" / "images" / name
+        if not src.exists():
+            continue
+        im = Image.open(src)
+        stem = name[: -len(".webp")]
+        entries = []
+        for w in VARIANT_WIDTHS:
+            if w >= im.width:
+                continue
+            variant = ROOT / "public" / "images" / f"{stem}-{w}.webp"
+            if not variant.exists():
+                im.copy().resize(
+                    (w, round(im.height * w / im.width)), Image.LANCZOS
+                ).save(variant, "WEBP", quality=76, method=6)
+            entries.append(f"{public_url('images', variant.name)} {w}w")
+        entries.append(f"{public_url('images', name)} {im.width}w")
+        out[name] = (", ".join(entries), sizes)
+    return out
+
+
+def apply_srcset(page: str, variants: dict) -> str:
+    for name, (srcset, sizes) in variants.items():
+        url = public_url("images", name)
+        page = page.replace(
+            f'src="{url}"',
+            f'src="{url}" srcset="{srcset}" sizes="{sizes}"',
+        )
+    return page
 
 
 def public_url(folder: str, name: str) -> str:
@@ -177,7 +262,12 @@ def main() -> int:
     # elements. Anything the page creates at runtime (the theme icon, the
     # results counter) never receives that attribute, so scoped rules silently
     # stop matching it. This stylesheet is a whole document's CSS: keep it global.
-    page = page.replace("<style>", "<style is:global>", 1)
+    page = page.replace("<style>", "<style is:global>" + FONT_FACE, 1)
+    # The Artifact CSP only admits fonts.googleapis.com, so the comp keeps the
+    # CDN link; the deployed page self-hosts and drops it.
+    page = re.sub(r'<link rel="preconnect"[^>]*>\s*', "", page)
+    page = re.sub(r'<link rel="stylesheet" href="https://fonts\.googleapis\.com[^>]*>\s*', "", page)
+    page = apply_srcset(page, build_variants())
     head, _, body = page.partition("</style>")
     PAGE.parent.mkdir(parents=True, exist_ok=True)
     PAGE.write_text(PAGE_HEAD + head + PAGE_MID + body + PAGE_TAIL, encoding="utf-8")
