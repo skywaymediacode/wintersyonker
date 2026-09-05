@@ -55,6 +55,8 @@
 .tsw:hover{border-color:var(--gold);color:var(--gold);background:rgba(245,187,46,.08)}
 .tsw svg{width:18px;height:18px;fill:currentColor;display:block}
 
+@media(max-width:899px){:root{--chrome:86px}}
+
 *{box-sizing:border-box}
 body{margin:0;background:var(--page);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
@@ -79,6 +81,9 @@ section{padding-block:clamp(56px,6vw,112px)}
 
 /* ================= TOPBAR / NAV ================= */
 .topbar{background:var(--oxblood-black);color:#E4D6D8;font-size:13px}
+/* The hero already carries call and case-review, and the sticky bar carries
+   them again. Three sets of the same two actions above the fold is too many. */
+@media(max-width:899px){.topbar{display:none}}
 .tbin{display:flex;justify-content:flex-end;align-items:stretch;padding-left:var(--pad);min-height:52px}
 .ti{display:none;align-items:center;padding-inline:clamp(16px,1.6vw,26px);
   border-left:1px solid rgba(255,255,255,.16);letter-spacing:.02em;white-space:nowrap}
@@ -175,9 +180,11 @@ body.menu-open{overflow:hidden}
 /* ---------- mobile sticky action bar ---------- */
 .mbar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;
   grid-template-columns:1fr 1fr auto;gap:1px;background:rgba(255,255,255,.16);
-  border-top:2px solid var(--gold);transition:transform .35s cubic-bezier(.2,.7,.3,1)}
+  border-top:2px solid var(--gold);transform:translateY(115%);
+  transition:transform .38s cubic-bezier(.2,.7,.3,1)}
+.mbar.show{transform:none}
 @media(min-width:1080px){.mbar{display:none}}
-.mbar.dismissed{transform:translateY(115%)}
+.mbar.dismissed{transform:translateY(115%)!important}
 .mbar a{display:flex;align-items:center;justify-content:center;gap:9px;padding:17px 8px;
   text-decoration:none;font-weight:800;font-stretch:76%;text-transform:uppercase;
   font-size:clamp(12px,3.3vw,15px);letter-spacing:.09em}
@@ -276,6 +283,17 @@ nav.nav.is-stuck .wrap{padding-block:8px}
 .tb{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0}
 .tb .cell{display:flex;align-items:center;justify-content:center;padding-inline:clamp(18px,3vw,46px);min-height:56px}
 .tb .cell + .cell{border-left:1px solid var(--line)}
+.tb .cell--stats{gap:clamp(20px,3vw,44px)}
+.tb .cell--stats .stat + .stat{padding-left:clamp(20px,3vw,44px);border-left:1px solid var(--line)}
+@media(max-width:719px){
+  /* dividers read as noise once the row wraps; centre the badges instead and
+     keep the two figures together on their own line. */
+  .tb{gap:18px 0}
+  .tb .cell{padding-inline:13px;min-height:0}
+  .tb .cell + .cell{border-left:0}
+  .tb .cell--stats{flex:1 0 100%;justify-content:center;padding-top:4px}
+  .tb img{height:42px}
+}
 .tb img{height:clamp(46px,3.6vw,60px);width:auto;object-fit:contain;
   filter:grayscale(1) contrast(.92);opacity:.58;transition:filter .35s ease,opacity .35s ease}
 .tb .cell:hover img{filter:grayscale(0) contrast(1);opacity:1}
@@ -296,6 +314,8 @@ nav.nav.is-stuck .wrap{padding-block:8px}
   --res-glow:175,53,43;
   --res-badge-bg:var(--gold);
   --res-badge-fg:var(--oxblood-black);
+  --res-count:var(--signal);
+  --res-count-of:var(--muted);
   --res-panel:var(--surface);
   --res-line:var(--line);
   --res-dim:rgba(26,19,16,.38);
@@ -305,6 +325,8 @@ nav.nav.is-stuck .wrap{padding-block:8px}
     --res-bg:var(--oxblood-black); --res-text:#fff; --res-muted:#C6B6B8;
     --res-fig:var(--gold); --res-glow:245,187,46;
     --res-badge-bg:var(--signal); --res-badge-fg:#fff;
+  --res-count:#fff; --res-count-of:rgba(255,255,255,.55);
+    --res-count:#fff; --res-count-of:rgba(255,255,255,.55);
   --res-halo:0 0 22px rgba(245,187,46,.42),0 0 60px rgba(245,187,46,.26),0 0 120px rgba(245,187,46,.14);
     --res-halo:0 0 22px rgba(245,187,46,.42),0 0 60px rgba(245,187,46,.26),0 0 120px rgba(245,187,46,.14);
     --res-panel:rgba(255,255,255,.04); --res-line:rgba(255,255,255,.12);
@@ -314,6 +336,7 @@ nav.nav.is-stuck .wrap{padding-block:8px}
   --res-bg:var(--oxblood-black); --res-text:#fff; --res-muted:#C6B6B8;
   --res-fig:var(--gold); --res-glow:245,187,46;
   --res-badge-bg:var(--signal); --res-badge-fg:#fff;
+  --res-count:#fff; --res-count-of:rgba(255,255,255,.55);
   --res-halo:0 0 22px rgba(245,187,46,.42),0 0 60px rgba(245,187,46,.26),0 0 120px rgba(245,187,46,.14);
   --res-panel:rgba(255,255,255,.04); --res-line:rgba(255,255,255,.12);
   --res-dim:rgba(255,255,255,.42)}
@@ -324,8 +347,8 @@ nav.nav.is-stuck .wrap{padding-block:8px}
 .rhead{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between}
 .rnav{display:flex;align-items:center;gap:18px}
 .rcount{font-weight:800;font-stretch:76%;font-size:clamp(20px,1.9vw,30px);letter-spacing:.02em;
-  color:var(--gold-deep);font-variant-numeric:tabular-nums;line-height:1}
-.rcount .of{color:var(--res-dim)}
+  color:var(--res-count);font-variant-numeric:tabular-nums;line-height:1}
+.rcount .of{color:var(--res-count-of)}
 .rbtn{width:clamp(52px,4vw,66px);height:clamp(52px,4vw,66px);border-radius:50%;
   border:1px solid var(--gold-deep);background:transparent;color:var(--gold-deep);cursor:pointer;
   display:grid;place-items:center;transition:background .24s ease,color .24s ease,border-color .24s ease,transform .24s ease}
@@ -659,8 +682,10 @@ footer.ft2 b{color:#fff}
     <span class="cell"><img src="{{IMG:badge3}}" alt="Accreditation"></span>
     <span class="cell"><img src="{{IMG:badge4}}" alt="Accreditation"></span>
     <span class="cell"><img src="{{IMG:badge5}}" alt="Accreditation"></span>
-    <span class="cell"><span class="stat"><b>4.9 &#9733;</b><span>1,100+ reviews</span></span></span>
-    <span class="cell"><span class="stat"><b>119+</b><span>Years combined</span></span></span>
+    <span class="cell cell--stats">
+      <span class="stat"><b>4.9 &#9733;</b><span>1,100+ reviews</span></span>
+      <span class="stat"><b>119+</b><span>Years combined</span></span>
+    </span>
   </div>
 </div>
 
@@ -1018,15 +1043,22 @@ footer.ft2 b{color:#fff}
     });
   }
 
-  /* mobile sticky action bar */
-  var mbar=document.getElementById('mbar'), mbarx=document.getElementById('mbarx');
-  if(mbar){
-    document.body.classList.add('has-mbar');
-    if(mbarx) mbarx.addEventListener('click', function(){
-      mbar.classList.add('dismissed');
-      document.body.classList.remove('has-mbar');
-    });
+  /* mobile sticky action bar — held back until the hero is behind you, so the
+     first screen isn't three copies of the same two actions. */
+  var mbar=document.getElementById('mbar'), mbarx=document.getElementById('mbarx'),
+      mbarDismissed=false;
+  function updateMbar(sc){
+    if(!mbar || mbarDismissed) return;
+    var show = sc > window.innerHeight * 0.6;
+    mbar.classList.toggle('show', show);
+    document.body.classList.toggle('has-mbar', show);
   }
+  if(mbarx) mbarx.addEventListener('click', function(){
+    mbarDismissed = true;
+    mbar.classList.add('dismissed');
+    mbar.classList.remove('show');
+    document.body.classList.remove('has-mbar');
+  });
 
   /* mobile drawer */
   var burger=document.getElementById('burger'), drawer=document.getElementById('drawer'),
@@ -1165,6 +1197,7 @@ footer.ft2 b{color:#fff}
         heroVid.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0) scale(1.12)';
       }
     }
+    updateMbar(sc);
     sweep();
   }
 
