@@ -1,0 +1,225 @@
+---
+import { FIRM } from "../data/firm";
+
+const links = ["About", "Personal Injury", "Results", "Locations", "Blog", "Contact"];
+---
+
+<nav class="nav" id="nav">
+  <span class="progressbar" id="progressbar" aria-hidden="true"></span>
+  <div class="wrap">
+    <a class="logolink" href="/" aria-label={`${FIRM.name} — home`}>
+      <img class="lg lg-light" src="/images/logo.webp" alt={`${FIRM.name} — ${FIRM.tagline}`} width="1200" height="166" />
+      <img class="lg lg-dark" src="/images/logo-dark-supplied.webp" alt="" aria-hidden="true" width="1200" height="164" />
+    </a>
+
+    <div class="navlinks">
+      {links.map((l) => <a href={`#${l.toLowerCase().replace(/\s+/g, "-")}`}>{l}</a>)}
+    </div>
+
+    <div class="navcta">
+      <a class="tel" href={`tel:${FIRM.phoneHref}`}>{FIRM.phone}</a>
+      <button class="tsw" id="tsw" type="button" aria-label="Switch to dark theme" aria-pressed="false"></button>
+      <a class="btn btn-ox" href="#contact">Free Case Review</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const MOON =
+    '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M17.2 12.4A7.6 7.6 0 0 1 7.6 2.8a7.7 7.7 0 1 0 9.6 9.6z"/></svg>';
+  const SUN =
+    '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 5.6A4.4 4.4 0 1 0 10 14.4 4.4 4.4 0 0 0 10 5.6zm0-5.1a.9.9 0 0 1 .9.9v1.7a.9.9 0 1 1-1.8 0V1.4a.9.9 0 0 1 .9-.9zm0 16.5a.9.9 0 0 1 .9.9v1.7a.9.9 0 1 1-1.8 0v-1.7a.9.9 0 0 1 .9-.9zM19.5 10a.9.9 0 0 1-.9.9h-1.7a.9.9 0 1 1 0-1.8h1.7a.9.9 0 0 1 .9.9zm-16.5 0a.9.9 0 0 1-.9.9H.4a.9.9 0 0 1 0-1.8h1.7a.9.9 0 0 1 .9.9zm13.1-6.7a.9.9 0 0 1 0 1.3l-1.2 1.2a.9.9 0 1 1-1.3-1.3l1.2-1.2a.9.9 0 0 1 1.3 0zM5.9 14.1a.9.9 0 0 1 0 1.3l-1.2 1.2a.9.9 0 0 1-1.3-1.3l1.2-1.2a.9.9 0 0 1 1.3 0zm10.8 2.5a.9.9 0 0 1-1.3 0l-1.2-1.2a.9.9 0 1 1 1.3-1.3l1.2 1.2a.9.9 0 0 1 0 1.3zM5.9 5.9a.9.9 0 0 1-1.3 0L3.4 4.6a.9.9 0 0 1 1.3-1.3l1.2 1.2a.9.9 0 0 1 0 1.4z"/></svg>';
+
+  const root = document.documentElement;
+  const tsw = document.getElementById("tsw");
+
+  const stored = () => {
+    try {
+      return localStorage.getItem("wy-theme");
+    } catch {
+      return null;
+    }
+  };
+  const current = () =>
+    root.getAttribute("data-theme") ??
+    (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+
+  function paint(v: string) {
+    if (!tsw) return;
+    tsw.innerHTML = v === "dark" ? SUN : MOON;
+    tsw.setAttribute("aria-label", v === "dark" ? "Switch to light theme" : "Switch to dark theme");
+    tsw.setAttribute("aria-pressed", String(v === "dark"));
+  }
+
+  paint(current());
+  tsw?.addEventListener("click", () => {
+    const next = current() === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try {
+      localStorage.setItem("wy-theme", next);
+    } catch {}
+    paint(next);
+  });
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+    if (!stored()) paint(current());
+  });
+</script>
+
+<style>
+  .nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 30;
+  }
+  .wrap {
+    max-width: 1680px;
+    margin: 0 auto;
+    padding-inline: clamp(20px, 4.2vw, 76px);
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding-block: 15px;
+    transition: padding-block 0.28s cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+  .nav.is-stuck {
+    box-shadow: 0 12px 34px -20px rgb(0 0 0 / 0.6);
+  }
+  .nav.is-stuck .wrap {
+    padding-block: 8px;
+  }
+  .progressbar {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 2px;
+    width: 0;
+    background: var(--gold);
+    z-index: 2;
+  }
+
+  .logolink {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+  }
+  .lg {
+    height: clamp(32px, 2.8vw, 42px);
+    width: auto;
+    display: block;
+  }
+  /* Scoped to `.nav .lg-*` so these match the specificity of `.nav .lg` above
+     and win on source order. A bare `.lg-dark` loses and both logos render. */
+  .nav .lg-dark {
+    display: none;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .nav .lg-light {
+      display: none;
+    }
+    :root:not([data-theme="light"]) .nav .lg-dark {
+      display: block;
+    }
+  }
+  :root[data-theme="dark"] .nav .lg-light {
+    display: none;
+  }
+  :root[data-theme="dark"] .nav .lg-dark {
+    display: block;
+  }
+  :root[data-theme="light"] .nav .lg-light {
+    display: block;
+  }
+  :root[data-theme="light"] .nav .lg-dark {
+    display: none;
+  }
+
+  .navlinks {
+    display: none;
+    gap: 26px;
+    font-size: 12.5px;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    margin-left: auto;
+  }
+  @media (min-width: 1080px) {
+    .navlinks {
+      display: flex;
+    }
+  }
+  .navlinks a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .navlinks a:hover {
+    color: var(--accent-strong);
+  }
+
+  .navcta {
+    margin-left: auto;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  @media (min-width: 1080px) {
+    .navcta {
+      margin-left: 0;
+    }
+  }
+  .navcta .tel {
+    display: flex;
+    align-items: center;
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--accent-strong);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  /* Explicit shared height. Using `align-items: stretch` here instead lets flex
+     resolve against no intrinsic height and blows the bar out to 108px. */
+  .navcta .btn {
+    display: inline-flex;
+    align-items: center;
+    height: var(--ctl-h);
+    padding-inline: 30px;
+    font-size: 13.5px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    text-decoration: none;
+    background: var(--oxblood);
+    color: #fff;
+    transition: transform 0.18s ease, filter 0.18s ease;
+  }
+  .navcta .btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+  }
+  .tsw {
+    width: var(--ctl-h);
+    height: var(--ctl-h);
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--text);
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  }
+  .tsw:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgb(245 187 46 / 0.08);
+  }
+  .tsw :global(svg) {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    display: block;
+  }
+</style>

@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Brand tokens.
+
+   The rules from the brand spec are enforced here rather than remembered:
+
+   - One red for grounds and headlines (oxblood), one for pops (signal).
+   - Gold carries text on DARK grounds only; gold-deep is its light-ground
+     counterpart. No colour can pass WCAG AA on both a white and a dark ground
+     (a passing colour needs luminance <= 0.183 on white and >= 0.203 on dark,
+     and those windows do not overlap), so the split is structural, not stylistic.
+   - Brand grounds do not flip with the theme. Only the neutrals switch.
+--------------------------------------------------------------------------- */
+
+:root {
+  /* brand — fixed in both themes */
+  --oxblood: #822227;
+  --oxblood-black: #1a0e10;
+  --signal: #af352b;
+  --gold: #f5bb2e;
+
+  /* neutrals — light */
+  --page: #ffffff;
+  --panel: #f8f5f5;
+  --surface: #ffffff;
+  --text: #1a1310;
+  --muted: #5f5459;
+  --line: #e9e2e2;
+
+  /* role tokens that must flip so they stay legible on their ground */
+  --gold-deep: #7c5512;
+  --accent-strong: #822227;
+
+  /* shared control height: nav CTA and theme toggle must agree */
+  --ctl-h: 54px;
+  --chrome: 137px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page: #1b1013;
+    --panel: #140c0f;
+    --surface: #22151a;
+    --text: #ffffff;
+    --muted: #c6b6b8;
+    --line: #3c2729;
+    --gold-deep: #f5bb2e;
+    --accent-strong: #f5bb2e;
+  }
+}
+
+:root[data-theme="dark"] {
+  --page: #1b1013;
+  --panel: #140c0f;
+  --surface: #22151a;
+  --text: #ffffff;
+  --muted: #c6b6b8;
+  --line: #3c2729;
+  --gold-deep: #f5bb2e;
+  --accent-strong: #f5bb2e;
+}
+
+/* Expose the tokens to Tailwind as utilities. `inline` is required because
+   these reference other custom properties rather than literal values. */
+@theme inline {
+  --color-page: var(--page);
+  --color-panel: var(--panel);
+  --color-surface: var(--surface);
+  --color-ink: var(--text);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+
+  --color-oxblood: var(--oxblood);
+  --color-oxblood-black: var(--oxblood-black);
+  --color-signal: var(--signal);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-accent-strong: var(--accent-strong);
+
+  --font-sans: "Archivo", Helvetica, Arial, sans-serif;
+  --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+--------------------------------------------------------------------------- */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--page);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Repeated type treatments. Width before weight: Archivo is already at 800,
+   so headlines get louder by condensing, not by adding weight.
+--------------------------------------------------------------------------- */
+
+@utility eyebrow {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+
+@utility display {
+  font-weight: 800;
+  font-stretch: 70%;
+  text-transform: uppercase;
+  line-height: 0.92;
+  letter-spacing: -0.025em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

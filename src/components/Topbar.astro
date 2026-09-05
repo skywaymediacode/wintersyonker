@@ -1,0 +1,83 @@
+---
+import { FIRM } from "../data/firm";
+---
+
+<div class="topbar">
+  <div class="tbin">
+    <span class="ti">Se Habla Español</span>
+    <span class="ti">Speak to an actual lawyer within 24 hours</span>
+    <a class="ti tgold" href="#contact">Free Case Evaluation</a>
+    <a class="tphone" href={`tel:${FIRM.phoneHref}`}>
+      <svg viewBox="0 0 16 16" aria-hidden="true"
+        ><path
+          d="M4.2 1.2a1.3 1.3 0 0 1 1.8.3l1.3 1.9a1.3 1.3 0 0 1-.2 1.7l-.9.8a8.6 8.6 0 0 0 3.9 3.9l.8-.9a1.3 1.3 0 0 1 1.7-.2l1.9 1.3a1.3 1.3 0 0 1 .3 1.8l-.9 1.3a2 2 0 0 1-2.3.7C8.1 12.5 3.5 7.9 2.2 3.4a2 2 0 0 1 .7-2.3z"
+        ></path></svg
+      >
+      {FIRM.phone}
+    </a>
+  </div>
+</div>
+
+<style>
+  .topbar {
+    background: var(--oxblood-black);
+    color: #e4d6d8;
+    font-size: 13px;
+  }
+  .tbin {
+    display: flex;
+    justify-content: flex-end;
+    align-items: stretch;
+    padding-left: var(--pad, clamp(20px, 4.2vw, 76px));
+    min-height: 52px;
+  }
+  .ti {
+    display: none;
+    align-items: center;
+    padding-inline: clamp(16px, 1.6vw, 26px);
+    border-left: 1px solid rgb(255 255 255 / 0.16);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  @media (min-width: 900px) {
+    .ti {
+      display: flex;
+    }
+  }
+  .ti:first-child {
+    border-left: 0;
+  }
+  a.ti {
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  a.ti:hover {
+    color: var(--gold);
+  }
+  .ti.tgold {
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .tphone {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold);
+    color: var(--oxblood-black);
+    text-decoration: none;
+    padding-inline: clamp(18px, 2vw, 30px);
+    font-weight: 800;
+    font-size: clamp(16px, 1.4vw, 21px);
+    white-space: nowrap;
+    transition: background 0.2s ease;
+  }
+  .tphone:hover {
+    background: #ffd05f;
+  }
+  .tphone svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    flex: 0 0 auto;
+  }
+</style>

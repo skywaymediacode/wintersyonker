@@ -1,0 +1,46 @@
+---
+import { FIRM, OFFICES } from "../data/firm";
+const hq = OFFICES[0];
+---
+
+<footer class="ft">
+  <div class="wrap">
+    <img src="/images/WY logo 2.webp" alt={FIRM.name} width="900" height="433" />
+    <span class="addr"><b>{hq.street}</b>{hq.city}, FL {hq.zip} · {FIRM.phone}</span>
+    <span class="legal">
+      Attorney advertising. Prior results do not guarantee a similar outcome. This website is for
+      general information and does not create an attorney–client relationship.
+    </span>
+  </div>
+</footer>
+
+<style>
+  .ft {
+    background: var(--oxblood-black);
+    color: #a8969a;
+    padding-block: 48px;
+    font-size: 13px;
+  }
+  .wrap {
+    max-width: 1680px;
+    margin: 0 auto;
+    padding-inline: clamp(20px, 4.2vw, 76px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 40px;
+    align-items: center;
+  }
+  img {
+    height: 44px;
+    width: auto;
+    display: block;
+  }
+  .addr b {
+    display: block;
+    color: #fff;
+  }
+  .legal {
+    margin-left: auto;
+    max-width: 46ch;
+  }
+</style>

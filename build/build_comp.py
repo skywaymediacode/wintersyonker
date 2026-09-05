@@ -93,14 +93,14 @@ def main() -> int:
     missing = []
 
     for key, name in IMAGES.items():
-        path = ROOT / "Images" / name
+        path = ROOT / "public" / "images" / name
         if not path.exists():
             missing.append(str(path))
             continue
         html = html.replace("{{IMG:%s}}" % key, data_uri(path, "image/webp"))
 
     for key, name in VIDEOS.items():
-        path = ROOT / "Video" / name
+        path = ROOT / "public" / "video" / name
         if not path.exists():
             missing.append(str(path))
             continue

@@ -1,0 +1,35 @@
+---
+import Base from "../layouts/Base.astro";
+import { FIRM } from "../data/firm";
+---
+
+<Base
+  title={`${FIRM.name} · Tampa Personal Injury Lawyers`}
+  description="Tampa Bay personal injury lawyers. A real person answers this phone, 24 hours a day. And we don't get paid unless you do."
+>
+  <section class="placeholder">
+    <div class="wrap">
+      <p class="eyebrow">Scaffold</p>
+      <h1 class="display">Shell is up.</h1>
+      <p>Topbar, nav, theme switch and footer are live. Sections port next.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .placeholder {
+    padding-block: clamp(56px, 6vw, 112px);
+  }
+  .wrap {
+    max-width: 1680px;
+    margin: 0 auto;
+    padding-inline: clamp(20px, 4.2vw, 76px);
+  }
+  h1 {
+    font-size: clamp(34px, 6.4vw, 88px);
+    margin: 18px 0;
+  }
+  p {
+    color: var(--muted);
+  }
+</style>
