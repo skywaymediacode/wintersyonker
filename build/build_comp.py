@@ -170,6 +170,11 @@ def main() -> int:
         page = page.replace("{{VID:%s}}" % key, public_url("video", name))
     # the comp working title must not survive into the deployed page
     page = re.sub(r"<title>.*?</title>" + chr(92) + "s*", "", page, count=1, flags=re.S)
+    # Astro scopes <style> by stamping data-astro-cid on both selectors and
+    # elements. Anything the page creates at runtime (the theme icon, the
+    # results counter) never receives that attribute, so scoped rules silently
+    # stop matching it. This stylesheet is a whole document's CSS: keep it global.
+    page = page.replace("<style>", "<style is:global>", 1)
     head, _, body = page.partition("</style>")
     PAGE.parent.mkdir(parents=True, exist_ok=True)
     PAGE.write_text(PAGE_HEAD + head + PAGE_MID + body + PAGE_TAIL, encoding="utf-8")
