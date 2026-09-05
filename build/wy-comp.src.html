@@ -97,13 +97,66 @@ nav.nav .lg-dark{display:none}
 :root[data-theme="dark"] nav.nav .lg-dark{display:block}
 :root[data-theme="light"] nav.nav .lg-light{display:block}
 :root[data-theme="light"] nav.nav .lg-dark{display:none}
-.navlinks{display:none;gap:26px;font-size:12.5px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;margin-left:auto}
+.navlinks{display:none;gap:clamp(16px,1.5vw,26px);margin-left:auto}
 @media(min-width:1080px){.navlinks{display:flex}}
-.navlinks span{cursor:pointer}
+.navlinks span{cursor:pointer;white-space:nowrap;font-weight:800;font-stretch:80%;
+  font-size:clamp(12px,1.05vw,14px);letter-spacing:.1em;text-transform:uppercase;
+  transition:color .2s ease}
+.navlinks span:hover{color:var(--accent-strong)}
 .navcta{margin-left:auto;display:flex;gap:12px;align-items:center}
-.navcta .btn{display:inline-flex;align-items:center;padding-block:0;height:var(--ctl-h)}
+.navcta .btn{display:inline-flex;align-items:center;padding-block:0;height:var(--ctl-h);
+  white-space:nowrap;font-stretch:82%;padding-inline:clamp(16px,1.6vw,28px);letter-spacing:.09em}
 @media(min-width:1080px){.navcta{margin-left:0}}
 .navcta .tel{display:flex;align-items:center;font-weight:800;font-size:16px;color:var(--accent-strong);text-decoration:none;white-space:nowrap}
+
+
+/* ---------- mobile menu ---------- */
+.burger{display:grid;place-items:center;gap:0;width:var(--ctl-h);height:var(--ctl-h);flex:0 0 auto;
+  background:transparent;border:1px solid var(--line);border-radius:2px;cursor:pointer;padding:0}
+@media(min-width:1080px){.burger{display:none}}
+.burger i{display:block;width:22px;height:2.5px;background:var(--text);margin:2.5px 0;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),opacity .2s ease}
+.burger[aria-expanded="true"] i:nth-child(1){transform:translateY(5px) rotate(45deg)}
+.burger[aria-expanded="true"] i:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] i:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+
+.drawer{position:fixed;inset:0;z-index:60;background:var(--oxblood-black);color:#fff;
+  display:flex;flex-direction:column;overflow-y:auto;
+  opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}
+.drawer.open{opacity:1;visibility:visible}
+.drawer-top{display:flex;align-items:center;justify-content:space-between;
+  padding:15px clamp(20px,4.2vw,76px);border-bottom:1px solid rgba(255,255,255,.14)}
+.drawer-top img{height:34px;width:auto}
+.dclose{width:var(--ctl-h);height:var(--ctl-h);display:grid;place-items:center;cursor:pointer;
+  background:transparent;border:1px solid rgba(255,255,255,.28);border-radius:2px;color:#fff;
+  font-size:22px;line-height:1;font-family:inherit}
+.dclose:hover{border-color:var(--gold);color:var(--gold)}
+.dlinks{display:flex;flex-direction:column;padding:clamp(14px,3vw,34px) clamp(20px,4.2vw,76px) 0}
+.dlinks a{display:flex;align-items:baseline;gap:16px;text-decoration:none;color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.13);padding:clamp(15px,2.4vw,22px) 0;
+  font-weight:800;font-stretch:68%;text-transform:uppercase;letter-spacing:-.015em;
+  font-size:clamp(30px,9vw,54px);line-height:.94;
+  opacity:0;transform:translateY(14px);transition:color .2s ease,opacity .45s ease,transform .45s cubic-bezier(.2,.7,.3,1)}
+.drawer.open .dlinks a{opacity:1;transform:none}
+.dlinks a em{font-style:normal;font-weight:800;font-stretch:100%;font-size:12px;letter-spacing:.16em;
+  color:var(--gold);flex:0 0 auto}
+.dlinks a:hover{color:var(--gold)}
+.dfoot{margin-top:auto;padding:clamp(20px,3vw,34px) clamp(20px,4.2vw,76px) clamp(28px,4vw,48px);
+  display:flex;flex-direction:column;gap:12px}
+.dfoot .dphone{display:flex;align-items:center;justify-content:center;gap:12px;background:var(--gold);
+  color:var(--oxblood-black);text-decoration:none;font-weight:800;font-size:clamp(19px,5vw,26px);
+  padding:18px;border-radius:2px;letter-spacing:.01em}
+.dfoot .dcta{display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,.5);
+  color:#fff;text-decoration:none;font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;
+  padding:18px;border-radius:2px}
+.dfoot .dnote{font-size:12.5px;color:#C6B6B8;text-align:center;margin-top:4px}
+.drawer.open .dlinks a:nth-child(1){transition-delay:0.10s}
+.drawer.open .dlinks a:nth-child(2){transition-delay:0.14s}
+.drawer.open .dlinks a:nth-child(3){transition-delay:0.18s}
+.drawer.open .dlinks a:nth-child(4){transition-delay:0.23s}
+.drawer.open .dlinks a:nth-child(5){transition-delay:0.27s}
+.drawer.open .dlinks a:nth-child(6){transition-delay:0.32s}
+body.menu-open{overflow:hidden}
 
 /* ---------- scroll behaviour ---------- */
 .progressbar{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--gold);z-index:2}
@@ -131,29 +184,37 @@ nav.nav.is-stuck .wrap{padding-block:8px}
     linear-gradient(100deg, rgba(26,14,16,.95) 0%, rgba(130,34,39,.88) 40%, rgba(130,34,39,.46) 70%, rgba(26,14,16,.70) 100%),
     linear-gradient(180deg, rgba(26,14,16,.55) 0%, rgba(26,14,16,0) 26%);
 }
-.hero .wrap{padding-block:clamp(34px,3.6vw,68px);position:relative;width:100%}
-.hero-grid{display:grid;gap:clamp(36px,4vw,72px);grid-template-columns:1fr;align-items:center}
-@media(min-width:1040px){.hero-grid{grid-template-columns:1.25fr .75fr}}
+.hero{flex-direction:column;align-items:stretch}
+.hero .wrap{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center;
+  padding-block:clamp(40px,5vw,84px);position:relative;width:100%}
+.hero .hcopy{max-width:24ch}
+
+/* Intake bar sits across the foot of the video so the footage stays uncovered. */
+.herobar{flex:0 0 auto;position:relative;z-index:3;border-top:3px solid var(--gold);
+  background:rgba(18,9,11,.74);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.hbin{max-width:var(--maxw);margin:0 auto;padding:clamp(14px,1.5vw,20px) var(--pad);
+  display:grid;gap:10px;grid-template-columns:1fr;align-items:center}
+@media(min-width:760px){.hbin{grid-template-columns:1fr 1fr}}
+@media(min-width:1180px){.hbin{grid-template-columns:auto 1fr 1fr 1fr 1fr auto;gap:12px}}
+.hblabel{display:flex;flex-direction:column;gap:2px;white-space:nowrap;padding-right:6px}
+.hblabel b{font-weight:800;font-stretch:80%;text-transform:uppercase;font-size:clamp(15px,1.25vw,19px);
+  letter-spacing:-.01em;color:#fff;line-height:1}
+.hblabel span{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+.hfld{border:1px solid rgba(255,255,255,.26);background:rgba(255,255,255,.07);color:#E9DADC;
+  padding:13px 14px;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
+  border-radius:2px}
+.hbsubmit{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;
+  background:var(--gold);color:var(--oxblood-black);border:0;border-radius:2px;cursor:pointer;
+  font-family:inherit;font-weight:800;font-stretch:82%;font-size:13px;letter-spacing:.1em;
+  text-transform:uppercase;padding:15px clamp(18px,1.8vw,28px);text-decoration:none;
+  transition:filter .18s ease,transform .18s ease}
+.hbsubmit:hover{filter:brightness(1.06);transform:translateY(-2px)}
+.hbnote{grid-column:1/-1;font-size:11px;color:#C6B6B8;line-height:1.45}
 .hero h1{font-weight:800;font-stretch:62%;text-transform:uppercase;
   font-size:clamp(54px,11.5vw,182px);line-height:.83;letter-spacing:-.03em;margin-top:20px}
 .hero h1 .g{color:var(--gold);display:block}
 .hero .hsub{font-size:clamp(17px,1.7vw,23px);line-height:1.45;color:#F7E7E9;margin-top:28px;max-width:42ch}
 .hero .acts{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
-
-/* --- video control: heavy slab --- */
-.vwrap{position:absolute;right:var(--pad);bottom:clamp(24px,3vw,44px);z-index:4}
-.vbtn{display:flex;align-items:stretch;gap:0;padding:0;height:clamp(56px,4.4vw,68px);
-  background:rgba(26,14,16,.52);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
-  border:2px solid var(--gold);border-radius:2px;color:var(--gold);cursor:pointer;font-family:inherit;
-  transition:background .22s ease,color .22s ease}
-.vbtn .box{width:clamp(56px,4.4vw,68px);display:grid;place-items:center;background:var(--gold);
-  transition:background .22s ease}
-.vbtn .ic{width:20px;height:20px;display:block;fill:var(--oxblood-black);transition:fill .22s ease}
-.vbtn .txt{display:flex;align-items:center;padding-inline:clamp(16px,1.5vw,26px);
-  font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:800}
-.vbtn:hover{background:var(--gold);color:var(--oxblood-black)}
-.vbtn:hover .box{background:var(--oxblood-black)}
-.vbtn:hover .ic{fill:var(--gold)}
 
 .form{background:var(--surface);color:var(--text);padding:clamp(20px,1.7vw,28px);border-top:6px solid var(--gold);box-shadow:0 40px 90px -40px rgba(0,0,0,.75)}
 .form h3{font-weight:800;font-stretch:84%;text-transform:uppercase;font-size:clamp(22px,1.8vw,28px);letter-spacing:-.015em}
@@ -260,8 +321,20 @@ nav.nav.is-stuck .wrap{padding-block:8px}
 .deadlines{background:var(--oxblood-black);color:#fff}
 .dl{display:grid;gap:2px;margin-top:56px;grid-template-columns:1fr}
 @media(min-width:900px){.dl{grid-template-columns:repeat(3,1fr)}}
-.dc{border:1px solid rgba(245,187,46,.32);padding:clamp(28px,2.4vw,44px);display:flex;flex-direction:column;gap:16px}
-.dc .n{font-weight:800;font-stretch:62%;font-size:clamp(54px,7.6vw,120px);line-height:.8;color:var(--gold);letter-spacing:-.03em;text-transform:uppercase}
+.dc{border:1px solid rgba(245,187,46,.32);padding:clamp(28px,2.4vw,44px);display:flex;flex-direction:column;gap:16px;
+  position:relative;overflow:hidden;isolation:isolate;
+  transition:border-color .35s ease,background .35s ease,transform .35s cubic-bezier(.2,.7,.3,1)}
+.dc::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(120% 90% at 0% 0%,rgba(245,187,46,.16),transparent 62%);
+  opacity:0;transition:opacity .4s ease}
+.dc:hover{border-color:var(--gold);transform:translateY(-6px)}
+.dc:hover::before{opacity:1}
+.dc .n{font-weight:800;font-stretch:62%;font-size:clamp(54px,7.6vw,120px);line-height:.8;color:var(--gold);letter-spacing:-.03em;text-transform:uppercase;
+  transition:text-shadow .45s ease,transform .45s cubic-bezier(.2,.7,.3,1)}
+.dc:hover .n{transform:translateY(-3px);
+  text-shadow:0 0 24px rgba(245,187,46,.42),0 0 64px rgba(245,187,46,.22)}
+.dc .t{transition:color .3s ease}
+.dc:hover .t{color:var(--gold)}
 .dc .t{font-size:12.5px;letter-spacing:.15em;text-transform:uppercase;font-weight:800;color:#fff}
 .dc .d{font-size:14.5px;line-height:1.6;color:#C6B6B8}
 .warns{display:grid;gap:2px;margin-top:2px;grid-template-columns:1fr}
@@ -284,11 +357,13 @@ nav.nav.is-stuck .wrap{padding-block:8px}
 .faqsec .faq-art .tagline{background:linear-gradient(180deg,rgba(26,14,16,0),rgba(26,14,16,.94))}
 .faq-grid{display:grid;gap:clamp(30px,3.4vw,70px);margin-top:48px;grid-template-columns:1fr;align-items:start}
 @media(min-width:980px){.faq-grid{grid-template-columns:.82fr 1.18fr}}
-.faq-art{position:relative;overflow:hidden}
-.faq-art img{width:100%;height:100%;min-height:320px;object-fit:cover}
-.faq-art .tagline{position:absolute;left:0;right:0;bottom:0;padding:26px 24px;color:#fff;
-  background:linear-gradient(180deg,rgba(26,14,16,0),rgba(130,34,39,.94))}
-.faq-art .tagline b{display:block;font-family:var(--serif);font-optical-sizing:auto;font-size:clamp(19px,1.8vw,25px);line-height:1.3}
+.faq-art{display:flex;flex-direction:column}
+.faq-art img{width:100%;min-height:clamp(260px,26vw,400px);max-height:clamp(260px,30vw,460px);object-fit:cover;object-position:center 22%}
+.artquote{margin:0;padding:clamp(24px,2.6vw,38px);background:rgba(0,0,0,.24);border-left:5px solid var(--gold)}
+.artquote p{font-family:var(--serif);font-optical-sizing:auto;
+  font-size:clamp(19px,1.85vw,27px);line-height:1.32;color:#fff;max-width:32ch}
+.artquote cite{display:block;margin-top:16px;font-style:normal;font-family:var(--sans);
+  font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:800;color:var(--gold)}
 details.qa{border-top:1px solid var(--line)}
 details.qa:last-of-type{border-bottom:1px solid var(--line)}
 details.qa summary{list-style:none;cursor:pointer;padding:24px 0;display:flex;gap:18px;align-items:baseline;
@@ -322,7 +397,7 @@ details.qa .a{font-size:15.5px;line-height:1.65;color:var(--muted);padding:0 0 2
 .mq-track{display:flex;gap:2px;width:max-content;animation:mq 58s linear infinite}
 .mq:hover .mq-track{animation-play-state:paused}
 @keyframes mq{to{transform:translateX(-50%)}}
-.tcard{width:clamp(216px,20vw,300px);flex:0 0 auto;position:relative;overflow:hidden;background:var(--oxblood-black)}
+.tcard{width:clamp(248px,23vw,366px);flex:0 0 auto;position:relative;overflow:hidden;background:var(--oxblood-black)}
 .tcard img{width:100%;aspect-ratio:420/527;object-fit:cover;object-position:top center;
   filter:grayscale(1) contrast(1.05);transition:filter .4s ease,transform .6s cubic-bezier(.2,.7,.3,1)}
 .tcard:hover img{filter:grayscale(0);transform:scale(1.04)}
@@ -420,9 +495,30 @@ footer.ft2 b{color:#fff}
       <a class="tel" href="tel:8132236200">(813) 223-6200</a>
       <button class="tsw" id="tsw" type="button" aria-label="Switch to dark theme" aria-pressed="false"></button>
       <a class="btn btn-ox" href="#contact">Free Case Review</a>
+      <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><i></i><i></i><i></i></button>
     </div>
   </div>
 </nav>
+
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="drawer-top">
+    <img src="{{IMG:logoDark}}" alt="Winters &amp; Yonker, P.A.">
+    <button class="dclose" id="dclose" type="button" aria-label="Close menu">&times;</button>
+  </div>
+  <nav class="dlinks">
+    <a href="#about"><em>01</em>About</a>
+    <a href="#practice"><em>02</em>Personal Injury</a>
+    <a href="#results"><em>03</em>Results</a>
+    <a href="#contact"><em>04</em>Locations</a>
+    <a href="#faq"><em>05</em>FAQ</a>
+    <a href="#contact"><em>06</em>Contact</a>
+  </nav>
+  <div class="dfoot">
+    <a class="dphone" href="tel:8132236200">Call (813) 223-6200</a>
+    <a class="dcta" href="#contact">Free Case Review</a>
+    <p class="dnote">A real person answers, 24 hours a day.</p>
+  </div>
+</div>
 
 <!-- ============ 01 HERO + ACCOLADES (one full-screen stage) ============ -->
 <div class="herostage">
@@ -430,37 +526,27 @@ footer.ft2 b{color:#fff}
   <video id="herovid" autoplay muted loop playsinline poster="{{IMG:herocover}}">
     <source src="{{VID:hero}}" type="video/mp4">
   </video>
-  <div class="vwrap">
-    <button class="vbtn" id="vtoggle" aria-label="Pause background video">
-      <span class="box"><svg class="ic" id="vicon" viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="1" width="5" height="14"></rect><rect x="9.5" y="1" width="5" height="14"></rect></svg></span>
-      <span class="txt" id="vlabel">Pause</span>
-    </button>
-  </div>
   <div class="wrap">
-    <div class="hero-grid">
-      <div>
-        <p class="eyebrow">For Your Personal Injury Needs</p>
-        <h1>The Aggressive<span class="g">Attorneys</span></h1>
-        <p class="hsub">A real person answers this phone, 24 hours a day. And we don't get paid unless you do.</p>
-        <div class="acts">
-          <a class="btn btn-gold" href="tel:8132236200">Call (813) 223-6200</a>
-          <a class="btn btn-out" href="#contact">Free Case Review</a>
-        </div>
+    <div class="hcopy">
+      <p class="eyebrow">For Your Personal Injury Needs</p>
+      <h1>The Aggressive<span class="g">Attorneys</span></h1>
+      <p class="hsub">A real person answers this phone, 24 hours a day. And we don't get paid unless you do.</p>
+      <div class="acts">
+        <a class="btn btn-gold" href="tel:8132236200">Call (813) 223-6200</a>
+        <a class="btn btn-out" href="#contact">Free Case Review</a>
       </div>
-      <div class="form">
-        <h3>Free Case Review</h3>
-        <p class="fs">Tell us what happened. No fee to talk, and no obligation.</p>
-        <div class="fields">
-          <div class="fld">First name*</div>
-          <div class="fld">Last name*</div>
-          <div class="fld">Phone*</div>
-          <div class="fld">Email*</div>
-          <div class="fld area full">What happened?*</div>
-        </div>
-        <p class="consent">I agree that Winters &amp; Yonker may contact me by phone, text or email about my case. Message rates may apply. Submitting this form does not create an attorney&ndash;client relationship. <b style="color:var(--signal)">[TCPA wording pending attorney sign-off]</b></p>
-        <a class="btn btn-ox" href="#">Submit My Free Case Review</a>
-        <p class="after">A (813) number will call you back, usually within minutes.</p>
-      </div>
+    </div>
+  </div>
+
+  <div class="herobar">
+    <div class="hbin">
+      <span class="hblabel"><span>Free &middot; No obligation</span><b>Free Case Review</b></span>
+      <span class="hfld">First name*</span>
+      <span class="hfld">Last name*</span>
+      <span class="hfld">Phone*</span>
+      <span class="hfld">Email*</span>
+      <a class="hbsubmit" href="#contact">Start My Review</a>
+      <p class="hbnote">A (813) number will call you back, usually within minutes. Submitting does not create an attorney&ndash;client relationship. <b style="color:var(--signal)">[TCPA wording pending attorney sign-off]</b></p>
     </div>
   </div>
 </section>
@@ -620,7 +706,10 @@ footer.ft2 b{color:#fff}
     <div class="faq-grid">
       <div class="faq-art">
         <img src="{{IMG:experience}}" alt="Winters &amp; Yonker attorneys">
-        <span class="tagline"><b>"If the honest answer is that you don't need a lawyer at all, we will tell you that on the first call."</b></span>
+        <blockquote class="artquote">
+          <p>"If the honest answer is that your case is small, or that you don't need a lawyer at all, we will tell you that on the first call."</p>
+          <cite>Winters &amp; Yonker &middot; What happens when you ring</cite>
+        </blockquote>
       </div>
       <div>
         <details class="qa" open>
@@ -820,23 +909,38 @@ footer.ft2 b{color:#fff}
     });
   }
 
-  /* hero video control */
-  var v=document.getElementById('herovid'), b=document.getElementById('vtoggle'),
-      ic=document.getElementById('vicon'), lb=document.getElementById('vlabel');
-  if(v&&b){
-    var PAUSE='<rect x="1.5" y="1" width="5" height="14"></rect><rect x="9.5" y="1" width="5" height="14"></rect>',
-        PLAY='<path d="M2.5 1v14L14.5 8z"></path>';
-    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ v.removeAttribute('autoplay'); v.pause(); }
-    function sync(){
-      var p=v.paused;
-      ic.innerHTML = p ? PLAY : PAUSE;
-      lb.textContent = p ? 'Play' : 'Pause';
-      b.setAttribute('aria-label', p ? 'Play background video' : 'Pause background video');
+  /* mobile drawer */
+  var burger=document.getElementById('burger'), drawer=document.getElementById('drawer'),
+      dclose=document.getElementById('dclose');
+  if(burger && drawer){
+    function setMenu(open){
+      drawer.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.classList.toggle('menu-open', open);
+      /* the drawer transitions from visibility:hidden, and a hidden element
+         cannot take focus — wait a frame before moving it in. */
+      if(open){ window.setTimeout(function(){ var f = drawer.querySelector('.dlinks a'); if(f) f.focus(); }, 60); }
+      else { burger.focus(); }
     }
-    b.addEventListener('click',function(){ v.paused ? v.play() : v.pause(); });
-    v.addEventListener('play',sync); v.addEventListener('pause',sync);
-    sync();
+    burger.addEventListener('click', function(){ setMenu(!drawer.classList.contains('open')); });
+    if(dclose) dclose.addEventListener('click', function(){ setMenu(false); });
+    Array.prototype.forEach.call(drawer.querySelectorAll('a'), function(a){
+      a.addEventListener('click', function(){ setMenu(false); });
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && drawer.classList.contains('open')) setMenu(false);
+    });
+    /* a resize past the breakpoint must not leave the page scroll-locked */
+    window.addEventListener('resize', function(){
+      if(window.innerWidth >= 1080 && drawer.classList.contains('open')) setMenu(false);
+    });
   }
+
+  /* hero video: no visible control by request. Reduced-motion visitors get a
+     still poster instead, which is the only automatic pause left. */
+  var v=document.getElementById('herovid');
+  if(v && window.matchMedia('(prefers-reduced-motion: reduce)').matches){ v.removeAttribute('autoplay'); v.pause(); }
 
   /* results scroller */
   var t=document.getElementById('rtrack');
