@@ -63,6 +63,7 @@ IMAGES = {
     "motorcycle":    "gen motorcycle accidents.webp",
     "highway":       "gen highway rear end.webp",
     "nighthighway":  "gen night highway.webp",
+    "tampabay":      "gen tampa bay.webp",
 }
 
 VIDEOS = {
