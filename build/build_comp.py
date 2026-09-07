@@ -18,6 +18,7 @@ becomes <body>, scroll events and IntersectionObserver misbehave, and mobile
 emulation falls back to 980px. Always test against wy-preview.html.
 """
 import base64
+import hashlib
 import pathlib
 import urllib.parse
 import re
@@ -109,7 +110,7 @@ PAGE_HEAD = """---
 <meta property="og:type" content="website">
 <meta property="og:title" content="Winters &amp; Yonker, P.A. | Tampa Personal Injury Lawyers">
 <meta property="og:url" content="https://wintersandyonker.com/">
-<meta property="og:image" content="https://wintersandyonker.com/images/hero%20cover.webp">
+<meta property="og:image" content="https://wintersandyonker.com{POSTER}">
 <meta name="description" content="Tampa Bay personal injury lawyers. A real person answers this phone, 24 hours a day. And we don't get paid unless you do.">
 <!-- Self-hosted fonts: the Google CSS request alone cost 780ms on throttled 4G
      before it even began fetching the woff2 files. Archivo is preloaded because
@@ -117,7 +118,7 @@ PAGE_HEAD = """---
      the fold, so it loads without competing for the critical path. -->
 <link rel="preload" href="/fonts/archivo-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
 <!-- The LCP element is the hero poster. -->
-<link rel="preload" as="image" href="/images/hero%20cover.webp" fetchpriority="high">
+<link rel="preload" as="image" href="{POSTER}" fetchpriority="high">
 <script is:inline>
   /* resolve the stored theme before first paint to avoid a flash */
   (function(){try{var t=localStorage.getItem("wy-theme");
@@ -214,8 +215,26 @@ def apply_srcset(page: str, variants: dict) -> str:
     return page
 
 
+def content_tag(path: pathlib.Path) -> str:
+    """Short digest of a file's contents, used to bust caches."""
+    return hashlib.sha256(path.read_bytes()).hexdigest()[:8]
+
+
 def public_url(folder: str, name: str) -> str:
-    return "/" + folder + "/" + urllib.parse.quote(name)
+    """URL for an asset in public/, fingerprinted by content.
+
+    The host serves public/ with `Cache-Control: max-age=2592000`. Editing a
+    file in place therefore leaves every prior visitor on the old bytes for a
+    month — which is exactly what happened when the attorney headshots were
+    corrected by swapping file contents under unchanged names. Appending a
+    content digest changes the URL whenever the bytes change, so browsers
+    refetch without anyone purging a cache.
+    """
+    url = "/" + folder + "/" + urllib.parse.quote(name)
+    path = ROOT / "public" / folder / name
+    if path.exists():
+        url += "?v=" + content_tag(path)
+    return url
 
 
 def data_uri(path: pathlib.Path, mime: str) -> str:
@@ -270,9 +289,11 @@ def main() -> int:
     page = re.sub(r'<link rel="preconnect"[^>]*>\s*', "", page)
     page = re.sub(r'<link rel="stylesheet" href="https://fonts\.googleapis\.com[^>]*>\s*', "", page)
     page = apply_srcset(page, build_variants())
+    poster = public_url("images", IMAGES["herocover"])
     head, _, body = page.partition("</style>")
     PAGE.parent.mkdir(parents=True, exist_ok=True)
-    PAGE.write_text(PAGE_HEAD + head + PAGE_MID + body + PAGE_TAIL, encoding="utf-8")
+    PAGE.write_text(PAGE_HEAD.replace("{POSTER}", poster) + head + PAGE_MID + body + PAGE_TAIL,
+                    encoding="utf-8")
 
     kb = OUT.stat().st_size / 1024
     print(f"built {OUT.name}  {kb:,.0f} KB  ({kb / 1024:.1f} MB)")

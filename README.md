@@ -70,6 +70,11 @@ and footer stay oxblood in both; only the neutrals switch.
   blank and no-JS readers lose nothing.
 - **Flex `align-items: stretch` with no child defining a height** resolved the
   nav controls to 77px and pushed the bar to 108px. Both use `--ctl-h` now.
+- **public/ is cached for 30 days, so never edit an asset in place.** The host
+  sends `Cache-Control: max-age=2592000`. Correcting the attorney headshots by
+  swapping file contents under unchanged names left prior visitors on the old
+  images with no way to know. Every asset URL the build emits now carries a
+  `?v=<content digest>`, so the URL changes whenever the bytes do.
 - **The trust badges are artwork on solid white plates**, and white also appears
   inside the design — no PNG export fixes them. They sit on a white band in
   light, and are inverted in dark.
