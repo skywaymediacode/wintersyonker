@@ -84,10 +84,14 @@ and footer stay oxblood in both; only the neutrals switch.
 4. **"119+ years" vs "115+".** The live site (wintersandyonker.com/about) still
    says "over 115 years of combined experience". The comp says 119+. Unchanged
    pending the firm's answer — it is a credential claim, not a copy choice.
-5. **Headshots needed for Scott Brown and Courtney Yonker.** Both are listed on
-   the firm's live attorney page but were not in the supplied photography, so
-   they currently render as monogram placeholders marked "photo pending".
+5. ~~Headshots needed for Scott Brown and Courtney Yonker.~~ **Resolved** — both
+   supplied and in place.
 6. ~~`auto accident 3.webp` shows readable third-party signage.~~ **Resolved** —
    it no longer appears on the page; the results slider uses generated imagery.
-7. Attorney photo mapping is **resolved** — the supplied files are individually
-   named, closing Jeremy's original open item.
+7. **Attorney photo mapping — was wrong, now fixed against the live site.**
+   Jeremy flagged this originally; it was closed too early on the strength of the
+   supplied filenames, which turned out not to match their contents. Checked
+   against wintersandyonker.com/about/attorneys, positions 1-7 of the supplied
+   set were exactly reversed — six of eight wrong, including both founding
+   partners. The files have been renamed so the names match the faces. Verify
+   any future batch against the live site rather than trusting filenames.

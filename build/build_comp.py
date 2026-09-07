@@ -52,6 +52,8 @@ IMAGES = {
     "attyChris":   "Christopher M Smith.webp",
     "attyAnthony": "Anthony Logalbo.webp",
     "attyMax":     "Max Shevrin.webp",
+    "attyScott":   "Scott Brown.webp",
+    "attyCourtney":"Courtney Yonker.webp",
 
     "pedestrian":    "gen pedestrian accidents.webp",
     "rideshare":     "gen uber lyft accidents.webp",
