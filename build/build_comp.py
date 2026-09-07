@@ -103,11 +103,11 @@ PAGE_HEAD = """---
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Winters &amp; Yonker, P.A. | Tampa Personal Injury Lawyers</title>
-<link rel="canonical" href="https://www.winters-yonker.com/">
+<link rel="canonical" href="https://wintersandyonker.com/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Winters &amp; Yonker, P.A. | Tampa Personal Injury Lawyers">
-<meta property="og:url" content="https://www.winters-yonker.com/">
-<meta property="og:image" content="https://www.winters-yonker.com/images/hero%20cover.webp">
+<meta property="og:url" content="https://wintersandyonker.com/">
+<meta property="og:image" content="https://wintersandyonker.com/images/hero%20cover.webp">
 <meta name="description" content="Tampa Bay personal injury lawyers. A real person answers this phone, 24 hours a day. And we don't get paid unless you do.">
 <!-- Self-hosted fonts: the Google CSS request alone cost 780ms on throttled 4G
      before it even began fetching the woff2 files. Archivo is preloaded because

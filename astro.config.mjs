@@ -8,7 +8,7 @@ export default defineConfig({
   // pre-rendered to HTML at build time and can be hosted anywhere.
   output: "static",
 
-  site: "https://www.winters-yonker.com",
+  site: "https://wintersandyonker.com",
 
   build: {
     // Emit /about/index.html rather than /about.html so URLs stay
