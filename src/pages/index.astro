@@ -51,6 +51,8 @@
   --pad:clamp(20px,4.2vw,76px);
   --chrome:137px;
   --ctl-h:54px;
+  --fs-body:clamp(17px,1.3vw,19.5px);
+  --lh-body:1.62;
 }
 
 @media (prefers-color-scheme:dark){
@@ -274,6 +276,7 @@ nav.nav.is-stuck .wrap{padding-block:8px}
 .hbin > .hblabel,
 .hbin > .hbsubmit,
 .hbin > .hbnote{grid-column:1/-1}
+.hbnote{font-size:12.5px;line-height:1.5;color:#D7C4C6}
 .hbin > .hbsubmit{width:100%}
 @media(min-width:1180px){
   .hbin{grid-template-columns:auto 1fr 1fr 1fr 1fr auto;gap:12px}
@@ -416,7 +419,7 @@ nav.nav.is-stuck .wrap{padding-block:8px}
   transition:transform .6s cubic-bezier(.2,.7,.3,1)}
 .rslide:hover .amt::after,.rslide:focus-within .amt::after{transform:scaleX(1)}
 .rslide .who{font-size:clamp(16px,1.5vw,22px);line-height:1.45;color:var(--res-text);font-weight:600;max-width:44ch}
-.rslide .det{font-size:15px;line-height:1.6;color:var(--res-muted);max-width:52ch}
+.rslide .det{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--res-muted);max-width:52ch}
 .rslide .todo{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:var(--signal);
   border-top:1px solid var(--res-line);padding-top:13px;margin-top:4px}
 .rdots{display:flex;gap:10px;margin-top:28px}
@@ -426,7 +429,7 @@ nav.nav.is-stuck .wrap{padding-block:8px}
   transition:transform .5s cubic-bezier(.2,.7,.3,1)}
 .rdot[aria-current="true"]::after{transform:scaleX(1)}
 .rdot:hover{background:var(--res-dim)}
-.disc{font-size:12.5px;line-height:1.6;color:var(--res-muted);margin-top:30px;max-width:100ch}
+.disc{font-size:13.5px;line-height:1.6;color:var(--res-muted);margin-top:30px;max-width:100ch}
 
 /* ================= 03 PRACTICE ================= */
 .pract{background:var(--panel)}
@@ -452,7 +455,7 @@ nav.nav.is-stuck .wrap{padding-block:8px}
 .split{display:grid;gap:clamp(28px,3vw,64px);margin-top:64px;grid-template-columns:1fr}
 @media(min-width:900px){.split{grid-template-columns:1fr 1fr}}
 .split h3{font-weight:800;font-stretch:82%;text-transform:uppercase;font-size:clamp(22px,2.2vw,32px);line-height:1.03;letter-spacing:-.018em}
-.split p{font-size:18px;line-height:1.62;color:var(--muted);margin-top:16px;max-width:60ch}
+.split p{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--muted);margin-top:16px;max-width:60ch}
 
 /* ================= 04 DEADLINES ================= */
 .deadlines{background:var(--oxblood-black);color:#fff}
@@ -473,7 +476,7 @@ nav.nav.is-stuck .wrap{padding-block:8px}
 .dc .t{transition:color .3s ease}
 .dc:hover .t{color:var(--gold)}
 .dc .t{font-size:12.5px;letter-spacing:.15em;text-transform:uppercase;font-weight:800;color:#fff}
-.dc .d{font-size:16px;line-height:1.62;color:#C6B6B8}
+.dc .d{font-size:var(--fs-body);line-height:var(--lh-body);color:#C6B6B8}
 .warns{display:grid;gap:0;margin-top:clamp(44px,4.4vw,80px);grid-template-columns:1fr;
   border-top:1px solid rgba(245,187,46,.34)}
 @media(min-width:900px){.warns{grid-template-columns:1fr 1fr}}
@@ -489,8 +492,8 @@ nav.nav.is-stuck .wrap{padding-block:8px}
   box-shadow:0 0 0 6px rgba(245,187,46,.14),0 0 40px rgba(245,187,46,.35)}
 .wn h4{font-weight:800;font-stretch:78%;text-transform:uppercase;font-size:clamp(21px,2.1vw,32px);
   color:#fff;letter-spacing:-.018em;line-height:1;align-self:center}
-.wn p{grid-column:2;font-size:16.5px;line-height:1.62;color:#C6B6B8;max-width:52ch}
-.legal{font-size:12.5px;line-height:1.6;color:#A8969A;margin-top:34px;max-width:100ch}
+.wn p{grid-column:2;font-size:var(--fs-body);line-height:var(--lh-body);color:#C6B6B8;max-width:52ch}
+.legal{font-size:13.5px;line-height:1.6;color:#A8969A;margin-top:34px;max-width:100ch}
 
 /* ================= 05 FAQ (own section) ================= */
 .faqsec{background:var(--oxblood);color:#fff}
@@ -522,12 +525,12 @@ details.qa summary .mk{color:var(--gold-deep);font-weight:800;font-size:26px;lin
   transition:transform .25s ease}
 details.qa[open] summary .mk{transform:rotate(45deg)}
 details.qa summary:hover{color:var(--gold)}
-details.qa .a{font-size:17.5px;line-height:1.68;color:var(--muted);padding:0 0 27px 40px;max-width:70ch}
+details.qa .a{font-size:var(--fs-body);line-height:1.66;color:var(--muted);padding:0 0 27px 40px;max-width:70ch}
 
 /* ================= 06 THE FIRM ================= */
 .firm-grid{display:grid;gap:clamp(30px,3.4vw,72px);margin-top:52px;grid-template-columns:1fr;align-items:center}
 @media(min-width:940px){.firm-grid{grid-template-columns:1.02fr .98fr}}
-.firm-copy p{font-size:18.5px;line-height:1.65;color:var(--muted);margin-top:18px;max-width:58ch}
+.firm-copy p{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--muted);margin-top:18px;max-width:58ch}
 .firm-copy p:first-child{margin-top:0}
 .duo{position:relative}
 .duo img{width:100%;height:auto;max-height:clamp(400px,44vw,600px);object-fit:cover;object-position:center 22%}
@@ -558,7 +561,7 @@ details.qa .a{font-size:17.5px;line-height:1.68;color:var(--muted);padding:0 0 2
 /* ================= 07 WHY ================= */
 .why{display:grid;gap:2px;margin-top:52px;grid-template-columns:1fr}
 @media(min-width:700px){.why{grid-template-columns:1fr 1fr}}
-@media(min-width:1180px){.why{grid-template-columns:repeat(5,1fr)}}
+@media(min-width:1180px){.why{grid-template-columns:repeat(3,1fr)}}
 .wc{position:relative;background:var(--surface);border:1px solid var(--line);padding:clamp(26px,2vw,36px);
   display:flex;flex-direction:column;gap:12px;overflow:hidden;isolation:isolate;
   transition:border-color .3s ease,transform .3s cubic-bezier(.2,.7,.3,1)}
@@ -566,7 +569,7 @@ details.qa .a{font-size:17.5px;line-height:1.68;color:var(--muted);padding:0 0 2
   transform:translateY(101%);transition:transform .42s cubic-bezier(.2,.7,.3,1)}
 .wc .k{width:40px;height:5px;background:var(--signal);transition:width .42s cubic-bezier(.2,.7,.3,1),background .3s ease}
 .wc h4{font-weight:800;font-stretch:84%;text-transform:uppercase;font-size:clamp(17px,1.4vw,21px);line-height:1.1;letter-spacing:-.012em;margin-top:8px;transition:color .3s ease}
-.wc p{font-size:15.5px;line-height:1.58;color:var(--muted);transition:color .3s ease}
+.wc p{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--muted);transition:color .3s ease}
 .wc .no{margin-top:auto;padding-top:18px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--line);transition:color .3s ease}
 .wc:hover{transform:translateY(-6px);border-color:var(--oxblood)}
 .wc:hover::before{transform:translateY(0)}
@@ -583,7 +586,7 @@ details.qa .a{font-size:17.5px;line-height:1.68;color:var(--muted);padding:0 0 2
 .rv .t{font-family:var(--serif);font-optical-sizing:auto;font-size:clamp(20px,1.75vw,25px);line-height:1.45;color:var(--text)}
 .rv .w{font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:var(--muted);margin-top:auto}
 .rv .todo{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:var(--signal)}
-.discL{font-size:12.5px;line-height:1.6;color:var(--muted);margin-top:30px;max-width:100ch}
+.discL{font-size:13.5px;line-height:1.6;color:var(--muted);margin-top:30px;max-width:100ch}
 
 /* ================= 09 CONTACT ================= */
 .contact{position:relative;isolation:isolate;overflow:hidden;background:var(--oxblood);color:#fff}
